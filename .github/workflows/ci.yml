@@ -53,38 +53,6 @@ jobs:
         run: cargo run --release --bin digger -- benchmark
         continue-on-error: true
 
-  # ── Dashboard Build ──────────────────────────────────────────
-  dashboard:
-    name: Dashboard Build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-          cache-dependency-path: dashboard/package-lock.json
-
-      - name: Install dependencies
-        working-directory: dashboard
-        run: npm ci
-
-      - name: TypeScript check
-        working-directory: dashboard
-        run: npx tsc --noEmit
-
-      - name: Build
-        working-directory: dashboard
-        run: npm run build
-
-      - name: Upload dashboard artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: dashboard-dist
-          path: dashboard/dist
-
   # ── Linting ──────────────────────────────────────────────────
   clippy:
     name: Clippy
