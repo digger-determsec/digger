@@ -1,0 +1,12 @@
+{
+  "exploit_id": "safe-uniswap-v3-twap-2023",
+  "vulnerability_class": "NEGATIVE",
+  "protocol": "SafeUniswapV3TWAPOracle",
+  "chain": "Ethereum",
+  "year": 2023,
+  "loss_usd": 0,
+  "expected_findings": [],
+  "expected_path_types": [],
+  "expected_hypotheses": [],
+  "known_limitations": "NEGATIVE: correctly uses Uniswap V3 TWAP with 30-minute window + spot-TWAP cross-check. Uses TWAP (not spot) for pricing. Detector should NOT flag."
+}

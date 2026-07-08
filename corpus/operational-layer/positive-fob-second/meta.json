@@ -1,0 +1,1 @@
+{"exploit_id": "op-positive-fob-002", "vulnerability_class": "fail_open_bootstrap", "expected_findings": ["FailOpenBootstrap"], "known_limitations": "Health gate defaults open without require guard"}

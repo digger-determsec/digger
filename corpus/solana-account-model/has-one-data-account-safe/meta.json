@@ -1,0 +1,12 @@
+{
+  "exploit_id": "has-one-data-account-safe",
+  "vulnerability_class": "missing_signer_check",
+  "protocol": "Has-One Data Account Safe",
+  "chain": "Solana",
+  "year": 2024,
+  "loss_usd": 0,
+  "expected_findings": [],
+  "expected_path_types": [],
+  "expected_hypotheses": [],
+  "known_limitations": "NEGATIVE: has_one = mint targets TYPED data account (Account<MintData>), not an authority. Legitimate data relationship."
+}

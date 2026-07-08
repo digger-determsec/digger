@@ -1,0 +1,301 @@
+{
+  "version": "2.3",
+  "program_id": "program",
+  "attack_surface": {
+    "entry_points": [
+      {
+        "function": "constructor",
+        "visibility": "public",
+        "has_authority": true,
+        "writes_state": true,
+        "makes_external_calls": false
+      },
+      {
+        "function": "onlyOwner",
+        "visibility": "public",
+        "has_authority": true,
+        "writes_state": false,
+        "makes_external_calls": false
+      },
+      {
+        "function": "submitTransaction",
+        "visibility": "public",
+        "has_authority": false,
+        "writes_state": false,
+        "makes_external_calls": false
+      },
+      {
+        "function": "confirmTransaction",
+        "visibility": "public",
+        "has_authority": true,
+        "writes_state": false,
+        "makes_external_calls": false
+      },
+      {
+        "function": "executeTransaction",
+        "visibility": "public",
+        "has_authority": true,
+        "writes_state": false,
+        "makes_external_calls": true
+      },
+      {
+        "function": "addOwner",
+        "visibility": "public",
+        "has_authority": true,
+        "writes_state": false,
+        "makes_external_calls": false
+      },
+      {
+        "function": "changeRequirement",
+        "visibility": "public",
+        "has_authority": true,
+        "writes_state": true,
+        "makes_external_calls": false
+      },
+      {
+        "function": "getTransactionCount",
+        "visibility": "public",
+        "has_authority": false,
+        "writes_state": false,
+        "makes_external_calls": false
+      },
+      {
+        "function": "getOwners",
+        "visibility": "public",
+        "has_authority": false,
+        "writes_state": false,
+        "makes_external_calls": false
+      }
+    ],
+    "state_mutations": [
+      {
+        "function": "constructor",
+        "state_vars": [
+          "required"
+        ],
+        "has_authority": true,
+        "is_public": true
+      },
+      {
+        "function": "changeRequirement",
+        "state_vars": [
+          "required"
+        ],
+        "has_authority": true,
+        "is_public": true
+      }
+    ],
+    "external_interactions": [
+      {
+        "function": "executeTransaction",
+        "targets": [
+          "external"
+        ],
+        "is_cpi": false,
+        "is_signed": false,
+        "has_authority": true
+      }
+    ],
+    "authority_regions": [
+      {
+        "function": "constructor",
+        "source": "unknown",
+        "enforced": true,
+        "sensitive_actions": [
+          "required"
+        ]
+      },
+      {
+        "function": "onlyOwner",
+        "source": "msg_sender",
+        "enforced": true,
+        "sensitive_actions": []
+      },
+      {
+        "function": "submitTransaction",
+        "source": "unknown",
+        "enforced": false,
+        "sensitive_actions": []
+      },
+      {
+        "function": "confirmTransaction",
+        "source": "msg_sender",
+        "enforced": true,
+        "sensitive_actions": []
+      },
+      {
+        "function": "executeTransaction",
+        "source": "unknown",
+        "enforced": true,
+        "sensitive_actions": []
+      },
+      {
+        "function": "addOwner",
+        "source": "unknown",
+        "enforced": true,
+        "sensitive_actions": []
+      },
+      {
+        "function": "changeRequirement",
+        "source": "unknown",
+        "enforced": true,
+        "sensitive_actions": [
+          "required"
+        ]
+      },
+      {
+        "function": "getTransactionCount",
+        "source": "unknown",
+        "enforced": false,
+        "sensitive_actions": []
+      },
+      {
+        "function": "getOwners",
+        "source": "unknown",
+        "enforced": false,
+        "sensitive_actions": []
+      }
+    ],
+    "summary": {
+      "total_entry_points": 9,
+      "unguarded_entry_points": 3,
+      "total_mutation_zones": 1,
+      "unguarded_mutation_zones": 0,
+      "total_external_zones": 1,
+      "unguarded_external_zones": 0,
+      "enforcement_rate": 0.6666666666666666
+    }
+  },
+  "paths": {
+    "paths": [],
+    "by_type": {
+      "reentrancy": [],
+      "unauthorized": [],
+      "cpi_trust": [],
+      "other": []
+    },
+    "summary": {
+      "total": 0,
+      "reentrancy_count": 0,
+      "unauthorized_count": 0,
+      "cpi_trust_count": 0,
+      "other_count": 0
+    }
+  },
+  "risk_groups": {
+    "high_fan_in": [],
+    "high_fan_out": [],
+    "high_state_density": [],
+    "external_density": [],
+    "summary": {
+      "high_fan_in_count": 0,
+      "high_fan_out_count": 0,
+      "high_state_density_count": 0,
+      "high_external_density_count": 0
+    }
+  },
+  "cross_protocol": {
+    "program_id": "program",
+    "language": "Unknown",
+    "nodes": [
+      {
+        "id": "constructor",
+        "label": "constructor",
+        "node_type": "entry",
+        "has_authority": true,
+        "writes_state": true
+      },
+      {
+        "id": "onlyOwner",
+        "label": "onlyOwner",
+        "node_type": "entry",
+        "has_authority": true,
+        "writes_state": false
+      },
+      {
+        "id": "submitTransaction",
+        "label": "submitTransaction",
+        "node_type": "entry",
+        "has_authority": false,
+        "writes_state": false
+      },
+      {
+        "id": "confirmTransaction",
+        "label": "confirmTransaction",
+        "node_type": "entry",
+        "has_authority": true,
+        "writes_state": false
+      },
+      {
+        "id": "executeTransaction",
+        "label": "executeTransaction",
+        "node_type": "entry",
+        "has_authority": true,
+        "writes_state": false
+      },
+      {
+        "id": "addOwner",
+        "label": "addOwner",
+        "node_type": "entry",
+        "has_authority": true,
+        "writes_state": false
+      },
+      {
+        "id": "changeRequirement",
+        "label": "changeRequirement",
+        "node_type": "entry",
+        "has_authority": true,
+        "writes_state": true
+      },
+      {
+        "id": "getTransactionCount",
+        "label": "getTransactionCount",
+        "node_type": "entry",
+        "has_authority": false,
+        "writes_state": false
+      },
+      {
+        "id": "getOwners",
+        "label": "getOwners",
+        "node_type": "entry",
+        "has_authority": false,
+        "writes_state": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "executeTransaction",
+        "to": "external",
+        "edge_type": "call"
+      }
+    ],
+    "cross_program": [
+      {
+        "caller": "executeTransaction",
+        "target": "external",
+        "interaction_type": "external_call",
+        "risk_flags": [
+          "external_call"
+        ]
+      }
+    ],
+    "highlighted_paths": [],
+    "summary": {
+      "total_functions": 9,
+      "total_edges": 26,
+      "entry_points": 9,
+      "external_interactions": 1,
+      "vulnerability_paths": 0
+    }
+  },
+  "evidence": [],
+  "metadata": {
+    "analysis_depth": "structural",
+    "languages": [
+      "Unknown"
+    ],
+    "total_functions": 9,
+    "total_edges": 26,
+    "total_findings": 0
+  }
+}

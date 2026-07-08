@@ -1,0 +1,16 @@
+{
+  "exploit_id": "sablier-stake-pool-2023",
+  "vulnerability_class": "missing_access_control",
+  "protocol": "Sablier Stake Pool",
+  "chain": "Solana",
+  "year": 2023,
+  "loss_usd": 500000,
+  "expected_findings": ["MissingAuthorityCheck"],
+  "expected_path_types": ["cpi_privilege_escalation"],
+  "expected_hypotheses": ["AuthorityBypassCandidate"],
+  "known_limitations": [
+    "Minimal reproducer of CPI privilege escalation pattern",
+    "Citation: Solana security advisory patterns for missing authority on CPI transfers",
+    "Pattern: token::transfer without signer/has_one validation on the transfer accounts"
+  ]
+}

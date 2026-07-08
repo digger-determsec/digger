@@ -1,0 +1,20 @@
+{
+    "exploit_id":  "safe-token-vault-2023",
+    "vulnerability_class":  "missing_access_control",
+    "protocol":  "SafeVault",
+    "chain":  "Solana",
+    "year":  2023,
+    "loss_usd":  0,
+    "expected_findings":  [
+
+                          ],
+    "expected_path_types":  [
+
+                            ],
+    "expected_hypotheses":  [
+
+                            ],
+    "known_limitations":  [
+                              "NEGATIVE: correctly guarded Anchor program with signer, has_one, and PDA constraints. Detector should NOT flag."
+                          ]
+}

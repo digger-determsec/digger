@@ -1,0 +1,16 @@
+{
+  "exploit_id": "vesper-lp-2023",
+  "vulnerability_class": "missing_access_control",
+  "protocol": "Vesper LP",
+  "chain": "Solana",
+  "year": 2023,
+  "loss_usd": 300000,
+  "expected_findings": ["MissingAuthorityCheck"],
+  "expected_path_types": ["missing_signer"],
+  "expected_hypotheses": ["AuthorityBypassCandidate"],
+  "known_limitations": [
+    "Minimal reproducer of missing signer on transfer pattern",
+    "Citation: Solana security advisory patterns for missing authority on token transfers",
+    "Pattern: token::transfer without signer/has_one validation on the destination"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "exploit_id": "owner-check-safe-3",
+  "vulnerability_class": "unchecked_account_owner",
+  "protocol": "Lending Pool Collateral (safe)",
+  "chain": "Solana",
+  "year": 2024,
+  "loss_usd": 0,
+  "expected_findings": [],
+  "known_limitations": "NEGATIVE: Account<'info, T> validates account owner via anchor."
+}

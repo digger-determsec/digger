@@ -1,0 +1,11 @@
+[package]
+name = "digger-agent-evidence-run"
+version.workspace = true
+edition.workspace = true
+description = "Agent-facing evidence run schema for deterministic proof workflows"
+license = "proprietary"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+digger-agent-proof-task = { path = "../digger-agent-proof-task" }

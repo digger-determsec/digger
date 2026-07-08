@@ -1,0 +1,17 @@
+[package]
+name = "digger-tests"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+digger-ir = { path = "../digger-ir" }
+digger-parser = { path = "../digger-parser" }
+digger-graph = { path = "../digger-graph" }
+digger-hypothesis = { path = "../digger-hypothesis" }
+digger-pipeline = { path = "../digger-pipeline" }
+digger-reconstruct = { path = "../digger-reconstruct" }
+
+[dev-dependencies]
+digger-cli = { path = "../digger-cli" }
+digger-agent-mcp = { path = "../digger-agent-mcp" }
+serde_json = "1"

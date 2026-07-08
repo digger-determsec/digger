@@ -1,0 +1,12 @@
+{
+  "exploit_id": "safe-long-window-getTWAP-2023",
+  "vulnerability_class": "NEGATIVE",
+  "protocol": "SafeLongWindowTWAPOracle",
+  "chain": "Ethereum",
+  "year": 2023,
+  "loss_usd": 0,
+  "expected_findings": [],
+  "expected_path_types": [],
+  "expected_hypotheses": [],
+  "known_limitations": "NEGATIVE: getTWAP() with minimum observations + time window enforcement. Has genuine TWAP resistance markers. Detector MUST NOT flag — if it does, the TWAP name-match is a false positive."
+}

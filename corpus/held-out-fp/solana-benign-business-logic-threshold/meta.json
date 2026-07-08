@@ -1,0 +1,1 @@
+{"expected_findings": [], "vuln_class": "negative", "description": "Business-logic require threshold — NOT an ownership check. require!(amount >= MIN_DEPOSIT) is numeric validation. Currently TN (blanket require suppression catches it). Boundary case: if detector tightens per ADR-0035, this could become FP."}

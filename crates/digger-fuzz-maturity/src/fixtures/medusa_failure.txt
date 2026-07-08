@@ -1,0 +1,13 @@
+Fuzzing Report
+==============
+Property: test_token_transfer_integrity failed!
+  Contract: TokenVault
+  Sender: 0xabcdef1234567890abcdef1234567890abcdef12
+
+Counterexample:
+  Method call: transfer(0xdeadbeef, 1000000000000000000)
+  Method call: approve(0xabcdef, 5000000000000000000)
+
+Test limit: 10000
+Workers: 4
+Seed: 12345

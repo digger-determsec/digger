@@ -1,0 +1,20 @@
+{
+    "exploit_id":  "type-cosplay-safe-2",
+    "vulnerability_class":  "type_cosplay",
+    "protocol":  "Type Cosplay Safe 2",
+    "chain":  "Solana",
+    "year":  2024,
+    "loss_usd":  0,
+    "expected_findings":  [
+
+                          ],
+    "expected_path_types":  [
+
+                            ],
+    "expected_hypotheses":  [
+
+                            ],
+    "known_limitations":  [
+                              "NEGATIVE: has_one constraint validates account type and authority"
+                          ]
+}

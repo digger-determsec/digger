@@ -1,0 +1,12 @@
+{
+  "exploit_id": "safe-compound-anchored-2023",
+  "vulnerability_class": "NEGATIVE",
+  "protocol": "SafeCompoundAnchored",
+  "chain": "Ethereum",
+  "year": 2023,
+  "loss_usd": 0,
+  "expected_findings": [],
+  "expected_path_types": [],
+  "expected_hypotheses": [],
+  "known_limitations": "NEGATIVE: priceCumulative TWAP + spot-TWAP deviation cross-check. Price read IS detected via TWAP. Detector should NOT flag."
+}

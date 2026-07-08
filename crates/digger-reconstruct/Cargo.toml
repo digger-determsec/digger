@@ -1,0 +1,17 @@
+[package]
+name = "digger-reconstruct"
+version.workspace = true
+edition.workspace = true
+
+[features]
+default = []
+live-fetch = ["reqwest"]
+
+[dependencies]
+digger-ir = { path = "../digger-ir" }
+digger-parser = { path = "../digger-parser" }
+digger-egress = { path = "../digger-egress" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+reqwest = { version = "0.11", features = ["json", "blocking"], optional = true }
+thiserror = { workspace = true }

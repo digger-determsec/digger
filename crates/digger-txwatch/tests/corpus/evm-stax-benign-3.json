@@ -1,0 +1,41 @@
+{
+    "case_id": "evm-stax-benign-3",
+    "expected_label": "Benign",
+    "is_real_capture": true,
+    "capture_note": {
+        "chain": "evm",
+        "block_or_slot": 15705642,
+        "tx_hash": "0xed7d0caf56c41ceaeeca6a4c0f13d442cdf1bab50ad8f8b0b57fd923a3efe7f2",
+        "rpc_endpoint": "https://1rpc.io/eth",
+        "captured_at": "2026-06-21T00:00:00Z",
+        "incident": "templedao-benign",
+        "note": "Benign Exchange on Curve xFraxTplLP-f Pool. Sibling TempleDAO ecosystem contract.",
+        "benign_kind": "unrelated_traffic"
+    },
+    "chain": "evm",
+    "tx": {
+        "tx_hash": "0xed7d0caf56c41ceaeeca6a4c0f13d442cdf1bab50ad8f8b0b57fd923a3efe7f2",
+        "block_slot": 15705642,
+        "chain": "evm",
+        "target_contract": "0xdadfd00a2bbeb1abc4936b1644a3033e1b653228",
+        "selector": "3df02124",
+        "call_data_preview": "0x3df0212400000000000000000000"
+    },
+    "chain_state": {
+        "account_owners": {},
+        "authorities": {
+            "0xed7d0caf56c41ceaeeca6a4c0f13d442cdf1bab50ad8f8b0b57fd923a3efe7f2": "0xdbd5e81eb31a210459f5d4c057651ffce5f742aa"
+        },
+        "balance_deltas": {
+            "0xed7d0caf56c41ceaeeca6a4c0f13d442cdf1bab50ad8f8b0b57fd923a3efe7f2": 0
+        }
+    },
+    "finding": {
+        "finding_id": "f-templedao-benign-3",
+        "rule_id": "access_control",
+        "severity": "high",
+        "confidence_label": "graduated",
+        "file": "CurvePool.sol",
+        "symbol": "exchange"
+    }
+}

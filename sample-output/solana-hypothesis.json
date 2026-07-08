@@ -1,0 +1,52 @@
+{
+  "schema_version": "digger.hypothesis.v1",
+  "digger_version": "0.4.0-beta.1",
+  "report_kind": "hypothesis",
+  "hypothesis_id": "h-9d0f7853925c6eb0",
+  "source_surfaces": [
+    "vault.rs:vault::initialize",
+    "vault.rs:vault::deposit",
+    "vault.rs:vault::withdraw",
+    "vault.rs:vault::transfer_authority",
+    "vault.rs:initialize",
+    "vault.rs:deposit",
+    "vault.rs:withdraw",
+    "vault.rs:transfer_authority",
+    "vault.rs:vault",
+    "vault.rs:AccountStruct",
+    "vault.rs:CPI",
+    "vault.rs:AuthorityCheck"
+  ],
+  "claim": "Investigate triage surfaces from examples/solana-basic",
+  "evidence_required": [
+    "Authority/modifier enforcement evidence needs review for instruction `initialize` at vault.rs:L11-L17",
+    "Operation-level authority-to-account mapping not proven for instruction `initialize` at vault.rs:L11-L17",
+    "Operation-level authority-to-account mapping not proven for instruction `deposit` at vault.rs:L19-L23",
+    "Authority/modifier enforcement evidence needs review for instruction `withdraw` at vault.rs:L25-L47",
+    "CPI target/account validation evidence missing for instruction `withdraw` at vault.rs:L25-L47",
+    "Operation-level authority-to-account mapping not proven for instruction `withdraw` at vault.rs:L25-L47",
+    "Authority/modifier enforcement evidence needs review for instruction `transfer_authority` at vault.rs:L49-L53",
+    "Operation-level authority-to-account mapping not proven for instruction `transfer_authority` at vault.rs:L49-L53",
+    "Verify signer `authority` in account struct `Initialize` protects the intended operation at vault.rs:L57-L69",
+    "Verify signer `authority` in account struct `Deposit` protects the intended operation at vault.rs:L72-L80",
+    "Verify signer `authority` in account struct `Withdraw` protects the intended operation at vault.rs:L83-L98",
+    "Verify signer `authority` in account struct `TransferAuthority` protects the intended operation at vault.rs:L101-L110",
+    "Evidence for engine hypothesis 'AuthorityBypassCandidate' requires verification against IR/graph",
+    "Evidence for engine hypothesis 'AuthorityBypassCandidate' requires verification against IR/graph",
+    "Evidence for engine hypothesis 'AuthorityBypassCandidate' requires verification against IR/graph",
+    "Evidence for engine hypothesis 'AuthorityBypassCandidate' requires verification against IR/graph"
+  ],
+  "disproof_conditions": [
+    "Source triage uses conservative text heuristics. No AST parsing, no compilation, no execution.",
+    "4 Anchor account structs detected via heuristic analysis (not engine-derived)",
+    "Fuzz maturity scan not requested (pass --include-fuzz-maturity to enable)",
+    "Surface mapping uses deterministic engine (parser/IR/graph) as primary source, with conservative text heuristics as fallback. No compilation, no runtime analysis, no execution."
+  ],
+  "status": "proposed",
+  "confidence": {
+    "level": "low",
+    "reason": "hypothesis only; no proof task executed"
+  },
+  "evidence_collected": [],
+  "is_finding": false
+}

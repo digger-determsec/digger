@@ -1,0 +1,17 @@
+{
+  "exploit_id": "bonq-dao-2023",
+  "vulnerability_class": "price_manipulation",
+  "protocol": "Bonq DAO",
+  "chain": "Ethereum",
+  "year": 2023,
+  "loss_usd": 120000000,
+  "expected_findings": ["PriceOracleManipulation"],
+  "expected_path_types": ["single_feed_no_staleness", "no_round_validation"],
+  "expected_hypotheses": ["PriceManipulationCandidate"],
+  "known_limitations": [
+    "Minimal reproducer of Bonq DAO oracle manipulation via single Chainlink feed",
+    "Citation: https://rekt.news/bonq-dao-rekt/ — Bonq DAO loses $120M to oracle manipulation",
+    "Vulnerable pattern: latestRoundData on single feed with no updatedAt/roundId checks",
+    "Critical action gated by price: borrow()"
+  ]
+}

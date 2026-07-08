@@ -1,0 +1,12 @@
+{
+  "exploit_id": "safe-checks-effects-2023",
+  "vulnerability_class": "NEGATIVE",
+  "protocol": "SafeChecksEffectsWrite",
+  "chain": "Ethereum",
+  "year": 2023,
+  "loss_usd": 0,
+  "expected_findings": [],
+  "expected_path_types": [],
+  "expected_hypotheses": [],
+  "known_limitations": "NEGATIVE: State mutation finalized BEFORE external call (CEI). Any state read during callback sees updated value. Detector should NOT flag."
+}

@@ -1,0 +1,1 @@
+{"exploit_id": "op-positive-cp-002", "vulnerability_class": "control_plane_authority", "expected_findings": ["UnauthorizedControlPlaneRouting"], "known_limitations": "DB-sourced routing without allowlist"}

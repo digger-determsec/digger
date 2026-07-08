@@ -1,0 +1,5 @@
+{
+  "expected_findings": [],
+  "vuln_class": "negative",
+  "description": "Oracle with bounded deviation check"
+}

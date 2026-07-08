@@ -1,0 +1,805 @@
+{
+  "account_structs": [],
+  "attack_surface_summary": {
+    "account_structs": 0,
+    "engine_derived": true,
+    "engine_files_failed": 0,
+    "engine_files_ok": 1,
+    "external_call_sites": 2,
+    "function_level_surfaces": 0,
+    "heuristic_fallback_count": 0,
+    "privileged_functions": 11,
+    "state_mutation_sites": 9,
+    "surfaces_scanned": 13,
+    "total_functions": 11
+  },
+  "audit_events": [],
+  "candidate_hypotheses": [
+    {
+      "affected_component": "approve",
+      "confidence": "engine-verified",
+      "description": "[engine-derived] AuthorityBypassCandidate — Authority bypass candidate in 'approve'",
+      "engine_derived": true,
+      "evidence_requirements": [
+        "graph evidence",
+        "IR verification"
+      ],
+      "hypothesis_id": "engine-HYP-AUTH-approve",
+      "provenance": "engine",
+      "severity": "Critical",
+      "source_file": "Safe.sol",
+      "status": "requires_investigation"
+    },
+    {
+      "affected_component": "deposit",
+      "confidence": "engine-verified",
+      "description": "[engine-derived] AuthorityBypassCandidate — Authority bypass candidate in 'deposit'",
+      "engine_derived": true,
+      "evidence_requirements": [
+        "graph evidence",
+        "IR verification"
+      ],
+      "hypothesis_id": "engine-HYP-AUTH-deposit",
+      "provenance": "engine",
+      "severity": "Critical",
+      "source_file": "Safe.sol",
+      "status": "requires_investigation"
+    },
+    {
+      "affected_component": "transfer",
+      "confidence": "engine-verified",
+      "description": "[engine-derived] AuthorityBypassCandidate — Authority bypass candidate in 'transfer'",
+      "engine_derived": true,
+      "evidence_requirements": [
+        "graph evidence",
+        "IR verification"
+      ],
+      "hypothesis_id": "engine-HYP-AUTH-transfer",
+      "provenance": "engine",
+      "severity": "Critical",
+      "source_file": "Safe.sol",
+      "status": "requires_investigation"
+    },
+    {
+      "affected_component": "transferFrom",
+      "confidence": "engine-verified",
+      "description": "[engine-derived] AuthorityBypassCandidate — Authority bypass candidate in 'transferFrom'",
+      "engine_derived": true,
+      "evidence_requirements": [
+        "graph evidence",
+        "IR verification"
+      ],
+      "hypothesis_id": "engine-HYP-AUTH-transferFrom",
+      "provenance": "engine",
+      "severity": "Critical",
+      "source_file": "Safe.sol",
+      "status": "requires_investigation"
+    },
+    {
+      "affected_component": "withdraw",
+      "confidence": "engine-verified",
+      "description": "[engine-derived] AuthorityBypassCandidate — Authority bypass candidate in 'withdraw'",
+      "engine_derived": true,
+      "evidence_requirements": [
+        "graph evidence",
+        "IR verification"
+      ],
+      "hypothesis_id": "engine-HYP-AUTH-withdraw",
+      "provenance": "engine",
+      "severity": "Critical",
+      "source_file": "Safe.sol",
+      "status": "requires_investigation"
+    },
+    {
+      "affected_component": "approve",
+      "confidence": "engine-verified",
+      "description": "[engine-derived] StateCorruptionCandidate — State corruption candidate for 'allowances'",
+      "engine_derived": true,
+      "evidence_requirements": [
+        "graph evidence",
+        "IR verification"
+      ],
+      "hypothesis_id": "engine-HYP-CORRUPT-allowances",
+      "provenance": "engine",
+      "severity": "High",
+      "source_file": "Safe.sol",
+      "status": "requires_investigation"
+    },
+    {
+      "affected_component": "deposit",
+      "confidence": "engine-verified",
+      "description": "[engine-derived] StateCorruptionCandidate — State corruption candidate for 'balances'",
+      "engine_derived": true,
+      "evidence_requirements": [
+        "graph evidence",
+        "IR verification"
+      ],
+      "hypothesis_id": "engine-HYP-CORRUPT-balances",
+      "provenance": "engine",
+      "severity": "High",
+      "source_file": "Safe.sol",
+      "status": "requires_investigation"
+    },
+    {
+      "affected_component": "constructor",
+      "confidence": "engine-verified",
+      "description": "[engine-derived] StateCorruptionCandidate — State corruption candidate for 'owner'",
+      "engine_derived": true,
+      "evidence_requirements": [
+        "graph evidence",
+        "IR verification"
+      ],
+      "hypothesis_id": "engine-HYP-CORRUPT-owner",
+      "provenance": "engine",
+      "severity": "High",
+      "source_file": "Safe.sol",
+      "status": "requires_investigation"
+    },
+    {
+      "affected_component": "withdraw",
+      "confidence": "engine-verified",
+      "description": "[engine-derived] ReentrancyCandidate — Reentrancy candidate in 'withdraw'",
+      "engine_derived": true,
+      "evidence_requirements": [
+        "graph evidence",
+        "IR verification"
+      ],
+      "hypothesis_id": "engine-HYP-REENT-withdraw",
+      "provenance": "engine",
+      "severity": "Critical",
+      "source_file": "Safe.sol",
+      "status": "requires_investigation"
+    }
+  ],
+  "chain": "evm",
+  "digger_version": "0.4.0-beta.1",
+  "evidence_runs": [],
+  "external_calls_or_cpi": [
+    {
+      "engine_derived": true,
+      "kind": "engine_surface",
+      "name": "withdraw",
+      "needs_review": true,
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "reason": "[engine] external call signal"
+    },
+    {
+      "engine_derived": true,
+      "kind": "engine_surface",
+      "name": "emergencyWithdraw",
+      "needs_review": true,
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "reason": "[engine] external call signal"
+    }
+  ],
+  "function_surfaces": [],
+  "fuzz_maturity_ref": null,
+  "is_finding": false,
+  "limitations": [
+    {
+      "category": "source_triage",
+      "description": "Source triage uses conservative text heuristics. No AST parsing, no compilation, no execution.",
+      "limitation_id": "lim-source-triage"
+    },
+    {
+      "category": "user_flag",
+      "description": "Fuzz maturity scan not requested (pass --include-fuzz-maturity to enable)",
+      "limitation_id": "lim-fuzz-not-requested"
+    },
+    {
+      "category": "methodology",
+      "description": "Surface mapping uses deterministic engine (parser/IR/graph) as primary source, with conservative text heuristics as fallback. No compilation, no runtime analysis, no execution.",
+      "limitation_id": "lim-static-triage"
+    }
+  ],
+  "missing_evidence": [
+    {
+      "affected_component": "deposit",
+      "category": "authority_verification",
+      "description": "Authority/modifier enforcement evidence needs review for function `deposit` at Safe.sol:L32-L35",
+      "evidence_id": "me-auth-1",
+      "source_ref": "Safe.sol:L32-L35"
+    },
+    {
+      "affected_component": "approve",
+      "category": "authority_verification",
+      "description": "Authority/modifier enforcement evidence needs review for function `approve` at Safe.sol:L37-L40",
+      "evidence_id": "me-auth-2",
+      "source_ref": "Safe.sol:L37-L40"
+    },
+    {
+      "affected_component": "transfer",
+      "category": "authority_verification",
+      "description": "Authority/modifier enforcement evidence needs review for function `transfer` at Safe.sol:L42-L47",
+      "evidence_id": "me-auth-3",
+      "source_ref": "Safe.sol:L42-L47"
+    },
+    {
+      "affected_component": "transferFrom",
+      "category": "authority_verification",
+      "description": "Authority/modifier enforcement evidence needs review for function `transferFrom` at Safe.sol:L49-L56",
+      "evidence_id": "me-auth-4",
+      "source_ref": "Safe.sol:L49-L56"
+    },
+    {
+      "affected_component": "withdraw",
+      "category": "authority_verification",
+      "description": "Authority/modifier enforcement evidence needs review for function `withdraw` at Safe.sol:L58-L63",
+      "evidence_id": "me-auth-5",
+      "source_ref": "Safe.sol:L58-L63"
+    },
+    {
+      "affected_component": "withdraw",
+      "category": "reentrancy_cei",
+      "description": "CEI ordering and reentrancy evidence missing for function `withdraw` at Safe.sol:L58-L63 — external call and state mutation signals both present",
+      "evidence_id": "me-cei-5",
+      "source_ref": "Safe.sol:L58-L63"
+    },
+    {
+      "affected_component": "withdraw",
+      "category": "external_call_target",
+      "description": "External call target and failure-handling evidence missing for function `withdraw` at Safe.sol:L58-L63",
+      "evidence_id": "me-call-5",
+      "source_ref": "Safe.sol:L58-L63"
+    },
+    {
+      "affected_component": "setOwner",
+      "category": "authority_verification",
+      "description": "Authority/modifier enforcement evidence needs review for function `setOwner` at Safe.sol:L65-L69",
+      "evidence_id": "me-auth-6",
+      "source_ref": "Safe.sol:L65-L69"
+    },
+    {
+      "affected_component": "pause",
+      "category": "authority_verification",
+      "description": "Authority/modifier enforcement evidence needs review for function `pause` at Safe.sol:L71-L74",
+      "evidence_id": "me-auth-7",
+      "source_ref": "Safe.sol:L71-L74"
+    },
+    {
+      "affected_component": "unpause",
+      "category": "authority_verification",
+      "description": "Authority/modifier enforcement evidence needs review for function `unpause` at Safe.sol:L76-L79",
+      "evidence_id": "me-auth-8",
+      "source_ref": "Safe.sol:L76-L79"
+    },
+    {
+      "affected_component": "emergencyWithdraw",
+      "category": "authority_verification",
+      "description": "Authority/modifier enforcement evidence needs review for function `emergencyWithdraw` at Safe.sol:L81-L85",
+      "evidence_id": "me-auth-9",
+      "source_ref": "Safe.sol:L81-L85"
+    },
+    {
+      "affected_component": "emergencyWithdraw",
+      "category": "reentrancy_cei",
+      "description": "CEI ordering and reentrancy evidence missing for function `emergencyWithdraw` at Safe.sol:L81-L85 — external call and state mutation signals both present",
+      "evidence_id": "me-cei-9",
+      "source_ref": "Safe.sol:L81-L85"
+    },
+    {
+      "affected_component": "emergencyWithdraw",
+      "category": "external_call_target",
+      "description": "External call target and failure-handling evidence missing for function `emergencyWithdraw` at Safe.sol:L81-L85",
+      "evidence_id": "me-call-9",
+      "source_ref": "Safe.sol:L81-L85"
+    },
+    {
+      "affected_component": "approve",
+      "category": "engine_evidence_gap",
+      "description": "Evidence for engine hypothesis 'AuthorityBypassCandidate' requires verification against IR/graph",
+      "evidence_id": "me-engine-HYP-AUTH-approve",
+      "source_ref": "Safe.sol"
+    },
+    {
+      "affected_component": "deposit",
+      "category": "engine_evidence_gap",
+      "description": "Evidence for engine hypothesis 'AuthorityBypassCandidate' requires verification against IR/graph",
+      "evidence_id": "me-engine-HYP-AUTH-deposit",
+      "source_ref": "Safe.sol"
+    },
+    {
+      "affected_component": "transfer",
+      "category": "engine_evidence_gap",
+      "description": "Evidence for engine hypothesis 'AuthorityBypassCandidate' requires verification against IR/graph",
+      "evidence_id": "me-engine-HYP-AUTH-transfer",
+      "source_ref": "Safe.sol"
+    },
+    {
+      "affected_component": "transferFrom",
+      "category": "engine_evidence_gap",
+      "description": "Evidence for engine hypothesis 'AuthorityBypassCandidate' requires verification against IR/graph",
+      "evidence_id": "me-engine-HYP-AUTH-transferFrom",
+      "source_ref": "Safe.sol"
+    },
+    {
+      "affected_component": "withdraw",
+      "category": "engine_evidence_gap",
+      "description": "Evidence for engine hypothesis 'AuthorityBypassCandidate' requires verification against IR/graph",
+      "evidence_id": "me-engine-HYP-AUTH-withdraw",
+      "source_ref": "Safe.sol"
+    },
+    {
+      "affected_component": "approve",
+      "category": "engine_evidence_gap",
+      "description": "Evidence for engine hypothesis 'StateCorruptionCandidate' requires verification against IR/graph",
+      "evidence_id": "me-engine-HYP-CORRUPT-allowances",
+      "source_ref": "Safe.sol"
+    },
+    {
+      "affected_component": "deposit",
+      "category": "engine_evidence_gap",
+      "description": "Evidence for engine hypothesis 'StateCorruptionCandidate' requires verification against IR/graph",
+      "evidence_id": "me-engine-HYP-CORRUPT-balances",
+      "source_ref": "Safe.sol"
+    },
+    {
+      "affected_component": "constructor",
+      "category": "engine_evidence_gap",
+      "description": "Evidence for engine hypothesis 'StateCorruptionCandidate' requires verification against IR/graph",
+      "evidence_id": "me-engine-HYP-CORRUPT-owner",
+      "source_ref": "Safe.sol"
+    },
+    {
+      "affected_component": "withdraw",
+      "category": "engine_evidence_gap",
+      "description": "Evidence for engine hypothesis 'ReentrancyCandidate' requires verification against IR/graph",
+      "evidence_id": "me-engine-HYP-REENT-withdraw",
+      "source_ref": "Safe.sol"
+    }
+  ],
+  "packet_id": "atp-5575b1a8b9f6336a",
+  "privileged_operations": [
+    {
+      "engine_derived": true,
+      "kind": "engine_surface",
+      "name": "onlyOwner",
+      "needs_review": true,
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "reason": "[engine] authority_required"
+    },
+    {
+      "engine_derived": true,
+      "kind": "engine_surface",
+      "name": "constructor",
+      "needs_review": true,
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "reason": "[engine] state_mutation"
+    },
+    {
+      "engine_derived": true,
+      "kind": "engine_surface",
+      "name": "deposit",
+      "needs_review": true,
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "reason": "[engine] state_mutation"
+    },
+    {
+      "engine_derived": true,
+      "kind": "engine_surface",
+      "name": "approve",
+      "needs_review": true,
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "reason": "[engine] state_mutation"
+    },
+    {
+      "engine_derived": true,
+      "kind": "engine_surface",
+      "name": "transfer",
+      "needs_review": true,
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "reason": "[engine] state_mutation"
+    },
+    {
+      "engine_derived": true,
+      "kind": "engine_surface",
+      "name": "transferFrom",
+      "needs_review": true,
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "reason": "[engine] state_mutation"
+    },
+    {
+      "engine_derived": true,
+      "kind": "engine_surface",
+      "name": "withdraw",
+      "needs_review": true,
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "reason": "[engine] state_mutation, external_call"
+    },
+    {
+      "engine_derived": true,
+      "kind": "engine_surface",
+      "name": "setOwner",
+      "needs_review": true,
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "reason": "[engine] authority_required, state_mutation"
+    },
+    {
+      "engine_derived": true,
+      "kind": "engine_surface",
+      "name": "pause",
+      "needs_review": true,
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "reason": "[engine] authority_required, state_mutation"
+    },
+    {
+      "engine_derived": true,
+      "kind": "engine_surface",
+      "name": "unpause",
+      "needs_review": true,
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "reason": "[engine] authority_required, state_mutation"
+    },
+    {
+      "engine_derived": true,
+      "kind": "engine_surface",
+      "name": "emergencyWithdraw",
+      "needs_review": true,
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "reason": "[engine] authority_required, external_call"
+    }
+  ],
+  "proof_tasks": [
+    {
+      "description": "Verify engine-derived AuthorityBypassCandidate: Authority bypass candidate in 'approve'",
+      "engine_derived": true,
+      "evidence_type": "engine_analysis",
+      "hypothesis_ref": "engine-HYP-AUTH-approve",
+      "priority": "high",
+      "provenance": "engine",
+      "source_ref": "Safe.sol",
+      "status": "pending",
+      "task_id": "pt-engine-HYP-AUTH-approve"
+    },
+    {
+      "description": "Verify engine-derived AuthorityBypassCandidate: Authority bypass candidate in 'deposit'",
+      "engine_derived": true,
+      "evidence_type": "engine_analysis",
+      "hypothesis_ref": "engine-HYP-AUTH-deposit",
+      "priority": "high",
+      "provenance": "engine",
+      "source_ref": "Safe.sol",
+      "status": "pending",
+      "task_id": "pt-engine-HYP-AUTH-deposit"
+    },
+    {
+      "description": "Verify engine-derived AuthorityBypassCandidate: Authority bypass candidate in 'transfer'",
+      "engine_derived": true,
+      "evidence_type": "engine_analysis",
+      "hypothesis_ref": "engine-HYP-AUTH-transfer",
+      "priority": "high",
+      "provenance": "engine",
+      "source_ref": "Safe.sol",
+      "status": "pending",
+      "task_id": "pt-engine-HYP-AUTH-transfer"
+    },
+    {
+      "description": "Verify engine-derived AuthorityBypassCandidate: Authority bypass candidate in 'transferFrom'",
+      "engine_derived": true,
+      "evidence_type": "engine_analysis",
+      "hypothesis_ref": "engine-HYP-AUTH-transferFrom",
+      "priority": "high",
+      "provenance": "engine",
+      "source_ref": "Safe.sol",
+      "status": "pending",
+      "task_id": "pt-engine-HYP-AUTH-transferFrom"
+    },
+    {
+      "description": "Verify engine-derived AuthorityBypassCandidate: Authority bypass candidate in 'withdraw'",
+      "engine_derived": true,
+      "evidence_type": "engine_analysis",
+      "hypothesis_ref": "engine-HYP-AUTH-withdraw",
+      "priority": "high",
+      "provenance": "engine",
+      "source_ref": "Safe.sol",
+      "status": "pending",
+      "task_id": "pt-engine-HYP-AUTH-withdraw"
+    },
+    {
+      "description": "Verify engine-derived StateCorruptionCandidate: State corruption candidate for 'allowances'",
+      "engine_derived": true,
+      "evidence_type": "engine_analysis",
+      "hypothesis_ref": "engine-HYP-CORRUPT-allowances",
+      "priority": "high",
+      "provenance": "engine",
+      "source_ref": "Safe.sol",
+      "status": "pending",
+      "task_id": "pt-engine-HYP-CORRUPT-allowances"
+    },
+    {
+      "description": "Verify engine-derived StateCorruptionCandidate: State corruption candidate for 'balances'",
+      "engine_derived": true,
+      "evidence_type": "engine_analysis",
+      "hypothesis_ref": "engine-HYP-CORRUPT-balances",
+      "priority": "high",
+      "provenance": "engine",
+      "source_ref": "Safe.sol",
+      "status": "pending",
+      "task_id": "pt-engine-HYP-CORRUPT-balances"
+    },
+    {
+      "description": "Verify engine-derived StateCorruptionCandidate: State corruption candidate for 'owner'",
+      "engine_derived": true,
+      "evidence_type": "engine_analysis",
+      "hypothesis_ref": "engine-HYP-CORRUPT-owner",
+      "priority": "high",
+      "provenance": "engine",
+      "source_ref": "Safe.sol",
+      "status": "pending",
+      "task_id": "pt-engine-HYP-CORRUPT-owner"
+    },
+    {
+      "description": "Verify engine-derived ReentrancyCandidate: Reentrancy candidate in 'withdraw'",
+      "engine_derived": true,
+      "evidence_type": "engine_analysis",
+      "hypothesis_ref": "engine-HYP-REENT-withdraw",
+      "priority": "high",
+      "provenance": "engine",
+      "source_ref": "Safe.sol",
+      "status": "pending",
+      "task_id": "pt-engine-HYP-REENT-withdraw"
+    }
+  ],
+  "repo_intelligence_ref": {
+    "chain": "evm",
+    "schema_version": "digger.repo_intelligence.v1",
+    "surface_count": 10,
+    "unknown_count": 0
+  },
+  "report_draft_ref": null,
+  "report_kind": "audit_triage_packet",
+  "schema_version": "digger.audit_triage_packet.v1",
+  "state_mutations": [
+    {
+      "engine_derived": true,
+      "kind": "engine_surface",
+      "name": "constructor",
+      "needs_review": true,
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "reason": "[engine] state mutation signal"
+    },
+    {
+      "engine_derived": true,
+      "kind": "engine_surface",
+      "name": "deposit",
+      "needs_review": true,
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "reason": "[engine] state mutation signal"
+    },
+    {
+      "engine_derived": true,
+      "kind": "engine_surface",
+      "name": "approve",
+      "needs_review": true,
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "reason": "[engine] state mutation signal"
+    },
+    {
+      "engine_derived": true,
+      "kind": "engine_surface",
+      "name": "transfer",
+      "needs_review": true,
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "reason": "[engine] state mutation signal"
+    },
+    {
+      "engine_derived": true,
+      "kind": "engine_surface",
+      "name": "transferFrom",
+      "needs_review": true,
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "reason": "[engine] state mutation signal"
+    },
+    {
+      "engine_derived": true,
+      "kind": "engine_surface",
+      "name": "withdraw",
+      "needs_review": true,
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "reason": "[engine] state mutation signal"
+    },
+    {
+      "engine_derived": true,
+      "kind": "engine_surface",
+      "name": "setOwner",
+      "needs_review": true,
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "reason": "[engine] state mutation signal"
+    },
+    {
+      "engine_derived": true,
+      "kind": "engine_surface",
+      "name": "pause",
+      "needs_review": true,
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "reason": "[engine] state mutation signal"
+    },
+    {
+      "engine_derived": true,
+      "kind": "engine_surface",
+      "name": "unpause",
+      "needs_review": true,
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "reason": "[engine] state mutation signal"
+    }
+  ],
+  "surfaces_scanned": [
+    {
+      "category": "engine_derived",
+      "confidence": "engine_verified",
+      "has_authority": true,
+      "id": "engine-onlyOwner",
+      "kind": "engine_surface",
+      "makes_external_calls": false,
+      "name": "onlyOwner",
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "writes_state": false
+    },
+    {
+      "category": "engine_derived",
+      "confidence": "engine_verified",
+      "has_authority": false,
+      "id": "engine-whenNotPaused",
+      "kind": "engine_surface",
+      "makes_external_calls": false,
+      "name": "whenNotPaused",
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "writes_state": false
+    },
+    {
+      "category": "engine_derived",
+      "confidence": "engine_verified",
+      "has_authority": false,
+      "id": "engine-constructor",
+      "kind": "engine_surface",
+      "makes_external_calls": false,
+      "name": "constructor",
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "writes_state": true
+    },
+    {
+      "category": "engine_derived",
+      "confidence": "engine_verified",
+      "has_authority": false,
+      "id": "engine-deposit",
+      "kind": "engine_surface",
+      "makes_external_calls": false,
+      "name": "deposit",
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "writes_state": true
+    },
+    {
+      "category": "engine_derived",
+      "confidence": "engine_verified",
+      "has_authority": false,
+      "id": "engine-approve",
+      "kind": "engine_surface",
+      "makes_external_calls": false,
+      "name": "approve",
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "writes_state": true
+    },
+    {
+      "category": "engine_derived",
+      "confidence": "engine_verified",
+      "has_authority": false,
+      "id": "engine-transfer",
+      "kind": "engine_surface",
+      "makes_external_calls": false,
+      "name": "transfer",
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "writes_state": true
+    },
+    {
+      "category": "engine_derived",
+      "confidence": "engine_verified",
+      "has_authority": false,
+      "id": "engine-transferFrom",
+      "kind": "engine_surface",
+      "makes_external_calls": false,
+      "name": "transferFrom",
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "writes_state": true
+    },
+    {
+      "category": "engine_derived",
+      "confidence": "engine_verified",
+      "has_authority": false,
+      "id": "engine-withdraw",
+      "kind": "engine_surface",
+      "makes_external_calls": true,
+      "name": "withdraw",
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "writes_state": true
+    },
+    {
+      "category": "engine_derived",
+      "confidence": "engine_verified",
+      "has_authority": true,
+      "id": "engine-setOwner",
+      "kind": "engine_surface",
+      "makes_external_calls": false,
+      "name": "setOwner",
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "writes_state": true
+    },
+    {
+      "category": "engine_derived",
+      "confidence": "engine_verified",
+      "has_authority": true,
+      "id": "engine-pause",
+      "kind": "engine_surface",
+      "makes_external_calls": false,
+      "name": "pause",
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "writes_state": true
+    },
+    {
+      "category": "engine_derived",
+      "confidence": "engine_verified",
+      "has_authority": true,
+      "id": "engine-unpause",
+      "kind": "engine_surface",
+      "makes_external_calls": false,
+      "name": "unpause",
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "writes_state": true
+    },
+    {
+      "category": "engine_derived",
+      "confidence": "engine_verified",
+      "has_authority": true,
+      "id": "engine-emergencyWithdraw",
+      "kind": "engine_surface",
+      "makes_external_calls": true,
+      "name": "emergencyWithdraw",
+      "path": "Safe.sol",
+      "provenance": "engine",
+      "writes_state": false
+    },
+    {
+      "category": "entrypoint",
+      "confidence": "medium",
+      "heuristic": true,
+      "id": "s-0",
+      "kind": "contract_declaration",
+      "name": "Safe",
+      "path": "Safe.sol",
+      "provenance": "repo_intelligence"
+    }
+  ],
+  "target_repository": "examples/evm-basic"
+}

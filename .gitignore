@@ -1,0 +1,23 @@
+target/
+test_repos/
+*.exe
+*.pdb
+node_modules/
+dist/
+.vite/
+# corpus/ - included for beta
+platform_data/
+*.db
+.env
+.env.*
+*.key
+*.pem
+
+# Verification/scratch (do not recommit)
+/_verification/
+*.log
+*.tmp
+*.zip
+*.rs.bk
+.DS_Store
+Thumbs.db

@@ -1,0 +1,23 @@
+[package]
+name = "digger-pipeline"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+digger-ir = { path = "../digger-ir" }
+digger-reconstruct = { path = "../digger-reconstruct" }
+digger-protocol-model = { path = "../digger-protocol-model" }
+digger-investigation = { path = "../digger-investigation" }
+digger-research-graph = { path = "../digger-research-graph" }
+digger-research-context = { path = "../digger-research-context" }
+digger-systemir-bridge = { path = "../digger-systemir-bridge" }
+digger-hypothesis = { path = "../digger-hypothesis" }
+digger-knowledge-models = { path = "../digger-knowledge-models" }
+digger-surface = { path = "../digger-surface" }
+digger-synthesis = { path = "../digger-synthesis" }
+digger-graph = { path = "../digger-graph" }
+digger-parser = { path = "../digger-parser" }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+serde_json = "1"

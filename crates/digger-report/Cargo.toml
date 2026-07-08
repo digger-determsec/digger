@@ -1,0 +1,17 @@
+[package]
+name = "digger-report"
+version.workspace = true
+edition.workspace = true
+description = "Deterministic, beginner-friendly security report generator"
+
+[dependencies]
+digger-agent = { path = "../digger-agent" }
+digger-evidence = { path = "../digger-evidence" }
+digger-server = { path = "../digger-server" }
+digger-knowledge-models = { path = "../digger-knowledge-models" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = { workspace = true }
+
+[dev-dependencies]
+tempfile = "3"

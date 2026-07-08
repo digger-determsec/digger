@@ -1,0 +1,98 @@
+[workspace]
+members = [
+    # ── Foundation (no analysis deps) ──
+    "crates/digger-ir",
+    "crates/digger-gen5-common",
+
+    # ── Gen 1: Parsing & graph construction ──
+    "crates/digger-parser",
+    "crates/digger-graph",
+
+    # ── Gen 2: Semantic reasoning / hypotheses ──
+    "crates/digger-hypothesis",
+    "crates/digger-gen2-protocol",
+    "crates/digger-execution",
+    "crates/digger-expansion",
+    "crates/digger-state-transitions",
+    "crates/digger-resource-lifecycle",
+    "crates/digger-verification",
+    "crates/digger-temporal",
+    "crates/digger-actors",
+    "crates/digger-economics",
+    "crates/digger-adversarial",
+    "crates/digger-surface",
+    "crates/digger-semantic",
+
+    # ── Gen 3: Exploit synthesis ──
+    "crates/digger-synthesis",
+
+    # ── Knowledge & corpus ──
+    "crates/digger-knowledge-models",
+    "crates/digger-knowledge",
+    "crates/digger-ingestion",
+
+    # ── Evaluation & benchmarking ──
+    "crates/digger-benchmark",
+    "crates/digger-evaluation",
+
+    # ── Platform & API ──
+    "crates/digger-platform",
+    "crates/digger-core",
+    "crates/digger-api",
+
+    # ── Interface (CLI, explanation, front-ends) ──
+    "crates/digger-cli",
+    "crates/digger-server",
+    "crates/digger-evidence",
+    "crates/digger-runtime",
+    "crates/digger-txwatch",
+    "crates/digger-monitor",
+    "crates/digger-explanation",
+
+    # ── Operational layer (Track H) ──
+    "crates/digger-oplayer",
+
+    # ── Track K: Fuzzing maturity scanning ──
+    "crates/digger-fuzz-maturity",
+
+    # ── Gen 5 (deterministic pre-IR pipeline) ──
+    "crates/digger-reconstruct",
+    "crates/digger-protocol-model",
+    "crates/digger-investigation",
+    "crates/digger-research-graph",
+    "crates/digger-research-context",
+    "crates/digger-systemir-bridge",
+    "crates/digger-pipeline",
+
+    # ── Agent truth layer ──
+    "crates/digger-agent",
+    "crates/digger-agent-mcp",
+
+    # ── Plan 3 ──
+    "crates/digger-repo-intelligence",
+    "crates/digger-agent-hypothesis",
+    "crates/digger-agent-proof-task",
+    "crates/digger-agent-evidence-run",
+    "crates/digger-agent-audit-log",
+    "crates/digger-agent-report-draft",
+
+    # ── Infrastructure ──
+    "crates/digger-egress",
+    "crates/digger-tests",
+    "crates/digger-intent-verifier",
+    "crates/digger-report",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.4.0-beta.2"
+edition = "2021"
+
+[workspace.dependencies]
+thiserror = "1"
+
+[profile.release]
+opt-level = "z"
+strip = true
+lto = true
+codegen-units = 1

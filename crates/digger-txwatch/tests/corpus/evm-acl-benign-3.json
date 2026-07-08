@@ -1,0 +1,43 @@
+{
+    "case_id": "evm-acl-benign-3",
+    "expected_label": "Benign",
+    "is_real_capture": true,
+    "capture_note": {
+        "chain": "evm",
+        "block_or_slot": 21717967,
+        "tx_hash": "0x0caea898cd00b1798f7bfe3eb12efd6bfe43c11f844f8f0d14029b4802496d10",
+        "rpc_endpoint": "https://rpc.mevblocker.io",
+        "captured_at": "2026-06-23T00:00:00Z",
+        "incident": "aave-v3-admin-role-revoke",
+        "note": "Aave V3 ACLManager RoleRevoked via intermediary 0x6593c7de. Sender (topic3) = ACL_ADMIN 0x5300A1a1... authority == owner => authorized.",
+        "benign_kind": "legitimate_admin_action"
+    },
+    "chain": "evm",
+    "tx": {
+        "tx_hash": "0x0caea898cd00b1798f7bfe3eb12efd6bfe43c11f844f8f0d14029b4802496d10",
+        "block_slot": 21717967,
+        "chain": "evm",
+        "target_contract": "0xc2aacf6553d20d1e9d78e365aaba8032af9c85b0",
+        "selector": "b1dc65a4",
+        "call_data_preview": "0xb1dc65a40001841f22c461a52699e647b455fbba0485213d99af0fddb10dc9049778e4e7000000000000000000000000000000000000000000000000000000003a2e3100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e0000000000000000000000000000000000000000000000000000000000000003c"
+    },
+    "chain_state": {
+        "account_owners": {
+            "0xc2aacf6553d20d1e9d78e365aaba8032af9c85b0": "0x5300A1a15135EA4dc7aD5a167152C01EFc9b192A"
+        },
+        "authorities": {
+            "0x0caea898cd00b1798f7bfe3eb12efd6bfe43c11f844f8f0d14029b4802496d10": "0x5300A1a15135EA4dc7aD5a167152C01EFc9b192A"
+        },
+        "balance_deltas": {
+            "0x0caea898cd00b1798f7bfe3eb12efd6bfe43c11f844f8f0d14029b4802496d10": 0
+        }
+    },
+    "finding": {
+        "finding_id": "f-aave-acl-benign-3",
+        "rule_id": "access_control",
+        "severity": "high",
+        "confidence_label": "graduated",
+        "file": "AaveACLManager.sol",
+        "symbol": "revokeRole"
+    }
+}

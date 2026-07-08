@@ -1,0 +1,19 @@
+{
+  "status": "1",
+  "message": "OK",
+  "result": [
+    {
+      "SourceCode": "pragma solidity ^0.8.19;\n\ncontract Proxy {\n    fallback() external payable {\n        address impl = implementation();\n        assembly {\n            calldatacopy(0, 0, calldatasize())\n            let result := delegatecall(gas(), impl, 0, calldatasize(), 0, 0)\n            returndatacopy(0, 0, returndatasize())\n            switch result\n            case 0 { revert(0, returndatasize()) }\n            default { return(0, returndatasize()) }\n        }\n    }\n    function implementation() internal view returns (address) { return address(0x1234); }\n}",
+      "ABI": "[]",
+      "ContractName": "Proxy",
+      "CompilerVersion": "v0.8.19+commit.7dd6d404",
+      "OptimizationUsed": "1",
+      "Runs": "200",
+      "EVMVersion": "london",
+      "LicenseType": "MIT",
+      "Implementation": "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
+      "Proxy": "1",
+      "MethodIdentifiers": {}
+    }
+  ]
+}

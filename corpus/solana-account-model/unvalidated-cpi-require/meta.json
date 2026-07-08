@@ -1,0 +1,12 @@
+{
+  "exploit_id": "unvalidated-cpi-require",
+  "vulnerability_class": "unvalidated_cpi",
+  "protocol": "CPI with Require Example",
+  "chain": "Solana",
+  "year": 2023,
+  "loss_usd": 0,
+  "expected_findings": [],
+  "expected_path_types": [],
+  "expected_hypotheses": [],
+  "known_limitations": "NEGATIVE: CPI function with has_one authority + require! macro + Signer constraint. Multiple AuthorityChecks present. Detector suppresses because AuthorityCheck ops exist."
+}

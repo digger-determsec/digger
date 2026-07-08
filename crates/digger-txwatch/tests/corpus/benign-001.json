@@ -1,0 +1,28 @@
+{
+    "case_id": "benign-001",
+    "expected_label": "Benign",
+    "is_real_capture": false,
+    "capture_note": "LOGIC-ONLY FIXTURE — not a real RPC capture. Represents a benign scenario where authority == owner (legitimate vault withdrawal). Excluded from GT metric.",
+    "chain": "evm",
+    "tx": {
+        "tx_hash": "0xaaa001",
+        "block_slot": 100,
+        "chain": "evm",
+        "target_contract": "Vault.sol",
+        "selector": "withdraw",
+        "call_data_preview": "0x"
+    },
+    "chain_state": {
+        "account_owners": {"Vault.sol": "0xVaultProgram"},
+        "authorities": {"0xaaa001": "0xVaultProgram"},
+        "balance_deltas": {"0xaaa001": 0}
+    },
+    "finding": {
+        "finding_id": "f-benign-001",
+        "rule_id": "access_control",
+        "severity": "high",
+        "confidence_label": "graduated",
+        "file": "Vault.sol",
+        "symbol": "withdraw"
+    }
+}

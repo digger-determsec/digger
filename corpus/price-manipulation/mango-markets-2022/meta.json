@@ -1,0 +1,17 @@
+{
+  "exploit_id": "mango-markets-2022",
+  "vulnerability_class": "price_manipulation",
+  "protocol": "Mango Markets",
+  "chain": "Solana",
+  "year": 2022,
+  "loss_usd": 114000000,
+  "expected_findings": ["PriceOracleManipulation"],
+  "expected_path_types": ["single_dex_spot_price", "flash_loan_collateral_inflation"],
+  "expected_hypotheses": ["PriceManipulationCandidate"],
+  "known_limitations": [
+    "Minimal Solidity reproducer; real exploit was on Solana/Mango",
+    "Citation: https://rekt.news/mango-rekt/ — Mango Markets loses $114M to oracle manipulation",
+    "Vulnerable pattern: single-DEX spot price (getReserves) used as collateral valuation oracle",
+    "Critical action gated by price: borrow()"
+  ]
+}

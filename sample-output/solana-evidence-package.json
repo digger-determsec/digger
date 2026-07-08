@@ -1,0 +1,17 @@
+{
+  "schema_version": "digger.evidence_package.v1",
+  "digger_version": "0.4.0-beta.1",
+  "report_kind": "evidence_package",
+  "package_id": "ep-9d0f7853925c6eb0",
+  "status": "assembled",
+  "chain_refs": {
+    "triage_ref": "sample-output\\solana-triage.json",
+    "verification_ref": "sample-output\\solana-verification.json",
+    "report_draft_ref": "sample-output\\solana-report-draft.json"
+  },
+  "limitations": [
+    "Evidence package is a planning-only artifact. No runtime packaging implemented.",
+    "Verification status: insufficient_evidence"
+  ],
+  "is_finding": false
+}

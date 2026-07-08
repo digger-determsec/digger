@@ -1,0 +1,10 @@
+{
+  "exploit_id": "type-cosplay-vuln-4",
+  "vulnerability_class": "type_cosplay",
+  "protocol": "Raw Deserialization Type Confusion",
+  "chain": "Solana",
+  "year": 2024,
+  "loss_usd": 75000,
+  "expected_findings": ["TypeCosplay"],
+  "known_limitations": "Synthetic reproducer: raw deserialization from UncheckedAccount without type guard."
+}

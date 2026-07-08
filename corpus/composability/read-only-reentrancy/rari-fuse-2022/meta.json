@@ -1,0 +1,17 @@
+{
+  "exploit_id": "rari-fuse-2022",
+  "vulnerability_class": "read_only_reentrancy",
+  "protocol": "Rari Fuse",
+  "chain": "Ethereum",
+  "year": 2022,
+  "loss_usd": 80000000,
+  "expected_findings": ["ReadOnlyReentrancy"],
+  "expected_path_types": ["external_call_before_state_read", "stale_exchange_rate"],
+  "expected_hypotheses": ["ReadonlyReentrancyCandidate"],
+  "known_limitations": [
+    "Minimal reproducer of Rari Fuse read-only reentrancy via Compound-fork pool",
+    "Citation: https://rekt.news/rari-rekt/ -- Rari Fuse pools lose ~$80M to reentrancy exploit (May 2022)",
+    "Vulnerable pattern: cToken exchange rate read AFTER ERC20 transfer callback -- stale during reentrancy",
+    "Critical action gated by state: collateral valuation based on stale exchange rate"
+  ]
+}

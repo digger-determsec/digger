@@ -1,0 +1,14 @@
+{
+  "exploit_id": "cashio-fixed-mint-2022",
+  "vulnerability_class": "missing_access_control",
+  "protocol": "Cashio",
+  "chain": "Solana",
+  "year": 2022,
+  "loss_usd": 0,
+  "expected_findings": [],
+  "expected_hypotheses": [],
+  "known_limitations": [
+    "Corrected version of cashio-broken-mint: has_one + Signer constraint added",
+    "Negative control: MissingAccountConstraintCandidate must NOT fire"
+  ]
+}

@@ -1,0 +1,15 @@
+[package]
+name = "digger-agent-mcp"
+version.workspace = true
+edition.workspace = true
+description = "MCP server for digger-agent truth-layer tools — read-only, offline, no model providers"
+
+[[bin]]
+name = "digger_mcp"
+path = "src/bin/digger_mcp.rs"
+
+[dependencies]
+digger-agent = { path = "../digger-agent" }
+digger-platform = { path = "../digger-platform" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

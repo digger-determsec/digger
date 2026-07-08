@@ -1,0 +1,19 @@
+{
+  "status": "1",
+  "message": "OK",
+  "result": [
+    {
+      "SourceCode": "pragma solidity ^0.8.19;\n\ncontract UniswapV2Pair {\n    uint public totalSupply;\n    mapping(address => uint) public balanceOf;\n    function mint(address to) external returns (uint) {}\n    function burn(address from) external returns (uint) {}\n    function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external {}\n}",
+      "ABI": "[{\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
+      "ContractName": "UniswapV2Pair",
+      "CompilerVersion": "v0.8.19+commit.7dd6d404",
+      "OptimizationUsed": "1",
+      "Runs": "200",
+      "EVMVersion": "london",
+      "LicenseType": "GPL-3.0-or-later",
+      "Implementation": "",
+      "Proxy": "0",
+      "MethodIdentifiers": {}
+    }
+  ]
+}

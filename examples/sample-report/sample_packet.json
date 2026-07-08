@@ -1,0 +1,54 @@
+{
+  "candidate_hypotheses": [
+    {
+      "finding_id": "HYP-AUTH-Vault-001",
+      "rule_id": "authority_bypass",
+      "severity": "critical",
+      "confidence": "confirmed",
+      "component": "Vault",
+      "file": "contracts/Vault.sol",
+      "line_start": 42,
+      "line_end": 44,
+      "description": "withdraw() has no access control",
+      "evidence_lines": [
+        "function withdraw() external {",
+        "    payable(msg.sender).transfer(address(this).balance);",
+        "}"
+      ]
+    },
+    {
+      "finding_id": "HYP-STATE-Proxy-002",
+      "rule_id": "state_corruption",
+      "severity": "high",
+      "confidence": "high",
+      "component": "UpgradeableProxy",
+      "file": "contracts/UpgradeableProxy.sol",
+      "line_start": 28,
+      "line_end": 33,
+      "description": "delegatecall to untrusted implementation allows storage slot overwrite",
+      "evidence_lines": [
+        "function upgradeAndCall(address impl, bytes memory data) external {",
+        "    implementation = impl;",
+        "    (bool ok,) = impl.delegatecall(data);",
+        "    require(ok, \"delegatecall failed\");",
+        "}"
+      ]
+    },
+    {
+      "finding_id": "HYP-PRICE-AMM-003",
+      "rule_id": "price_manipulation",
+      "severity": "medium",
+      "confidence": "experimental",
+      "component": "AMM",
+      "file": "contracts/AMM.sol",
+      "line_start": 55,
+      "line_end": 58,
+      "description": "spot price derived from reserves without TWAP or oracle fallback",
+      "evidence_lines": [
+        "function getSpotPrice() public view returns (uint256) {",
+        "    return (reserveB * 1e18) / reserveA;",
+        "}"
+      ]
+    }
+  ]
+}

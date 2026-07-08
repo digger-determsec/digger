@@ -1,0 +1,47 @@
+[
+  {
+    "knowledge_id": "knowledge:test-reentrancy",
+    "source_id": "test-fixture",
+    "source_kind": "AuditRepository",
+    "source_identifier": "test.json",
+    "subject": "TestVault",
+    "subject_category": "vault",
+    "findings": [
+      {
+        "finding_id": "test-reentrancy-001",
+        "original_finding_id": "T-01",
+        "report_id": "report-test-001",
+        "protocol_name": "TestVault",
+        "protocol_category": "Vault",
+        "protocol_domain": "Vaults",
+        "protocol_pattern": null,
+        "vulnerability_class": "Reentrancy",
+        "attack_goal": "drain_funds",
+        "capability_pattern": [],
+        "violated_invariant": {
+          "kind": "asset_conservation",
+          "description": "",
+          "affected_state_vars": []
+        },
+        "attack_technique": "ReentrancyExploit",
+        "mitigation_pattern": null,
+        "security_assumptions": [],
+        "severity": "High",
+        "root_cause": "MissingAuthorityCheck",
+        "impact_text": "",
+        "description_text": "",
+        "remediation_text": "",
+        "impacted_contracts": [],
+        "impacted_functions": [],
+        "confidence": 1.0
+      }
+    ],
+    "evidence": [],
+    "invariants": [],
+    "architectural_patterns": [],
+    "mitigation_patterns": [],
+    "references": [],
+    "claims": [],
+    "raw_sections": {}
+  }
+]

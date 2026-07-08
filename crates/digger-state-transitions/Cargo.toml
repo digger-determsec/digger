@@ -1,0 +1,16 @@
+[package]
+name = "digger-state-transitions"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+digger-ir = { path = "../digger-ir" }
+digger-parser = { path = "../digger-parser" }
+digger-execution = { path = "../digger-execution" }
+digger-expansion = { path = "../digger-expansion" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = { workspace = true }
+
+[dev-dependencies]
+digger-graph = { path = "../digger-graph" }

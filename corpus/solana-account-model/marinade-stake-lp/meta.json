@@ -1,0 +1,12 @@
+{
+  "exploit_id": "marinade-stake-lp-2023",
+  "vulnerability_class": "missing_access_control",
+  "protocol": "Marinade",
+  "chain": "Solana",
+  "year": 2023,
+  "loss_usd": 4500000,
+  "expected_findings": ["MissingAuthorityCheck"],
+  "expected_path_types": ["account_confusion"],
+  "expected_hypotheses": ["AuthorityBypassCandidate"],
+  "known_limitations": ["Minimal reproducer of LP vs stake pool account confusion"]
+}

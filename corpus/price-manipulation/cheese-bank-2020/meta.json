@@ -1,0 +1,17 @@
+{
+  "exploit_id": "cheese-bank-2020",
+  "vulnerability_class": "price_manipulation",
+  "protocol": "Cheese Bank",
+  "chain": "Ethereum",
+  "year": 2020,
+  "loss_usd": 3300000,
+  "expected_findings": ["PriceOracleManipulation"],
+  "expected_path_types": ["uniswap_v2_spot_price", "single_dex_manipulation"],
+  "expected_hypotheses": ["PriceManipulationCandidate"],
+  "known_limitations": [
+    "Minimal reproducer of Cheese Bank flash-loan + Uniswap V2 spot price manipulation",
+    "Citation: https://rekt.news/cheesebank-rekt/ — Cheese Bank loses $3.3M to flash loan attack",
+    "Vulnerable pattern: Uniswap V2 getReserves() used as single-DEX spot oracle for collateral",
+    "Critical action gated by price: borrow()"
+  ]
+}

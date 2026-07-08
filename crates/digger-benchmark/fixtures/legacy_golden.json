@@ -1,0 +1,1693 @@
+{
+  "case_count": 93,
+  "cases": [
+    {
+      "case_id": "accounting-err-2023",
+      "expected": [
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "multiple_state_writes"
+      ]
+    },
+    {
+      "case_id": "babyjord-2023",
+      "expected": [
+        "missing_authority_check",
+        "missing_authority_on_state_mutation"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "multiple_state_writes"
+      ]
+    },
+    {
+      "case_id": "beanstalk-2022",
+      "expected": [
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "beanstalk-2022",
+      "expected": [
+        "missing_authority_check",
+        "external_call_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_external_call",
+        "unprotected_external_effect_candidate",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "brahma-2023",
+      "expected": [
+        "missing_authority_check",
+        "missing_authority_on_state_mutation"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "bugs/cpi-trust",
+      "expected": [
+        "external_call_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "unprotected_external_effect_candidate",
+        "unprotected_external_effect_candidate",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "bugs/external-call-risk",
+      "expected": [
+        "external_call_risk",
+        "missing_authority_on_external_call"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "unprotected_external_effect_candidate",
+        "unprotected_external_effect_candidate",
+        "unprotected_external_effect_candidate",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "external_call_risk",
+        "external_call_risk",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "bugs/missing-authority",
+      "expected": [
+        "missing_authority_check",
+        "missing_authority_on_state_mutation"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_external_call",
+        "unprotected_external_effect_candidate",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "state_mutation_risk"
+      ]
+    },
+    {
+      "case_id": "bugs/reentrancy",
+      "expected": [
+        "external_call_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "builder-assumptions-2023",
+      "expected": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "burger-swap-2021",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "bzx-flash-loan-2020",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "unprotected_external_effect_candidate",
+        "unprotected_external_effect_candidate",
+        "unprotected_external_effect_candidate",
+        "cross_function_call_chain_risk",
+        "cross_function_call_chain_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "external_call_risk",
+        "external_call_risk",
+        "external_call_risk",
+        "deep_call_chain",
+        "deep_call_chain",
+        "multiple_state_writes"
+      ]
+    },
+    {
+      "case_id": "cascade-attack-flash-2023",
+      "expected": [
+        "state_mutation_risk",
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "multiple_state_writes"
+      ]
+    },
+    {
+      "case_id": "cashio-2022",
+      "expected": [
+        "missing_authority_check",
+        "missing_authority_on_external_call"
+      ],
+      "legacy": [
+        "missing_authority_on_external_call",
+        "unprotected_external_effect_candidate",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "composability-2023",
+      "expected": [
+        "missing_authority_on_state_mutation",
+        "reentrancy_risk",
+        "missing_authority_on_external_call"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "cream-finance-2021",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "unprotected_external_effect_candidate",
+        "unprotected_external_effect_candidate",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "cream-finance-v2-2021",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk",
+        "reentrancy_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "cream-flash-2021",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "external_call_risk",
+        "multiple_state_writes"
+      ]
+    },
+    {
+      "case_id": "cream-v2-2022",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_like_flow",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "reentrancy_risk",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "external_call_risk",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "decimal-mismatch-2023",
+      "expected": [
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_check",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "emergency-abuse-2023",
+      "expected": [
+        "missing_authority_check",
+        "missing_authority_on_state_mutation"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "euler-2023",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "fee-accounting-2023",
+      "expected": [
+        "missing_authority_on_state_mutation"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "flash-loan-governance",
+      "expected": [
+        "missing_authority_check",
+        "external_call_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "multiple_state_writes",
+        "multiple_state_writes",
+        "multiple_state_writes"
+      ]
+    },
+    {
+      "case_id": "flash-loan-vote-2023",
+      "expected": [
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "frontrun-2023",
+      "expected": [
+        "missing_authority_on_state_mutation"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "gen-access-missing",
+      "expected": [
+        "missing_authority_check",
+        "missing_authority_on_state_mutation"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "gen-access-wrong",
+      "expected": [
+        "missing_authority_check",
+        "missing_authority_on_state_mutation"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "gen-cross-contract",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "unprotected_external_effect_candidate",
+        "cross_function_reentrancy",
+        "cross_function_reentrancy",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "external_call_risk",
+        "multiple_state_writes",
+        "multiple_state_writes"
+      ]
+    },
+    {
+      "case_id": "gen-cross-fn-missing",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "external_call_risk",
+        "deep_call_chain"
+      ]
+    },
+    {
+      "case_id": "gen-delegate-untrusted",
+      "expected": [
+        "external_call_risk",
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_on_external_call",
+        "unprotected_external_effect_candidate",
+        "missing_authority_check",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "gen-flash-reentrancy",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "gen-governance-flash",
+      "expected": [
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "gen-init-frontrun",
+      "expected": [
+        "missing_authority_check",
+        "missing_authority_on_state_mutation"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "multiple_state_writes",
+        "state_mutation_risk"
+      ]
+    },
+    {
+      "case_id": "gen-missing-validation",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "gen-oracle-stale",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "external_call_risk",
+        "multiple_state_writes"
+      ]
+    },
+    {
+      "case_id": "gen-reentrancy-cross",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk",
+        "reentrancy_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "gen-reentrancy-readonly",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "gen-state-desync",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_like_flow",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "reentrancy_risk",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "external_call_risk",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "gen-storage-inherited",
+      "expected": [
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_external_call",
+        "unprotected_external_effect_candidate",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "state_mutation_risk"
+      ]
+    },
+    {
+      "case_id": "gen-unsafe-external",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "harvest-finance-2020",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "unprotected_external_effect_candidate",
+        "unprotected_external_effect_candidate",
+        "unprotected_external_effect_candidate",
+        "unprotected_external_effect_candidate",
+        "cross_function_call_chain_risk",
+        "cross_function_call_chain_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "external_call_risk",
+        "external_call_risk",
+        "external_call_risk",
+        "external_call_risk",
+        "deep_call_chain",
+        "deep_call_chain",
+        "multiple_state_writes",
+        "multiple_state_writes",
+        "multiple_state_writes"
+      ]
+    },
+    {
+      "case_id": "hermes-2023",
+      "expected": [
+        "missing_authority_check",
+        "external_call_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_external_call",
+        "unprotected_external_effect_candidate",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "inverse-finance-2022",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk",
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "unprotected_external_effect_candidate",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "jit-liquidity-2023",
+      "expected": [
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "lendhub-2023",
+      "expected": [
+        "missing_authority_check",
+        "missing_authority_on_state_mutation"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_external_call",
+        "unprotected_external_effect_candidate",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "multiple_state_writes"
+      ]
+    },
+    {
+      "case_id": "lending-amm-2023",
+      "expected": [
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_check",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "level-2023",
+      "expected": [
+        "missing_authority_check",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "state_mutation_risk"
+      ]
+    },
+    {
+      "case_id": "liquidity-exhaust-2023",
+      "expected": [
+        "missing_authority_on_state_mutation"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "logic-bug-2023",
+      "expected": [
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "multiple_state_writes"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "multiple_state_writes",
+        "multiple_state_writes"
+      ]
+    },
+    {
+      "case_id": "mango-markets-2022",
+      "expected": [
+        "external_call_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "external_call_risk",
+        "multiple_state_writes"
+      ]
+    },
+    {
+      "case_id": "marinade-2022",
+      "expected": [
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_check",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "msg-verify-bridge-2023",
+      "expected": [
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "multi-proto-flash-2023",
+      "expected": [
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_on_external_call",
+        "unprotected_external_effect_candidate",
+        "unprotected_external_effect_candidate",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "nomad-2022",
+      "expected": [
+        "missing_authority_check",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "orca-2022",
+      "expected": [
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_check",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "pancakebunny-2021",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "parity-wallet-2017",
+      "expected": [
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "multiple_state_writes"
+      ]
+    },
+    {
+      "case_id": "platypus-2023",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "priority-gas-2023",
+      "expected": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "proxy-admin-2023",
+      "expected": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_check",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_external_call",
+        "unprotected_external_effect_candidate",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "multiple_state_writes",
+        "state_mutation_risk"
+      ]
+    },
+    {
+      "case_id": "proxy-storage-collision",
+      "expected": [
+        "missing_authority_check",
+        "external_call_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_external_call",
+        "unprotected_external_effect_candidate",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "multiple_state_writes",
+        "state_mutation_risk"
+      ]
+    },
+    {
+      "case_id": "quorum-manip-2023",
+      "expected": [
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "multiple_state_writes",
+        "state_mutation_risk"
+      ]
+    },
+    {
+      "case_id": "recursive-flash-2023",
+      "expected": [
+        "missing_authority_on_state_mutation"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "replay-bridge-2023",
+      "expected": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "restaking-liquid-2023",
+      "expected": [
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "reward-inflate-2023",
+      "expected": [
+        "missing_authority_on_state_mutation"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "ronin-2022",
+      "expected": [
+        "missing_authority_check",
+        "missing_authority_on_external_call"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_external_call",
+        "unprotected_external_effect_candidate",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "rubble-2022",
+      "expected": [
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_check",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "sandwich-attack-2023",
+      "expected": [
+        "missing_authority_on_state_mutation",
+        "reentrancy_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "multiple_state_writes"
+      ]
+    },
+    {
+      "case_id": "sentinel-2022",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "sherlock-2022",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk",
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "unprotected_external_effect_candidate",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "sig-fail-bridge-2023",
+      "expected": [
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_on_external_call",
+        "unprotected_external_effect_candidate",
+        "missing_authority_check",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "silo-2022",
+      "expected": [
+        "missing_authority_check",
+        "missing_authority_on_external_call"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_external_call",
+        "unprotected_external_effect_candidate",
+        "unprotected_external_effect_candidate",
+        "cross_function_call_chain_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "stale-oracle-2023",
+      "expected": [
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_check",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "the-dao-2016",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "threshold-manipulation-2023",
+      "expected": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "timelock-bypass-2023",
+      "expected": [
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "timelock-combo-2023",
+      "expected": [
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "state_mutation_risk"
+      ]
+    },
+    {
+      "case_id": "token2022-delegate-2023",
+      "expected": [
+        "unprotected_external_effect_candidate",
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "unprotected_external_effect_candidate",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "token2022-hook-2023",
+      "expected": [
+        "unprotected_external_effect_candidate",
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "unprotected_external_effect_candidate",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "triple-protocol-flash-2023",
+      "expected": [
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "twap-manip-2023",
+      "expected": [
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_check",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "uniswap-v1-2020",
+      "expected": [
+        "missing_authority_on_state_mutation",
+        "reentrancy_risk",
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "multiple_state_writes"
+      ]
+    },
+    {
+      "case_id": "uranium-2021",
+      "expected": [
+        "missing_authority_check",
+        "missing_authority_on_state_mutation"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_external_call",
+        "unprotected_external_effect_candidate",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "multiple_state_writes"
+      ]
+    },
+    {
+      "case_id": "usdc-frozen-2023",
+      "expected": [
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "multiple_state_writes",
+        "multiple_state_writes",
+        "state_mutation_risk"
+      ]
+    },
+    {
+      "case_id": "validator-threshold-2023",
+      "expected": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "vault-oracle-2023",
+      "expected": [
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_check"
+      ]
+    },
+    {
+      "case_id": "venus-2021",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "external_call_risk",
+        "multiple_state_writes"
+      ]
+    },
+    {
+      "case_id": "visor-2021",
+      "expected": [
+        "missing_authority_check",
+        "missing_authority_on_state_mutation"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "cross_function_reentrancy",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "voltz-2022",
+      "expected": [
+        "external_call_risk",
+        "state_mutation_risk"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "reentrancy_like_flow",
+        "reentrancy_like_flow",
+        "reentrancy_risk",
+        "reentrancy_risk",
+        "missing_authority_on_external_call",
+        "missing_authority_on_external_call",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "external_call_risk"
+      ]
+    },
+    {
+      "case_id": "wault-2021",
+      "expected": [
+        "missing_authority_check",
+        "missing_authority_on_state_mutation"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_state_mutation",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "missing_authority_check",
+        "multiple_state_writes"
+      ]
+    },
+    {
+      "case_id": "wormhole-2022",
+      "expected": [
+        "missing_authority_check"
+      ],
+      "legacy": [
+        "missing_authority_on_state_mutation",
+        "missing_authority_on_external_call",
+        "unprotected_external_effect_candidate",
+        "state_mutation_risk",
+        "state_mutation_risk",
+        "missing_authority_check",
+        "missing_authority_check",
+        "external_call_risk",
+        "multiple_state_writes",
+        "state_mutation_risk"
+      ]
+    }
+  ],
+  "commit": "8f7cca2",
+  "total_expected_findings": 163,
+  "total_legacy_findings": 871
+}

@@ -1,0 +1,12 @@
+{
+  "exploit_id": "squid-token-swap-2022",
+  "vulnerability_class": "missing_access_control",
+  "protocol": "Squid",
+  "chain": "Solana",
+  "year": 2022,
+  "loss_usd": 3400000,
+  "expected_findings": ["MissingAuthorityCheck"],
+  "expected_path_types": ["missing_owner_check"],
+  "expected_hypotheses": ["AuthorityBypassCandidate"],
+  "known_limitations": ["Minimal reproducer of unchecked CPI destination"]
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": "digger.hypothesis.v1",
+  "digger_version": "0.4.0-beta.1",
+  "report_kind": "hypothesis",
+  "hypothesis_id": "h-c8c6be0e8a12ee3a",
+  "source_surfaces": [
+    "Safe.sol:onlyOwner",
+    "Safe.sol:whenNotPaused",
+    "Safe.sol:constructor",
+    "Safe.sol:deposit",
+    "Safe.sol:approve",
+    "Safe.sol:transfer",
+    "Safe.sol:transferFrom",
+    "Safe.sol:withdraw",
+    "Safe.sol:setOwner",
+    "Safe.sol:pause",
+    "Safe.sol:unpause",
+    "Safe.sol:emergencyWithdraw",
+    "Safe.sol:Safe"
+  ],
+  "claim": "Investigate triage surfaces from examples/evm-basic",
+  "evidence_required": [
+    "Authority/modifier enforcement evidence needs review for function `deposit` at Safe.sol:L32-L35",
+    "Authority/modifier enforcement evidence needs review for function `approve` at Safe.sol:L37-L40",
+    "Authority/modifier enforcement evidence needs review for function `transfer` at Safe.sol:L42-L47",
+    "Authority/modifier enforcement evidence needs review for function `transferFrom` at Safe.sol:L49-L56",
+    "Authority/modifier enforcement evidence needs review for function `withdraw` at Safe.sol:L58-L63",
+    "CEI ordering and reentrancy evidence missing for function `withdraw` at Safe.sol:L58-L63 — external call and state mutation signals both present",
+    "External call target and failure-handling evidence missing for function `withdraw` at Safe.sol:L58-L63",
+    "Authority/modifier enforcement evidence needs review for function `setOwner` at Safe.sol:L65-L69",
+    "Authority/modifier enforcement evidence needs review for function `pause` at Safe.sol:L71-L74",
+    "Authority/modifier enforcement evidence needs review for function `unpause` at Safe.sol:L76-L79",
+    "Authority/modifier enforcement evidence needs review for function `emergencyWithdraw` at Safe.sol:L81-L85",
+    "CEI ordering and reentrancy evidence missing for function `emergencyWithdraw` at Safe.sol:L81-L85 — external call and state mutation signals both present",
+    "External call target and failure-handling evidence missing for function `emergencyWithdraw` at Safe.sol:L81-L85",
+    "Evidence for engine hypothesis 'AuthorityBypassCandidate' requires verification against IR/graph",
+    "Evidence for engine hypothesis 'AuthorityBypassCandidate' requires verification against IR/graph",
+    "Evidence for engine hypothesis 'AuthorityBypassCandidate' requires verification against IR/graph",
+    "Evidence for engine hypothesis 'AuthorityBypassCandidate' requires verification against IR/graph",
+    "Evidence for engine hypothesis 'AuthorityBypassCandidate' requires verification against IR/graph",
+    "Evidence for engine hypothesis 'StateCorruptionCandidate' requires verification against IR/graph",
+    "Evidence for engine hypothesis 'StateCorruptionCandidate' requires verification against IR/graph",
+    "Evidence for engine hypothesis 'StateCorruptionCandidate' requires verification against IR/graph",
+    "Evidence for engine hypothesis 'ReentrancyCandidate' requires verification against IR/graph"
+  ],
+  "disproof_conditions": [
+    "Source triage uses conservative text heuristics. No AST parsing, no compilation, no execution.",
+    "Fuzz maturity scan not requested (pass --include-fuzz-maturity to enable)",
+    "Surface mapping uses deterministic engine (parser/IR/graph) as primary source, with conservative text heuristics as fallback. No compilation, no runtime analysis, no execution."
+  ],
+  "status": "proposed",
+  "confidence": {
+    "level": "low",
+    "reason": "hypothesis only; no proof task executed"
+  },
+  "evidence_collected": [],
+  "is_finding": false
+}

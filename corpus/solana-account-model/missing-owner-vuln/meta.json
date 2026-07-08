@@ -1,0 +1,12 @@
+{
+  "exploit_id": "missing-owner-vuln",
+  "vulnerability_class": "missing_owner_check",
+  "protocol": "Missing Owner Vuln",
+  "chain": "Solana",
+  "year": 2024,
+  "loss_usd": 0,
+  "expected_findings": ["unchecked_owner"],
+  "expected_path_types": [],
+  "expected_hypotheses": [],
+  "known_limitations": "RAW AccountInfo mutated without owner constraint. Fires via unchecked_account_owner detector."
+}

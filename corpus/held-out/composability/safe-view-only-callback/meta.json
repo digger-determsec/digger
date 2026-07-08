@@ -1,0 +1,20 @@
+{
+    "exploit_id":  "safe-view-only-callback-2023",
+    "vulnerability_class":  "NEGATIVE",
+    "protocol":  "SafeViewOnlyCallback",
+    "chain":  "Ethereum",
+    "year":  2023,
+    "loss_usd":  0,
+    "expected_findings":  [
+
+                          ],
+    "expected_path_types":  [
+
+                            ],
+    "expected_hypotheses":  [
+
+                            ],
+    "known_limitations":  [
+                              "NEGATIVE: No ExternalCall in the state-reading function. Borrow function reads state but makes no external calls. Supply function makes external call but state write is AFTER (no read). Detector should NOT flag."
+                          ]
+}

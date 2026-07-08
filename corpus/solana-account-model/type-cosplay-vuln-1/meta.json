@@ -1,0 +1,16 @@
+{
+  "exploit_id": "type-cosplay-vuln-1",
+  "vulnerability_class": "type_cosplay",
+  "protocol": "Type Cosplay Example 1",
+  "chain": "Solana",
+  "year": 2024,
+  "loss_usd": 0,
+  "expected_findings": ["TypeCosplay"],
+  "expected_path_types": ["missing_discriminator"],
+  "expected_hypotheses": ["TypeConfusionCandidate"],
+  "known_limitations": [
+    "Synthetic reproducer based on Neodyme sealevel-attacks pattern",
+    "Citation: Neodyme 'Sealevel Attacks' research - type confusion via missing discriminator",
+    "Pattern: borsh try_from_slice on AccountInfo without type validation"
+  ]
+}

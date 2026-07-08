@@ -1,0 +1,12 @@
+{
+  "exploit_id": "stepdice-token-2023",
+  "vulnerability_class": "missing_access_control",
+  "protocol": "StepDice",
+  "chain": "Solana",
+  "year": 2023,
+  "loss_usd": 800000,
+  "expected_findings": ["MissingAuthorityCheck"],
+  "expected_path_types": ["account_type_confusion"],
+  "expected_hypotheses": ["AuthorityBypassCandidate"],
+  "known_limitations": ["Minimal reproducer of token account type confusion"]
+}

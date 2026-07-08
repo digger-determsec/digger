@@ -1,0 +1,10 @@
+{
+  "exploit_id": "unchecked-overflow-vuln",
+  "vulnerability_class": "unchecked_arithmetic",
+  "protocol": "UncheckedOverflowVuln",
+  "chain": "EVM",
+  "year": 2024,
+  "loss_usd": 0,
+  "expected_findings": [],
+  "known_limitations": "NEGATIVE: unchecked block contains multiplication that can overflow silently."
+}

@@ -1,0 +1,18 @@
+{
+  "exploit_id": "conic-finance-2023",
+  "vulnerability_class": "read_only_reentrancy",
+  "protocol": "Conic Finance",
+  "chain": "Ethereum",
+  "year": 2023,
+  "loss_usd": 3200000,
+  "expected_findings": ["ReadOnlyReentrancy"],
+  "expected_path_types": ["external_call_before_state_read", "stale_pool_balance_during_callback"],
+  "expected_hypotheses": ["ReadonlyReentrancyCandidate"],
+  "known_limitations": [
+    "Minimal reproducer of Conic Finance read-only reentrancy via Curve pool",
+    "Citation: https://rekt.news/conic-finance-rekt/ — Conic Finance exploited via read-only reentrancy (Jul 21 2023, ~$3.2M)",
+    "Citation: https://skynet.certik.com/ — CertiK analysis of Conic Finance read-only reentrancy",
+    "Vulnerable pattern: Curve pool ETH balance read AFTER callback — stale during reentrancy",
+    "Critical action gated by state: deposit share calculation"
+  ]
+}

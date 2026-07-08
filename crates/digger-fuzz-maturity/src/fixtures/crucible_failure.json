@@ -1,0 +1,20 @@
+{
+  "test_name": "invariant_fuzz",
+  "timestamp": "2026-06-28T00:00:00Z",
+  "iteration": 4521,
+  "seed": 12345,
+  "actions": [
+    {
+      "name": "deposit",
+      "params": {"user_idx": 0, "amount": 50000},
+      "success": true,
+      "error_code": null
+    },
+    {
+      "name": "withdraw",
+      "params": {"user_idx": 0, "amount": 99999},
+      "success": false,
+      "error_code": 6020
+    }
+  ]
+}

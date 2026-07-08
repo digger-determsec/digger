@@ -1,0 +1,12 @@
+{
+  "exploit_id": "raydium-pool-2023",
+  "vulnerability_class": "pda_collision",
+  "protocol": "Raydium",
+  "chain": "Solana",
+  "year": 2023,
+  "loss_usd": 2800000,
+  "expected_findings": ["MissingAuthorityCheck"],
+  "expected_path_types": ["pda_bump_unvalidated"],
+  "expected_hypotheses": ["AuthorityBypassCandidate"],
+  "known_limitations": ["Minimal reproducer of PDA bump validation gap"]
+}

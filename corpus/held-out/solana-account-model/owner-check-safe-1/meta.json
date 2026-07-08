@@ -1,0 +1,20 @@
+{
+    "exploit_id":  "owner-check-safe-1",
+    "vulnerability_class":  "unchecked_account_owner",
+    "protocol":  "Owner Check Safe 1",
+    "chain":  "Solana",
+    "year":  2024,
+    "loss_usd":  0,
+    "expected_findings":  [
+
+                          ],
+    "expected_path_types":  [
+
+                            ],
+    "expected_hypotheses":  [
+
+                            ],
+    "known_limitations":  [
+                              "NEGATIVE: Anchor Account\u003cT\u003e enforces owner check automatically."
+                          ]
+}

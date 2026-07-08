@@ -1,0 +1,17 @@
+{
+  "exploit_id": "sentiment-2023",
+  "vulnerability_class": "read_only_reentrancy",
+  "protocol": "Sentiment",
+  "chain": "Ethereum",
+  "year": 2023,
+  "loss_usd": 1000000,
+  "expected_findings": ["ReadOnlyReentrancy"],
+  "expected_path_types": ["external_call_before_state_read", "stale_price_during_callback"],
+  "expected_hypotheses": ["ReadonlyReentrancyCandidate"],
+  "known_limitations": [
+    "Minimal reproducer of Sentiment read-only reentrancy via Balancer BPT",
+    "Citation: https://hackmd.io/@sentimentxyz/SJCySo1z2 — Sentiment official postmortem (Apr 4 2023, ~$1M, Arbitrum)",
+    "Vulnerable pattern: Balancer LP price read AFTER token transfer callback — stale during reentrancy",
+    "Critical action gated by state: borrow() against inflated Balancer LP price"
+  ]
+}

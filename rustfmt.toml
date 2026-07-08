@@ -1,0 +1,6 @@
+# rustfmt configuration — matches existing codebase style
+# Run `cargo fmt` to format; `cargo fmt -- --check` to verify
+
+edition = "2021"
+max_width = 100
+use_small_heuristics = "Default"

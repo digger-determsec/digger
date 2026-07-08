@@ -1,0 +1,16 @@
+{
+  "exploit_id": "cpi-signer-only-vuln",
+  "vulnerability_class": "unvalidated_cpi",
+  "protocol": "CPI Signer-Only Vulnerable",
+  "chain": "Solana",
+  "year": 2024,
+  "loss_usd": 500000,
+  "expected_findings": ["UnvalidatedCpi"],
+  "expected_path_types": ["cpi_target_substitution"],
+  "expected_hypotheses": ["CPITrustViolationCandidate"],
+  "known_limitations": [
+    "Synthetic reproducer: CPI with signer:authority only, token_program unconstrained",
+    "Citation: Solana CPI-target substitution patterns from security advisories",
+    "Pattern: signer constrains caller but NOT which program is invoked"
+  ]
+}

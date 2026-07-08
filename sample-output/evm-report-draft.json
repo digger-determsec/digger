@@ -1,0 +1,96 @@
+{
+  "schema_version": "digger.report_draft.v1",
+  "digger_version": "0.4.0-beta.1",
+  "report_kind": "report_draft",
+  "draft_id": "rd-c8c6be0e8a12ee3a",
+  "status": "draft",
+  "sections": [
+    {
+      "section_id": "summary",
+      "title": "Audit Summary",
+      "content": "This report covers 13 function-level surfaces from examples/evm-basic",
+      "evidence_refs": []
+    },
+    {
+      "section_id": "missing_evidence",
+      "title": "Missing Evidence",
+      "content": "22 evidence items could not be determined during triage",
+      "evidence_refs": [
+        "Safe.sol:onlyOwner",
+        "Safe.sol:whenNotPaused",
+        "Safe.sol:constructor",
+        "Safe.sol:deposit",
+        "Safe.sol:approve",
+        "Safe.sol:transfer",
+        "Safe.sol:transferFrom",
+        "Safe.sol:withdraw",
+        "Safe.sol:setOwner",
+        "Safe.sol:pause",
+        "Safe.sol:unpause",
+        "Safe.sol:emergencyWithdraw",
+        "Safe.sol:Safe"
+      ]
+    },
+    {
+      "section_id": "hypotheses",
+      "title": "Candidate Hypotheses",
+      "content": "Candidate hypotheses:\n- [engine-derived] AuthorityBypassCandidate — Authority bypass candidate in 'approve'\n- [engine-derived] AuthorityBypassCandidate — Authority bypass candidate in 'deposit'\n- [engine-derived] AuthorityBypassCandidate — Authority bypass candidate in 'transfer'\n- [engine-derived] AuthorityBypassCandidate — Authority bypass candidate in 'transferFrom'\n- [engine-derived] AuthorityBypassCandidate — Authority bypass candidate in 'withdraw'\n- [engine-derived] StateCorruptionCandidate — State corruption candidate for 'allowances'\n- [engine-derived] StateCorruptionCandidate — State corruption candidate for 'balances'\n- [engine-derived] StateCorruptionCandidate — State corruption candidate for 'owner'\n- [engine-derived] ReentrancyCandidate — Reentrancy candidate in 'withdraw'\n",
+      "evidence_refs": [
+        "Safe.sol:onlyOwner",
+        "Safe.sol:whenNotPaused",
+        "Safe.sol:constructor",
+        "Safe.sol:deposit",
+        "Safe.sol:approve",
+        "Safe.sol:transfer",
+        "Safe.sol:transferFrom",
+        "Safe.sol:withdraw",
+        "Safe.sol:setOwner",
+        "Safe.sol:pause",
+        "Safe.sol:unpause",
+        "Safe.sol:emergencyWithdraw",
+        "Safe.sol:Safe"
+      ]
+    },
+    {
+      "section_id": "verification",
+      "title": "Claim Verification",
+      "content": "Verification status: insufficient_evidence",
+      "evidence_refs": [
+        "Safe.sol:onlyOwner",
+        "Safe.sol:whenNotPaused",
+        "Safe.sol:constructor",
+        "Safe.sol:deposit",
+        "Safe.sol:approve",
+        "Safe.sol:transfer",
+        "Safe.sol:transferFrom",
+        "Safe.sol:withdraw",
+        "Safe.sol:setOwner",
+        "Safe.sol:pause",
+        "Safe.sol:unpause",
+        "Safe.sol:emergencyWithdraw",
+        "Safe.sol:Safe"
+      ]
+    }
+  ],
+  "evidence_refs": [
+    "Safe.sol:onlyOwner",
+    "Safe.sol:whenNotPaused",
+    "Safe.sol:constructor",
+    "Safe.sol:deposit",
+    "Safe.sol:approve",
+    "Safe.sol:transfer",
+    "Safe.sol:transferFrom",
+    "Safe.sol:withdraw",
+    "Safe.sol:setOwner",
+    "Safe.sol:pause",
+    "Safe.sol:unpause",
+    "Safe.sol:emergencyWithdraw",
+    "Safe.sol:Safe"
+  ],
+  "limitations": [
+    "Source triage uses conservative text heuristics. No AST parsing, no compilation, no execution.",
+    "Fuzz maturity scan not requested (pass --include-fuzz-maturity to enable)",
+    "Surface mapping uses deterministic engine (parser/IR/graph) as primary source, with conservative text heuristics as fallback. No compilation, no runtime analysis, no execution."
+  ],
+  "is_finding": false
+}

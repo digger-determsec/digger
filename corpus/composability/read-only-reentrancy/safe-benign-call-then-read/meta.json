@@ -1,0 +1,12 @@
+{
+  "exploit_id": "safe-benign-call-then-read-2023",
+  "vulnerability_class": "NEGATIVE",
+  "protocol": "SafeBenignCallThenRead",
+  "chain": "Ethereum",
+  "year": 2023,
+  "loss_usd": 0,
+  "expected_findings": [],
+  "expected_path_types": [],
+  "expected_hypotheses": [],
+  "known_limitations": "NEGATIVE: ExternalCall followed by StateRead, but the read value is NOT used for any security-critical decision (just logging). This is the #1 FP source for naive ExternalCall->StateRead detectors. Detector must NOT flag."
+}

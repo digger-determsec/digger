@@ -1,0 +1,6 @@
+{
+  "exploit_id": "op-positive-cp-routing-001",
+  "vulnerability_class": "control_plane_authority",
+  "expected_findings": ["UnauthorizedControlPlaneRouting"],
+  "known_limitations": "Privileged sink routes to off-chain derived target without allowlist"
+}

@@ -1,0 +1,10 @@
+{
+  "exploit_id": "cpi-oracle-vuln-1",
+  "vulnerability_class": "unvalidated_cpi",
+  "protocol": "Oracle CPI",
+  "chain": "Solana",
+  "year": 2024,
+  "loss_usd": 150000,
+  "expected_findings": ["UnvalidatedCpi"],
+  "known_limitations": "Synthetic reproducer of oracle CPI target substitution."
+}

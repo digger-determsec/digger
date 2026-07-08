@@ -1,0 +1,18 @@
+{
+  "status": "1",
+  "message": "OK",
+  "result": [
+    {
+      "SourceCode": "pragma solidity ^0.8.19;\n\ncontract UniswapV2Pair {\n    uint public totalSupply;\n    mapping(address => uint) public balanceOf;\n    uint public price;\n    mapping(address => uint) public reserves;\n\n    function swap(address token, uint256 amount) external {\n        (bool ok,) = token.call(\"\");\n        require(ok);\n        uint256 currentPrice = price;\n        uint256 output = (amount * currentPrice) / 1e18;\n        reserves[token] += amount;\n    }\n\n    function setPrice(uint256 newPrice) external {\n        price = newPrice;\n    }\n}",
+      "ABI": "[]",
+      "ContractName": "UniswapV2Pair",
+      "CompilerVersion": "v0.8.19+commit.7dd6d404",
+      "OptimizationUsed": "1",
+      "Runs": "200",
+      "EVMVersion": "london",
+      "Implementation": "",
+      "Proxy": "0",
+      "MethodIdentifiers": {}
+    }
+  ]
+}

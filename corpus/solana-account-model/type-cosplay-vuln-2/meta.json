@@ -1,0 +1,15 @@
+{
+  "exploit_id": "type-cosplay-vuln-2",
+  "vulnerability_class": "type_cosplay",
+  "protocol": "Type Cosplay Example 2",
+  "chain": "Solana",
+  "year": 2024,
+  "loss_usd": 0,
+  "expected_findings": ["TypeCosplay"],
+  "expected_path_types": ["missing_discriminator"],
+  "expected_hypotheses": ["TypeConfusionCandidate"],
+  "known_limitations": [
+    "Synthetic reproducer: UncheckedAccount data read without type validation",
+    "Citation: Neodyme sealevel-attacks - account substitution via missing discriminator"
+  ]
+}

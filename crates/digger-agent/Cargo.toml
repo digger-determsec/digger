@@ -1,0 +1,12 @@
+[package]
+name = "digger-agent"
+version = "0.1.0"
+edition = "2021"
+description = "Digger agent truth layer — read-only serialization over engine output, deterministic validator, guardrails"
+
+[dependencies]
+thiserror = { workspace = true }
+digger-evidence = { path = "../digger-evidence" }
+digger-txwatch = { path = "../digger-txwatch" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

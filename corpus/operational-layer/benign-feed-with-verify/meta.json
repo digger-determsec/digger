@@ -1,0 +1,6 @@
+{
+  "exploit_id": "op-benign-feed-verify-001",
+  "vulnerability_class": "NEGATIVE",
+  "expected_findings": [],
+  "known_limitations": "NEGATIVE"
+}

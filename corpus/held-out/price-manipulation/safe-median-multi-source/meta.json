@@ -1,0 +1,20 @@
+{
+    "exploit_id":  "safe-median-multi-source-2023",
+    "vulnerability_class":  "NEGATIVE",
+    "protocol":  "SafeMedian",
+    "chain":  "Ethereum",
+    "year":  2023,
+    "loss_usd":  0,
+    "expected_findings":  [
+
+                          ],
+    "expected_path_types":  [
+
+                            ],
+    "expected_hypotheses":  [
+
+                            ],
+    "known_limitations":  [
+                              "NEGATIVE: correctly uses multi-source median with outlier rejection. Requires compromising N/2+ independent sources simultaneously. Detector should NOT flag."
+                          ]
+}

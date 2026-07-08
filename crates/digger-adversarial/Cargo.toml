@@ -1,0 +1,28 @@
+[package]
+name = "digger-adversarial"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+digger-ir = { path = "../digger-ir" }
+digger-parser = { path = "../digger-parser" }
+digger-state-transitions = { path = "../digger-state-transitions" }
+digger-resource-lifecycle = { path = "../digger-resource-lifecycle" }
+digger-temporal = { path = "../digger-temporal" }
+digger-actors = { path = "../digger-actors" }
+digger-economics = { path = "../digger-economics" }
+digger-verification = { path = "../digger-verification" }
+digger-gen2-protocol = { path = "../digger-gen2-protocol" }
+digger-knowledge-models = { path = "../digger-knowledge-models" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = { workspace = true }
+
+[dev-dependencies]
+digger-graph = { path = "../digger-graph" }
+digger-expansion = { path = "../digger-expansion" }
+digger-state-transitions = { path = "../digger-state-transitions" }
+digger-resource-lifecycle = { path = "../digger-resource-lifecycle" }
+digger-temporal = { path = "../digger-temporal" }
+digger-actors = { path = "../digger-actors" }
+digger-economics = { path = "../digger-economics" }

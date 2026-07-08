@@ -1,0 +1,1 @@
+{"exploit_id": "op-positive-sf-002", "vulnerability_class": "silent_failover", "expected_findings": ["SilentFailover"], "known_limitations": "Cached price fallback without threshold tightening"}

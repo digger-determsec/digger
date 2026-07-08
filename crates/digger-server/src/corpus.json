@@ -1,0 +1,154 @@
+[
+  {
+    "id": "rekt-bzx-2020",
+    "title": "bZx flash loan attack — price oracle manipulation via flash-loan",
+    "vuln_classes": ["price_manipulation", "flash_loan"],
+    "rule_ids": ["price_manipulation"],
+    "source_url": "https://rekt.news/bzx-rekt/",
+    "summary": "bZx protocol lost $8M via flash-loan-based price oracle manipulation. The attacker used a flash loan to artificially inflate token prices within a single transaction, then exploited lending protocols relying on on-chain price feeds."
+  },
+  {
+    "id": "rekt-harvest-2020",
+    "title": "Harvest Finance — flash loan oracle manipulation",
+    "vuln_classes": ["price_manipulation", "flash_loan"],
+    "rule_ids": ["price_manipulation"],
+    "source_url": "https://rekt.news/harvest-finance-rekt/",
+    "summary": "Harvest Finance lost $34M when an attacker used a flash loan to manipulate the Curve Finance price oracle, draining funds from the yUSD vault."
+  },
+  {
+    "id": "rekt-cream-2021",
+    "title": "Cream Finance — reentrancy + price manipulation",
+    "vuln_classes": ["readonly_reentrancy", "price_manipulation"],
+    "rule_ids": ["readonly_reentrancy", "price_manipulation"],
+    "source_url": "https://rekt.news/cream-rekt/",
+    "summary": "Cream Finance lost $130M in a reentrancy attack that exploited ERC777 token callbacks during flash loan processing, combined with oracle price manipulation."
+  },
+  {
+    "id": "rekt-polygon-burger-2021",
+    "title": "BurgerSwap — flash loan reentrancy on BSC",
+    "vuln_classes": ["readonly_reentrancy"],
+    "rule_ids": ["readonly_reentrancy"],
+    "source_url": "https://rekt.news/burgerswap-rekt/",
+    "summary": "BurgerSwap lost $6.2M when a flash loan was used to trigger a reentrancy via ERC777 token callbacks, allowing the attacker to withdraw funds before the balance was updated."
+  },
+  {
+    "id": "rekt-curve-2023",
+    "title": "Curve Finance — Vyper reentrancy exploit",
+    "vuln_classes": ["readonly_reentrancy"],
+    "rule_ids": ["readonly_reentrancy"],
+    "source_url": "https://rekt.news/curve-finance-rekt/",
+    "summary": "Curve Finance pools deployed with Vyper 0.2.15-0.3.0 had a reentrancy bug in the Vyper compiler, allowing recursive calls during token transfers that drained ~$70M across multiple pools."
+  },
+  {
+    "id": "cve-2016-6492",
+    "title": "The DAO — reentrancy attack, $60M ETH stolen",
+    "vuln_classes": ["readonly_reentrancy"],
+    "rule_ids": ["readonly_reentrancy"],
+    "source_url": "https://blog.openzeppelin.com/15-lines-of-code-that-could-have-prevented-thedao",
+    "summary": "The DAO reentrancy attack exploited the withdrawal pattern to recursively call the fallback function before balances were updated, stealing 3.6M ETH. Led to the Ethereum hard fork."
+  },
+  {
+    "id": "rekt-euler-2023",
+    "title": "Euler Finance — flash loan attack with oracle manipulation",
+    "vuln_classes": ["price_manipulation", "flash_loan"],
+    "rule_ids": ["price_manipulation"],
+    "source_url": "https://rekt.news/euler-rekt/",
+    "summary": "Euler Finance lost $197M in a complex attack using flash loans combined with oracle manipulation to exploit the lending protocol's liquidation mechanisms."
+  },
+  {
+    "id": "rekt-sonne-2024",
+    "title": "Sonne Finance — read-only reentrancy on Compound fork",
+    "vuln_classes": ["readonly_reentrancy"],
+    "rule_ids": ["readonly_reentrancy"],
+    "source_url": "https://rekt.news/sonne-finance-rekt/",
+    "summary": "Sonne Finance lost $2.1M through read-only reentrancy on their Compound v2 fork, where the oracle callback allowed stale balance reads during a flash loan."
+  },
+  {
+    "id": "cashio-2022",
+    "title": "Cashio — broken mint authority, unlimited token minting",
+    "vuln_classes": ["missing_access_control"],
+    "rule_ids": ["solana_access_control"],
+    "source_url": "https://rekt.news/cashio-rekt/",
+    "summary": "Cashio lost $52M when an attacker discovered that the mint authority validation was broken, allowing anyone to mint CASH tokens without backing collateral. A Solana access-control failure."
+  },
+  {
+    "id": "solend-2022",
+    "title": "Solend — oracle manipulation risk via emergency governance",
+    "vuln_classes": ["missing_access_control", "price_manipulation"],
+    "rule_ids": ["solana_access_control"],
+    "source_url": "https://solend.medium.com/solend-risk-mitigation-recap-a2eb3f0c4398",
+    "summary": "Solend faced a governance crisis where emergency powers could manipulate oracle prices. The protocol used centralized oracle inputs that could be overridden via governance, creating systemic risk."
+  },
+  {
+    "id": "cve-2021-42287",
+    "title": "Generic pattern — upgradeable proxy admin takeover",
+    "vuln_classes": ["upgrade_proxy"],
+    "rule_ids": ["solana_access_control"],
+    "source_url": "https://docs.soliditylang.org/en/latest/security-considerations.html",
+    "summary": "Upgradeable proxy patterns require strict admin authority management. If the upgrade authority or proxy admin can be transferred without proper timelock or multi-sig, a compromised key can deploy arbitrary logic."
+  },
+  {
+    "id": "rekt-wormhole-2022",
+    "title": "Wormhole Bridge — unvalidated CPI / missing signer check ($326M)",
+    "vuln_classes": ["missing_access_control", "unvalidated_cpi"],
+    "rule_ids": ["solana_access_control"],
+    "source_url": "https://rekt.news/wormhole-rekt/",
+    "summary": "Wormhole Bridge lost $326M when a validator compromise allowed minting of 120k wETH without proper signature validation on the Solana side. The CPI call to the Solana program lacked proper signer verification."
+  },
+  {
+    "id": "rekt-mango-markets-2022",
+    "title": "Mango Markets — oracle manipulation via spot price ($114M)",
+    "vuln_classes": ["price_manipulation"],
+    "rule_ids": ["price_manipulation", "solana_access_control"],
+    "source_url": "https://rekt.news/mango-markets-rekt/",
+    "summary": "Mango Markets lost $114M when an attacker manipulated the protocol's oracle to inflate collateral values, enabling unauthorized withdrawals. The spot price oracle was manipulated through a series of large trades."
+  },
+  {
+    "id": "rekt-ronin-bridge-2022",
+    "title": "Ronin Bridge — validator key compromise ($625M)",
+    "vuln_classes": ["missing_access_control"],
+    "rule_ids": ["solana_access_control"],
+    "source_url": "https://rekt.news/ronin-rekt/",
+    "summary": "Ronin Bridge lost $625M when 5 out of 9 validator keys were compromised, allowing the attacker to approve fraudulent withdrawals. The key management and multi-sig threshold were insufficient."
+  },
+  {
+    "id": "rekt-nomad-2022",
+    "title": "Nomad Bridge — bridge fake proof ($190M)",
+    "vuln_classes": ["missing_access_control"],
+    "rule_ids": ["solana_access_control"],
+    "source_url": "https://rekt.news/nomad-rekt/",
+    "summary": "Nomad Bridge lost $190M when a routine upgrade left the bridge in a state where any message could be accepted as valid. A fraudulent proof was accepted because the validation check was not properly enforced after the upgrade."
+  },
+  {
+    "id": "rekt-beanstalk-2022",
+    "title": "Beanstalk — governance flash loan attack ($182M)",
+    "vuln_classes": ["price_manipulation", "flash_loan"],
+    "rule_ids": ["price_manipulation"],
+    "source_url": "https://rekt.news/beanstalk-rekt/",
+    "summary": "Beanstalk lost $182M when an attacker used flash loans to acquire enough governance tokens to pass a malicious proposal, draining the protocol's reserves in a single transaction."
+  },
+  {
+    "id": "rekt-compound-2021",
+    "title": "Compound — oracle price feed manipulation ($80M)",
+    "vuln_classes": ["price_manipulation"],
+    "rule_ids": ["price_manipulation"],
+    "source_url": "https://rekt.news/compound-rekt/",
+    "summary": "Compound suffered an oracle-related incident where the price feed could be manipulated, leading to incorrect liquidations and token distribution errors affecting approximately $80M in value."
+  },
+  {
+    "id": "rekt-bec-token-2018",
+    "title": "BEC Token — integer overflow ($900M notional)",
+    "vuln_classes": ["integer_overflow"],
+    "rule_ids": ["price_manipulation"],
+    "source_url": "https://rekt.news/beauty-chain-rekt/",
+    "summary": "The Beauty Chain (BEC) token had a batchTransfer function vulnerable to integer overflow, allowing an attacker to mint quadrillions of tokens. The overflow in the multiplication of amount and the number of recipients bypassed the balance check."
+  },
+  {
+    "id": "rekt-wintermute-2022",
+    "title": "Wintermute — private key compromise via vanity address ($160M)",
+    "vuln_classes": ["missing_access_control"],
+    "rule_ids": ["solana_access_control"],
+    "source_url": "https://rekt.news/wintermute-rekt/",
+    "summary": "Wintermute lost $160M in DeFi tokens when their hot wallet private key was compromised. The key was associated with a vanity address that may have been generated using a weak RNG, leading to key extraction."
+  }
+]

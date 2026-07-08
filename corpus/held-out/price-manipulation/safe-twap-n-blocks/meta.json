@@ -1,0 +1,20 @@
+{
+    "exploit_id":  "safe-twap-n-blocks-2023",
+    "vulnerability_class":  "NEGATIVE",
+    "protocol":  "SafeTWAP",
+    "chain":  "Ethereum",
+    "year":  2023,
+    "loss_usd":  0,
+    "expected_findings":  [
+
+                          ],
+    "expected_path_types":  [
+
+                            ],
+    "expected_hypotheses":  [
+
+                            ],
+    "known_limitations":  [
+                              "NEGATIVE: correctly uses TWAP with minimum observations + window check. Time-weighted average over N blocks resists single-block manipulation. Detector should NOT flag."
+                          ]
+}

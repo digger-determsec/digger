@@ -1,0 +1,8 @@
+[package]
+name = "digger-gen5-common"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+digger-reconstruct = { path = "../digger-reconstruct" }
+serde = { version = "1", features = ["derive"] }

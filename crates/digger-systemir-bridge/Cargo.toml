@@ -1,0 +1,17 @@
+[package]
+name = "digger-systemir-bridge"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+digger-ir = { path = "../digger-ir" }
+digger-reconstruct = { path = "../digger-reconstruct" }
+digger-protocol-model = { path = "../digger-protocol-model" }
+digger-investigation = { path = "../digger-investigation" }
+digger-research-context = { path = "../digger-research-context" }
+digger-research-graph = { path = "../digger-research-graph" }
+digger-gen5-common = { path = "../digger-gen5-common" }
+serde = { version = "1", features = ["derive"] }
+
+[dev-dependencies]
+serde_json = "1"

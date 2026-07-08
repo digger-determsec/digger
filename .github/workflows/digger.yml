@@ -1,0 +1,54 @@
+name: Digger Security Scan
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+  security-events: write
+  actions: read
+
+env:
+  CARGO_NET_RETRY: "10"
+  CARGO_HTTP_MULTIPLEXING: "false"
+  CARGO_NET_GIT_FETCH_WITH_CLI: "true"
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Run Digger CI scan
+        run: |
+          cargo run --bin digger -- ci --format sarif > digger-results.sarif
+        env:
+          ETHERSCAN_API_KEY: ${{ secrets.ETHERSCAN_API_KEY }}
+
+      - name: Upload SARIF to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v4
+        if: always()
+        continue-on-error: true
+        with:
+          sarif_file: digger-results.sarif
+
+      - name: Post PR comment
+        if: github.event_name == 'pull_request'
+        run: |
+          cargo run --bin digger -- ci --format pr-comment > digger-comment.md
+          gh pr comment ${{ github.event.pull_request.number }} \
+            --body-file digger-comment.md
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fail on high severity
+        if: github.event_name == 'pull_request'
+        run: cargo run --bin digger -- ci --fail-on high

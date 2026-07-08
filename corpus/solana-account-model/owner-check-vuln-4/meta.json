@@ -1,0 +1,10 @@
+{
+  "exploit_id": "owner-check-vuln-4",
+  "vulnerability_class": "unchecked_account_owner",
+  "protocol": "Metaplex Metadata Read",
+  "chain": "Solana",
+  "year": 2024,
+  "loss_usd": 90000,
+  "expected_findings": ["UncheckedAccountOwner"],
+  "known_limitations": "Synthetic reproducer: metadata account read without owner validation."
+}

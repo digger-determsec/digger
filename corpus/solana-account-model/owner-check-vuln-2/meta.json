@@ -1,0 +1,12 @@
+{
+  "exploit_id": "owner-check-vuln-2",
+  "vulnerability_class": "unchecked_account_owner",
+  "protocol": "Owner Check Example 2",
+  "chain": "Solana",
+  "year": 2024,
+  "loss_usd": 0,
+  "expected_findings": ["UncheckedAccountOwner"],
+  "expected_path_types": ["missing_owner_check"],
+  "expected_hypotheses": [],
+  "known_limitations": "POSITIVE: UncheckedAccount deserialization without owner check. Pattern: Cashio-style unchecked account trust."
+}

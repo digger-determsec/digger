@@ -1,0 +1,10 @@
+[package]
+name = "digger-graph"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+digger-ir = { path = "../digger-ir" }
+digger-parser = { path = "../digger-parser" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

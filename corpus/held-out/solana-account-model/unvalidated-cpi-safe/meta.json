@@ -1,0 +1,20 @@
+{
+    "exploit_id":  "unvalidated-cpi-safe",
+    "vulnerability_class":  "unvalidated_cpi",
+    "protocol":  "Safe CPI Example",
+    "chain":  "Solana",
+    "year":  2023,
+    "loss_usd":  0,
+    "expected_findings":  [
+
+                          ],
+    "expected_path_types":  [
+
+                            ],
+    "expected_hypotheses":  [
+
+                            ],
+    "known_limitations":  [
+                              "NEGATIVE: CPI with has_one authority constraint on data accounts. The has_one=vault_authority provides access control on the vault. Tested to verify detector does not FP on functions with any AuthorityCheck present."
+                          ]
+}

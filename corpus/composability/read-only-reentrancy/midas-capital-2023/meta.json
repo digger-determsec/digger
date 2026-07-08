@@ -1,0 +1,18 @@
+{
+  "exploit_id": "midas-capital-2023",
+  "vulnerability_class": "read_only_reentrancy",
+  "protocol": "Midas Capital",
+  "chain": "Ethereum",
+  "year": 2023,
+  "loss_usd": 660000,
+  "expected_findings": ["ReadOnlyReentrancy"],
+  "expected_path_types": ["external_call_before_state_read", "stale_curve_wmatic_stmatic_price"],
+  "expected_hypotheses": ["ReadonlyReentrancyCandidate"],
+  "known_limitations": [
+    "Minimal reproducer of Midas Capital read-only reentrancy via Curve WMATIC-stMATIC",
+    "Citation: https://rekt.news/midas-capital-rekt/ — Midas Capital loses $660K to read-only reentrancy (Jan 15 2023, Polygon)",
+    "NOTE: The June 2023 Midas incident was a rounding bug — NOT this class. This is the January 2023 Curve LP reentrancy.",
+    "Vulnerable pattern: Curve LP price read AFTER ERC20 transfer callback — stale during reentrancy",
+    "Critical action gated by state: depositAndBorrow() against inflated LP price"
+  ]
+}

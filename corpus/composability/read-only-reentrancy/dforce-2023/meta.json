@@ -1,0 +1,18 @@
+{
+  "exploit_id": "dforce-2023",
+  "vulnerability_class": "read_only_reentrancy",
+  "protocol": "dForce",
+  "chain": "Ethereum",
+  "year": 2023,
+  "loss_usd": 3650000,
+  "expected_findings": ["ReadOnlyReentrancy"],
+  "expected_path_types": ["external_call_before_state_read", "stale_curve_lp_price"],
+  "expected_hypotheses": ["ReadonlyReentrancyCandidate"],
+  "known_limitations": [
+    "Minimal reproducer of dForce read-only reentrancy via Curve LP",
+    "Citation: https://rekt.news/dforce-network-rekt/ — dForce loses $3.65M to read-only reentrancy (Feb 9-10 2023, Arbitrum+Optimism)",
+    "Citation: https://skynet.certik.com/ — CertiK analysis of dForce read-only reentrancy",
+    "Vulnerable pattern: Curve LP price read AFTER ERC20 transfer callback — stale during reentrancy",
+    "Critical action gated by state: deposit value calculation"
+  ]
+}

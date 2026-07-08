@@ -1,0 +1,12 @@
+{
+  "exploit_id": "solend-oracle-2022",
+  "vulnerability_class": "missing_access_control",
+  "protocol": "Solend",
+  "chain": "Solana",
+  "year": 2022,
+  "loss_usd": 12000000,
+  "expected_findings": ["MissingAuthorityCheck"],
+  "expected_path_types": ["missing_signer"],
+  "expected_hypotheses": ["AuthorityBypassCandidate"],
+  "known_limitations": ["Minimal reproducer of oracle update without authority"]
+}

@@ -1,0 +1,18 @@
+{
+  "status": "1",
+  "message": "OK",
+  "result": [
+    {
+      "SourceCode": "pragma solidity ^0.8.19;\n\ncontract SafeVault {\n    uint256 private _locked;\n\n    modifier nonReentrant() {\n        require(_locked == 0, \"reentrant\");\n        _locked = 1;\n        _;\n        _locked = 0;\n    }\n\n    function withdraw() external nonReentrant {\n        uint256 bal = address(this).balance;\n        payable(msg.sender).transfer(bal);\n    }\n}",
+      "ABI": "[]",
+      "ContractName": "SafeVault",
+      "CompilerVersion": "v0.8.19+commit.7dd6d404",
+      "OptimizationUsed": "1",
+      "Runs": "200",
+      "EVMVersion": "london",
+      "Implementation": "",
+      "Proxy": "0",
+      "MethodIdentifiers": {}
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "exploit_id": "cashio-collateral-owner-check-2022",
+  "vulnerability_class": "unchecked_account_owner",
+  "protocol": "Cashio",
+  "chain": "Solana",
+  "year": 2022,
+  "loss_usd": 52000000,
+  "expected_findings": ["UncheckedAccountOwner"],
+  "expected_path_types": ["missing_owner_check"],
+  "expected_hypotheses": ["UncheckedOwnerCandidate"],
+  "known_limitations": [
+    "Minimal reproducer of Cashio collateral-owner-check pattern (not original source)",
+    "Based on CertiK / BlockSec / Ackee public post-mortems",
+    "Real tx: 4fgL8D6QXKH1q3Gt9GPzeRDpTgq4cE5hxf1hNDUWrJVUe4qDJ1xmUZE7KJWDANT99jD8UvwNeBb1imvujz3Pz2K5"
+  ]
+}

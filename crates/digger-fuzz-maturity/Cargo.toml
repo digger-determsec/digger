@@ -1,0 +1,9 @@
+[package]
+name = "digger-fuzz-maturity"
+version.workspace = true
+edition.workspace = true
+description = "EVM fuzzing maturity scanner — static filesystem analysis, no execution"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

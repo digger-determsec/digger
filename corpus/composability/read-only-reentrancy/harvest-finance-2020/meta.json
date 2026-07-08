@@ -1,0 +1,17 @@
+{
+  "exploit_id": "harvest-finance-2020",
+  "vulnerability_class": "read_only_reentrancy",
+  "protocol": "Harvest Finance",
+  "chain": "Ethereum",
+  "year": 2020,
+  "loss_usd": 34000000,
+  "expected_findings": ["ReadOnlyReentrancy"],
+  "expected_path_types": ["external_call_before_state_read", "stale_curve_pool_price"],
+  "expected_hypotheses": ["ReadonlyReentrancyCandidate"],
+  "known_limitations": [
+    "Minimal reproducer of Harvest Finance read-only reentrancy via Curve Y pool",
+    "Citation: https://rekt.news/harvest-finance-rekt/ -- Harvest Finance loses $34M to flash-loan + Curve pool price manipulation (Oct 18 2020)",
+    "Vulnerable pattern: Curve pool price read AFTER ERC20 transfer callback -- stale during reentrancy",
+    "Critical action gated by state: deposit share calculation based on stale pool price"
+  ]
+}

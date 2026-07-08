@@ -1,0 +1,12 @@
+{
+  "exploit_id": "owner-check-vuln-1",
+  "vulnerability_class": "unchecked_account_owner",
+  "protocol": "Owner Check Example 1",
+  "chain": "Solana",
+  "year": 2024,
+  "loss_usd": 0,
+  "expected_findings": ["UncheckedAccountOwner"],
+  "expected_path_types": ["missing_owner_check"],
+  "expected_hypotheses": [],
+  "known_limitations": "POSITIVE: Raw AccountInfo deserialization without owner validation. Pattern: Cashio $52M broken mint authority."
+}

@@ -1,0 +1,45 @@
+{
+    "case_id": "solana-cash-mint-benign-1",
+    "expected_label": "Benign",
+    "is_real_capture": true,
+    "capture_note": {
+        "chain": "solana",
+        "cluster": "mainnet-beta",
+        "block_or_slot": 427449531,
+        "tx_hash": "38fveZ7443CVjmVPhe5frB9CEcV3PUV2LoF6ugnRWEbd7gLxnaoAq6S2tje3xUFaZFs59zP7VyRDYabsXxHY3j5q",
+        "rpc_endpoint": "https://api.mainnet-beta.solana.com",
+        "captured_at": "2026-06-20T08:15:00Z"
+    },
+    "chain": "solana",
+    "tx": {
+        "tx_hash": "38fveZ7443CVjmVPhe5frB9CEcV3PUV2LoF6ugnRWEbd7gLxnaoAq6S2tje3xUFaZFs59zP7VyRDYabsXxHY3j5q",
+        "block_slot": 427449531,
+        "chain": "solana",
+        "target_contract": "CASHVDm2wsJXfhj6VWxb7GiMdoLc17Du7paH4bNr5woT",
+        "selector": "mint",
+        "call_data_preview": "0x"
+    },
+    "chain_state": {
+        "account_owners": {
+            "CASHVDm2wsJXfhj6VWxb7GiMdoLc17Du7paH4bNr5woT": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+            "4oTQi7Yhh3CZAE2nZhsSaynT78rm6fjooQ9xj8BdLtAL": "eLLnsiBsWvERB34kgiJ4wPhdRzqM17gMG4cHouMqaHz",
+            "78BiFAwB8GdbdGZHejXZuvWZ9BEBrEJtpGJB6tvaVfT9": "eLLnsiBsWvERB34kgiJ4wPhdRzqM17gMG4cHouMqaHz",
+            "79WoNQ6f4Nc5dhYxHWdWYQEZSPMnEkxbRk8KSCwoiJTK": "eLLnsiBsWvERB34kgiJ4wPhdRzqM17gMG4cHouMqaHz",
+            "4WYuNv4dsX65pCRTQEeerK2u1v765xbxcHoswFaeMyxo": "FdAHV3fKp9bq432xEzV5sZXUA6R8sYbGa3HZED7D6fH7"
+        },
+        "authorities": {
+            "38fveZ7443CVjmVPhe5frB9CEcV3PUV2LoF6ugnRWEbd7gLxnaoAq6S2tje3xUFaZFs59zP7VyRDYabsXxHY3j5q": "eLLnsiBsWvERB34kgiJ4wPhdRzqM17gMG4cHouMqaHz"
+        },
+        "balance_deltas": {
+            "38fveZ7443CVjmVPhe5frB9CEcV3PUV2LoF6ugnRWEbd7gLxnaoAq6S2tje3xUFaZFs59zP7VyRDYabsXxHY3j5q": -5000
+        }
+    },
+    "finding": {
+        "finding_id": "f-cash-mint-benign-1",
+        "rule_id": "unchecked_account_owner",
+        "severity": "high",
+        "confidence_label": "graduated",
+        "file": "CashioMint.sol",
+        "symbol": "mint_tokens"
+    }
+}

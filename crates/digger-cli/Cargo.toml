@@ -1,0 +1,51 @@
+[package]
+name = "digger-cli"
+version.workspace = true
+edition.workspace = true
+
+[[bin]]
+name = "digger"
+path = "src/main.rs"
+
+[dependencies]
+digger-ir = { path = "../digger-ir" }
+digger-parser = { path = "../digger-parser" }
+digger-graph = { path = "../digger-graph" }
+digger-benchmark = { path = "../digger-benchmark" }
+digger-hypothesis = { path = "../digger-hypothesis" }
+digger-surface = { path = "../digger-surface" }
+digger-core = { path = "../digger-core" }
+digger-knowledge = { path = "../digger-knowledge" }
+digger-knowledge-models = { path = "../digger-knowledge-models" }
+digger-ingestion = { path = "../digger-ingestion" }
+digger-synthesis = { path = "../digger-synthesis" }
+digger-execution = { path = "../digger-execution" }
+digger-expansion = { path = "../digger-expansion" }
+digger-state-transitions = { path = "../digger-state-transitions" }
+digger-resource-lifecycle = { path = "../digger-resource-lifecycle" }
+digger-temporal = { path = "../digger-temporal" }
+digger-actors = { path = "../digger-actors" }
+digger-economics = { path = "../digger-economics" }
+digger-verification = { path = "../digger-verification" }
+digger-gen2-protocol = { path = "../digger-gen2-protocol" }
+digger-adversarial = { path = "../digger-adversarial" }
+digger-agent = { path = "../digger-agent" }
+digger-evidence = { path = "../digger-evidence" }
+digger-pipeline = { path = "../digger-pipeline" }
+digger-reconstruct = { path = "../digger-reconstruct", features = ["live-fetch"] }
+digger-oplayer = { path = "../digger-oplayer" }
+digger-fuzz-maturity = { path = "../digger-fuzz-maturity" }
+digger-repo-intelligence = { path = "../digger-repo-intelligence" }
+digger-agent-hypothesis = { path = "../digger-agent-hypothesis" }
+digger-agent-proof-task = { path = "../digger-agent-proof-task" }
+digger-agent-evidence-run = { path = "../digger-agent-evidence-run" }
+digger-agent-audit-log = { path = "../digger-agent-audit-log" }
+digger-agent-report-draft = { path = "../digger-agent-report-draft" }
+digger-egress = { path = "../digger-egress" }
+digger-intent-verifier = { path = "../digger-intent-verifier" }
+digger-report = { path = "../digger-report" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = { workspace = true }
+clap = { version = "4", features = ["derive"] }
+base64 = "0.22"

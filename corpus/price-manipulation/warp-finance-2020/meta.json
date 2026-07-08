@@ -1,0 +1,17 @@
+{
+  "exploit_id": "warp-finance-2020",
+  "vulnerability_class": "price_manipulation",
+  "protocol": "Warp Finance",
+  "chain": "Ethereum",
+  "year": 2020,
+  "loss_usd": 8000000,
+  "expected_findings": ["PriceOracleManipulation"],
+  "expected_path_types": ["short_window_twap", "uniswap_v2_cumulative"],
+  "expected_hypotheses": ["PriceManipulationCandidate"],
+  "known_limitations": [
+    "Minimal reproducer of Warp Finance TWAP oracle manipulation",
+    "Citation: https://rekt.news/warp-finance-rekt/ — Warp Finance loses $8M to flash loan attack",
+    "Vulnerable pattern: Uniswap V2 TWAP with too-short window, effectively spot price",
+    "Critical action gated by price: borrow()"
+  ]
+}

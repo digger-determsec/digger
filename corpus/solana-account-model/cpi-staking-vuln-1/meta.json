@@ -1,0 +1,10 @@
+{
+  "exploit_id": "cpi-staking-vuln-1",
+  "vulnerability_class": "unvalidated_cpi",
+  "protocol": "Staking Rewards CPI",
+  "chain": "Solana",
+  "year": 2024,
+  "loss_usd": 110000,
+  "expected_findings": ["UnvalidatedCpi"],
+  "known_limitations": "Synthetic reproducer of staking-rewards CPI target substitution: staking_program passed as unconstrained AccountInfo."
+}

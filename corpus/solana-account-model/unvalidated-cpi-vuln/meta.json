@@ -1,0 +1,16 @@
+{
+  "exploit_id": "unvalidated-cpi-vuln",
+  "vulnerability_class": "unvalidated_cpi",
+  "protocol": "Unvalidated CPI Example",
+  "chain": "Solana",
+  "year": 2023,
+  "loss_usd": 1000000,
+  "expected_findings": ["UnvalidatedCpi"],
+  "expected_path_types": ["cpi_target_substitution"],
+  "expected_hypotheses": ["CPITrustViolationCandidate"],
+  "known_limitations": [
+    "Synthetic reproducer based on Solana CPI target substitution pattern",
+    "Citation: Solana security advisories for unvalidated CPI program accounts",
+    "Pattern: AccountInfo<'info> passed as CPI program target without Program<> type or constraint validation"
+  ]
+}

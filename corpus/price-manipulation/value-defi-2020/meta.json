@@ -1,0 +1,17 @@
+{
+  "exploit_id": "value-defi-2020",
+  "vulnerability_class": "price_manipulation",
+  "protocol": "Value DeFi",
+  "chain": "Ethereum",
+  "year": 2020,
+  "loss_usd": 6000000,
+  "expected_findings": ["PriceOracleManipulation"],
+  "expected_path_types": ["uniswap_v2_spot_price", "single_dex_manipulation"],
+  "expected_hypotheses": ["PriceManipulationCandidate"],
+  "known_limitations": [
+    "Minimal reproducer of Value DeFi flash-loan + Uniswap V2 spot price manipulation",
+    "Citation: https://rekt.news/value-defi-rekt/ — Value DeFi loses $6M to flash loan attack",
+    "Vulnerable pattern: Uniswap V2 getReserves() used as single-DEX spot oracle",
+    "Critical action gated by price: claimAndDeposit() / redeem()"
+  ]
+}

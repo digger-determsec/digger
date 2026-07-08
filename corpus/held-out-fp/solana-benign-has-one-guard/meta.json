@@ -1,0 +1,5 @@
+{
+  "expected_findings": [],
+  "vuln_class": "negative",
+  "description": "Account constraint with has_one = authority"
+}

@@ -1,0 +1,13 @@
+Failing test:
+  InvariantCounter.invariant_counter_never_negative
+
+Suite result: FAILED
+
+[FAIL: invariant_counter_never_negative] tests/InvariantCounter.t.sol:InvariantCounter (1.2s)
+  Revert:
+    CounterValue must be >= 0
+
+Failing tests:
+  InvariantCounter.invariant_counter_never_negative
+
+Replay command: forge test --match-test invariant_counter_never_negative -vvvv

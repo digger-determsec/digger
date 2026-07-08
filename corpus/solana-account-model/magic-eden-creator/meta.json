@@ -1,0 +1,12 @@
+{
+  "exploit_id": "magic-eden-creator-2023",
+  "vulnerability_class": "pda_collision",
+  "protocol": "Magic Eden",
+  "chain": "Solana",
+  "year": 2023,
+  "loss_usd": 1500000,
+  "expected_findings": ["MissingAuthorityCheck"],
+  "expected_path_types": ["pda_seed_collision"],
+  "expected_hypotheses": ["AuthorityBypassCandidate"],
+  "known_limitations": ["Minimal reproducer of PDA seed collision pattern"]
+}

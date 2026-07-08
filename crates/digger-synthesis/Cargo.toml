@@ -1,0 +1,21 @@
+[package]
+name = "digger-synthesis"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+digger-ir = { path = "../digger-ir" }
+digger-adversarial = { path = "../digger-adversarial" }
+digger-economics = { path = "../digger-economics" }
+digger-temporal = { path = "../digger-temporal" }
+digger-actors = { path = "../digger-actors" }
+digger-verification = { path = "../digger-verification" }
+digger-resource-lifecycle = { path = "../digger-resource-lifecycle" }
+digger-state-transitions = { path = "../digger-state-transitions" }
+digger-expansion = { path = "../digger-expansion" }
+digger-execution = { path = "../digger-execution" }
+digger-gen2-protocol = { path = "../digger-gen2-protocol" }
+digger-surface = { path = "../digger-surface" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"

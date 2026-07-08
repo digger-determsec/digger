@@ -1,0 +1,19 @@
+{
+  "test_name": "staking_invariant_no_negative_balance",
+  "iteration": 42,
+  "seed": 123456,
+  "actions": [
+    {
+      "name": "deposit",
+      "params": {"amount": 50000},
+      "success": true,
+      "error_code": null
+    },
+    {
+      "name": "withdraw",
+      "params": {"amount": 99999},
+      "success": false,
+      "error_code": 6020
+    }
+  ]
+}

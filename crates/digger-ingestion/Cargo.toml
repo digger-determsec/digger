@@ -1,0 +1,15 @@
+[package]
+name = "digger-ingestion"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+digger-ir = { path = "../digger-ir" }
+digger-egress = { path = "../digger-egress" }
+digger-knowledge = { path = "../digger-knowledge" }
+digger-knowledge-models = { path = "../digger-knowledge-models" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+base64 = "0.21"
+sha2 = "0.10"
+thiserror = { workspace = true }

@@ -1,0 +1,1 @@
+{"exploit_id": "op-positive-sf-003", "vulnerability_class": "silent_failover", "expected_findings": ["SilentFailover"], "known_limitations": "Pyth-to-hermes fallback without threshold tightening"}

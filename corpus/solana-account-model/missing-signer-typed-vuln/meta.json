@@ -1,0 +1,12 @@
+{
+  "exploit_id": "missing-signer-typed-vuln",
+  "vulnerability_class": "missing_signer_check",
+  "protocol": "Missing Signer Typed Vuln",
+  "chain": "Solana",
+  "year": 2024,
+  "loss_usd": 0,
+  "expected_findings": [],
+  "expected_path_types": [],
+  "expected_hypotheses": [],
+  "known_limitations": "NEGATIVE: TYPED authority (Account<AuthState>) as has_one target without Signer. Proves missing_signer detector is load-bearing."
+}

@@ -1,0 +1,716 @@
+{
+  "account_structs": [
+    {
+      "fields": [
+        {
+          "constraint_signals": [],
+          "field_type": "Signer<'info>",
+          "has_constraint": false,
+          "is_mutable": false,
+          "is_signer": true,
+          "name": "authority"
+        },
+        {
+          "constraint_signals": [],
+          "field_type": "Account<'info",
+          "has_constraint": false,
+          "is_mutable": false,
+          "is_signer": false,
+          "name": "vault"
+        },
+        {
+          "constraint_signals": [],
+          "field_type": "Program<'info",
+          "has_constraint": false,
+          "is_mutable": false,
+          "is_signer": false,
+          "name": "system_program"
+        }
+      ],
+      "heuristic": true,
+      "line_end": 69,
+      "line_start": 57,
+      "name": "Initialize",
+      "path": "vault.rs",
+      "provenance": "heuristic"
+    },
+    {
+      "fields": [
+        {
+          "constraint_signals": [],
+          "field_type": "Signer<'info>",
+          "has_constraint": false,
+          "is_mutable": false,
+          "is_signer": true,
+          "name": "authority"
+        },
+        {
+          "constraint_signals": [],
+          "field_type": "Account<'info",
+          "has_constraint": false,
+          "is_mutable": false,
+          "is_signer": false,
+          "name": "vault"
+        }
+      ],
+      "heuristic": true,
+      "line_end": 80,
+      "line_start": 72,
+      "name": "Deposit",
+      "path": "vault.rs",
+      "provenance": "heuristic"
+    },
+    {
+      "fields": [
+        {
+          "constraint_signals": [],
+          "field_type": "Signer<'info>",
+          "has_constraint": false,
+          "is_mutable": false,
+          "is_signer": true,
+          "name": "authority"
+        },
+        {
+          "constraint_signals": [],
+          "field_type": "Account<'info",
+          "has_constraint": false,
+          "is_mutable": false,
+          "is_signer": false,
+          "name": "vault"
+        },
+        {
+          "constraint_signals": [],
+          "field_type": "Account<'info",
+          "has_constraint": false,
+          "is_mutable": false,
+          "is_signer": false,
+          "name": "vault_token_account"
+        },
+        {
+          "constraint_signals": [],
+          "field_type": "Account<'info",
+          "has_constraint": false,
+          "is_mutable": false,
+          "is_signer": false,
+          "name": "user_token_account"
+        },
+        {
+          "constraint_signals": [],
+          "field_type": "Program<'info",
+          "has_constraint": false,
+          "is_mutable": false,
+          "is_signer": false,
+          "name": "token_program"
+        }
+      ],
+      "heuristic": true,
+      "line_end": 98,
+      "line_start": 83,
+      "name": "Withdraw",
+      "path": "vault.rs",
+      "provenance": "heuristic"
+    },
+    {
+      "fields": [
+        {
+          "constraint_signals": [],
+          "field_type": "Signer<'info>",
+          "has_constraint": false,
+          "is_mutable": false,
+          "is_signer": true,
+          "name": "authority"
+        },
+        {
+          "constraint_signals": [],
+          "field_type": "Account<'info",
+          "has_constraint": false,
+          "is_mutable": false,
+          "is_signer": false,
+          "name": "vault"
+        }
+      ],
+      "heuristic": true,
+      "line_end": 110,
+      "line_start": 101,
+      "name": "TransferAuthority",
+      "path": "vault.rs",
+      "provenance": "heuristic"
+    }
+  ],
+  "attack_surface_summary": {
+    "account_structs": 4,
+    "engine_derived": true,
+    "engine_files_failed": 0,
+    "engine_files_ok": 1,
+    "external_call_sites": 2,
+    "function_level_surfaces": 0,
+    "heuristic_fallback_count": 0,
+    "privileged_functions": 5,
+    "state_mutation_sites": 4,
+    "surfaces_scanned": 12,
+    "total_functions": 5
+  },
+  "audit_events": [],
+  "candidate_hypotheses": [
+    {
+      "affected_component": "vault::withdraw",
+      "confidence": "engine-verified",
+      "description": "[engine-derived] AuthorityBypassCandidate — Authority bypass candidate in 'vault::withdraw' (untrusted external call)",
+      "engine_derived": true,
+      "evidence_requirements": [
+        "graph evidence",
+        "IR verification"
+      ],
+      "hypothesis_id": "engine-HYP-AUTH-EXT-vault::withdraw",
+      "provenance": "engine",
+      "severity": "High",
+      "source_file": "vault.rs",
+      "status": "requires_investigation"
+    },
+    {
+      "affected_component": "vault::deposit",
+      "confidence": "engine-verified",
+      "description": "[engine-derived] AuthorityBypassCandidate — Authority bypass candidate in 'vault::deposit' (missing authority check)",
+      "engine_derived": true,
+      "evidence_requirements": [
+        "graph evidence",
+        "IR verification"
+      ],
+      "hypothesis_id": "engine-HYP-AUTH-MISS-vault::deposit",
+      "provenance": "engine",
+      "severity": "Medium",
+      "source_file": "vault.rs",
+      "status": "requires_investigation"
+    },
+    {
+      "affected_component": "vault::initialize",
+      "confidence": "engine-verified",
+      "description": "[engine-derived] AuthorityBypassCandidate — Authority bypass candidate in 'vault::initialize' (missing authority check)",
+      "engine_derived": true,
+      "evidence_requirements": [
+        "graph evidence",
+        "IR verification"
+      ],
+      "hypothesis_id": "engine-HYP-AUTH-MISS-vault::initialize",
+      "provenance": "engine",
+      "severity": "Medium",
+      "source_file": "vault.rs",
+      "status": "requires_investigation"
+    },
+    {
+      "affected_component": "vault::transfer_authority",
+      "confidence": "engine-verified",
+      "description": "[engine-derived] AuthorityBypassCandidate — Authority bypass candidate in 'vault::transfer_authority' (missing authority check)",
+      "engine_derived": true,
+      "evidence_requirements": [
+        "graph evidence",
+        "IR verification"
+      ],
+      "hypothesis_id": "engine-HYP-AUTH-MISS-vault::transfer_authority",
+      "provenance": "engine",
+      "severity": "Medium",
+      "source_file": "vault.rs",
+      "status": "requires_investigation"
+    }
+  ],
+  "chain": "solana",
+  "digger_version": "0.4.0-beta.1",
+  "evidence_runs": [],
+  "external_calls_or_cpi": [
+    {
+      "engine_derived": true,
+      "kind": "engine_surface",
+      "name": "vault::withdraw",
+      "needs_review": true,
+      "path": "vault.rs",
+      "provenance": "engine",
+      "reason": "[engine] external call signal"
+    },
+    {
+      "heuristic": true,
+      "kind": "instruction",
+      "line": 25,
+      "name": "withdraw",
+      "needs_review": true,
+      "path": "vault.rs",
+      "provenance": "heuristic",
+      "reason": "Call/CPI signals: token_transfer, CpiContext"
+    }
+  ],
+  "function_surfaces": [],
+  "fuzz_maturity_ref": null,
+  "is_finding": false,
+  "limitations": [
+    {
+      "category": "source_triage",
+      "description": "Source triage uses conservative text heuristics. No AST parsing, no compilation, no execution.",
+      "limitation_id": "lim-source-triage"
+    },
+    {
+      "category": "heuristic_fallback",
+      "description": "4 Anchor account structs detected via heuristic analysis (not engine-derived)",
+      "limitation_id": "lim-account-structs-heuristic"
+    },
+    {
+      "category": "user_flag",
+      "description": "Fuzz maturity scan not requested (pass --include-fuzz-maturity to enable)",
+      "limitation_id": "lim-fuzz-not-requested"
+    },
+    {
+      "category": "methodology",
+      "description": "Surface mapping uses deterministic engine (parser/IR/graph) as primary source, with conservative text heuristics as fallback. No compilation, no runtime analysis, no execution.",
+      "limitation_id": "lim-static-triage"
+    }
+  ],
+  "missing_evidence": [
+    {
+      "affected_component": "initialize",
+      "category": "authority_verification",
+      "description": "Authority/modifier enforcement evidence needs review for instruction `initialize` at vault.rs:L11-L17",
+      "evidence_id": "me-auth-1",
+      "source_ref": "vault.rs:L11-L17"
+    },
+    {
+      "affected_component": "initialize",
+      "category": "authority_account_mapping",
+      "description": "Operation-level authority-to-account mapping not proven for instruction `initialize` at vault.rs:L11-L17",
+      "evidence_id": "me-acc-1",
+      "source_ref": "vault.rs:L11-L17"
+    },
+    {
+      "affected_component": "deposit",
+      "category": "authority_account_mapping",
+      "description": "Operation-level authority-to-account mapping not proven for instruction `deposit` at vault.rs:L19-L23",
+      "evidence_id": "me-acc-2",
+      "source_ref": "vault.rs:L19-L23"
+    },
+    {
+      "affected_component": "withdraw",
+      "category": "authority_verification",
+      "description": "Authority/modifier enforcement evidence needs review for instruction `withdraw` at vault.rs:L25-L47",
+      "evidence_id": "me-auth-3",
+      "source_ref": "vault.rs:L25-L47"
+    },
+    {
+      "affected_component": "withdraw",
+      "category": "cpi_validation",
+      "description": "CPI target/account validation evidence missing for instruction `withdraw` at vault.rs:L25-L47",
+      "evidence_id": "me-cpi-3",
+      "source_ref": "vault.rs:L25-L47"
+    },
+    {
+      "affected_component": "withdraw",
+      "category": "authority_account_mapping",
+      "description": "Operation-level authority-to-account mapping not proven for instruction `withdraw` at vault.rs:L25-L47",
+      "evidence_id": "me-acc-3",
+      "source_ref": "vault.rs:L25-L47"
+    },
+    {
+      "affected_component": "transfer_authority",
+      "category": "authority_verification",
+      "description": "Authority/modifier enforcement evidence needs review for instruction `transfer_authority` at vault.rs:L49-L53",
+      "evidence_id": "me-auth-4",
+      "source_ref": "vault.rs:L49-L53"
+    },
+    {
+      "affected_component": "transfer_authority",
+      "category": "authority_account_mapping",
+      "description": "Operation-level authority-to-account mapping not proven for instruction `transfer_authority` at vault.rs:L49-L53",
+      "evidence_id": "me-acc-4",
+      "source_ref": "vault.rs:L49-L53"
+    },
+    {
+      "affected_component": "Initialize.authority",
+      "category": "signer_account_binding",
+      "description": "Verify signer `authority` in account struct `Initialize` protects the intended operation at vault.rs:L57-L69",
+      "evidence_id": "me-signer-5",
+      "source_ref": "vault.rs:L57-L69"
+    },
+    {
+      "affected_component": "Deposit.authority",
+      "category": "signer_account_binding",
+      "description": "Verify signer `authority` in account struct `Deposit` protects the intended operation at vault.rs:L72-L80",
+      "evidence_id": "me-signer-6",
+      "source_ref": "vault.rs:L72-L80"
+    },
+    {
+      "affected_component": "Withdraw.authority",
+      "category": "signer_account_binding",
+      "description": "Verify signer `authority` in account struct `Withdraw` protects the intended operation at vault.rs:L83-L98",
+      "evidence_id": "me-signer-7",
+      "source_ref": "vault.rs:L83-L98"
+    },
+    {
+      "affected_component": "TransferAuthority.authority",
+      "category": "signer_account_binding",
+      "description": "Verify signer `authority` in account struct `TransferAuthority` protects the intended operation at vault.rs:L101-L110",
+      "evidence_id": "me-signer-8",
+      "source_ref": "vault.rs:L101-L110"
+    },
+    {
+      "affected_component": "vault::withdraw",
+      "category": "engine_evidence_gap",
+      "description": "Evidence for engine hypothesis 'AuthorityBypassCandidate' requires verification against IR/graph",
+      "evidence_id": "me-engine-HYP-AUTH-EXT-vault::withdraw",
+      "source_ref": "vault.rs"
+    },
+    {
+      "affected_component": "vault::deposit",
+      "category": "engine_evidence_gap",
+      "description": "Evidence for engine hypothesis 'AuthorityBypassCandidate' requires verification against IR/graph",
+      "evidence_id": "me-engine-HYP-AUTH-MISS-vault::deposit",
+      "source_ref": "vault.rs"
+    },
+    {
+      "affected_component": "vault::initialize",
+      "category": "engine_evidence_gap",
+      "description": "Evidence for engine hypothesis 'AuthorityBypassCandidate' requires verification against IR/graph",
+      "evidence_id": "me-engine-HYP-AUTH-MISS-vault::initialize",
+      "source_ref": "vault.rs"
+    },
+    {
+      "affected_component": "vault::transfer_authority",
+      "category": "engine_evidence_gap",
+      "description": "Evidence for engine hypothesis 'AuthorityBypassCandidate' requires verification against IR/graph",
+      "evidence_id": "me-engine-HYP-AUTH-MISS-vault::transfer_authority",
+      "source_ref": "vault.rs"
+    }
+  ],
+  "packet_id": "atp-c86c758c36b90e20",
+  "privileged_operations": [
+    {
+      "engine_derived": true,
+      "kind": "engine_surface",
+      "name": "vault::withdraw",
+      "needs_review": true,
+      "path": "vault.rs",
+      "provenance": "engine",
+      "reason": "[engine] external_call"
+    },
+    {
+      "heuristic": true,
+      "kind": "instruction",
+      "line": 11,
+      "name": "initialize",
+      "needs_review": true,
+      "path": "vault.rs",
+      "provenance": "heuristic",
+      "reason": "Has auth signals: authority reference, PDA bump"
+    },
+    {
+      "heuristic": true,
+      "kind": "instruction",
+      "line": 19,
+      "name": "deposit",
+      "needs_review": true,
+      "path": "vault.rs",
+      "provenance": "heuristic",
+      "reason": "Public/external function: instruction"
+    },
+    {
+      "heuristic": true,
+      "kind": "instruction",
+      "line": 25,
+      "name": "withdraw",
+      "needs_review": true,
+      "path": "vault.rs",
+      "provenance": "heuristic",
+      "reason": "Has auth signals: require macro, PDA seeds, PDA bump, authority reference"
+    },
+    {
+      "heuristic": true,
+      "kind": "instruction",
+      "line": 49,
+      "name": "transfer_authority",
+      "needs_review": true,
+      "path": "vault.rs",
+      "provenance": "heuristic",
+      "reason": "Has auth signals: authority reference"
+    }
+  ],
+  "proof_tasks": [
+    {
+      "description": "Verify engine-derived AuthorityBypassCandidate: Authority bypass candidate in 'vault::withdraw' (untrusted external call)",
+      "engine_derived": true,
+      "evidence_type": "engine_analysis",
+      "hypothesis_ref": "engine-HYP-AUTH-EXT-vault::withdraw",
+      "priority": "high",
+      "provenance": "engine",
+      "source_ref": "vault.rs",
+      "status": "pending",
+      "task_id": "pt-engine-HYP-AUTH-EXT-vault::withdraw"
+    },
+    {
+      "description": "Verify engine-derived AuthorityBypassCandidate: Authority bypass candidate in 'vault::deposit' (missing authority check)",
+      "engine_derived": true,
+      "evidence_type": "engine_analysis",
+      "hypothesis_ref": "engine-HYP-AUTH-MISS-vault::deposit",
+      "priority": "high",
+      "provenance": "engine",
+      "source_ref": "vault.rs",
+      "status": "pending",
+      "task_id": "pt-engine-HYP-AUTH-MISS-vault::deposit"
+    },
+    {
+      "description": "Verify engine-derived AuthorityBypassCandidate: Authority bypass candidate in 'vault::initialize' (missing authority check)",
+      "engine_derived": true,
+      "evidence_type": "engine_analysis",
+      "hypothesis_ref": "engine-HYP-AUTH-MISS-vault::initialize",
+      "priority": "high",
+      "provenance": "engine",
+      "source_ref": "vault.rs",
+      "status": "pending",
+      "task_id": "pt-engine-HYP-AUTH-MISS-vault::initialize"
+    },
+    {
+      "description": "Verify engine-derived AuthorityBypassCandidate: Authority bypass candidate in 'vault::transfer_authority' (missing authority check)",
+      "engine_derived": true,
+      "evidence_type": "engine_analysis",
+      "hypothesis_ref": "engine-HYP-AUTH-MISS-vault::transfer_authority",
+      "priority": "high",
+      "provenance": "engine",
+      "source_ref": "vault.rs",
+      "status": "pending",
+      "task_id": "pt-engine-HYP-AUTH-MISS-vault::transfer_authority"
+    }
+  ],
+  "repo_intelligence_ref": {
+    "chain": "solana",
+    "schema_version": "digger.repo_intelligence.v1",
+    "surface_count": 4,
+    "unknown_count": 0
+  },
+  "report_draft_ref": null,
+  "report_kind": "audit_triage_packet",
+  "schema_version": "digger.audit_triage_packet.v1",
+  "state_mutations": [
+    {
+      "heuristic": true,
+      "kind": "instruction",
+      "line": 11,
+      "name": "initialize",
+      "needs_review": true,
+      "path": "vault.rs",
+      "provenance": "heuristic",
+      "reason": "Mutation signals: accounts_mutation"
+    },
+    {
+      "heuristic": true,
+      "kind": "instruction",
+      "line": 19,
+      "name": "deposit",
+      "needs_review": true,
+      "path": "vault.rs",
+      "provenance": "heuristic",
+      "reason": "Mutation signals: accounts_mutation"
+    },
+    {
+      "heuristic": true,
+      "kind": "instruction",
+      "line": 25,
+      "name": "withdraw",
+      "needs_review": true,
+      "path": "vault.rs",
+      "provenance": "heuristic",
+      "reason": "Mutation signals: accounts_mutation"
+    },
+    {
+      "heuristic": true,
+      "kind": "instruction",
+      "line": 49,
+      "name": "transfer_authority",
+      "needs_review": true,
+      "path": "vault.rs",
+      "provenance": "heuristic",
+      "reason": "Mutation signals: accounts_mutation"
+    }
+  ],
+  "surfaces_scanned": [
+    {
+      "category": "engine_derived",
+      "confidence": "engine_verified",
+      "has_authority": false,
+      "id": "engine-vault::initialize",
+      "kind": "engine_surface",
+      "makes_external_calls": false,
+      "name": "vault::initialize",
+      "path": "vault.rs",
+      "provenance": "engine",
+      "writes_state": false
+    },
+    {
+      "category": "engine_derived",
+      "confidence": "engine_verified",
+      "has_authority": false,
+      "id": "engine-vault::deposit",
+      "kind": "engine_surface",
+      "makes_external_calls": false,
+      "name": "vault::deposit",
+      "path": "vault.rs",
+      "provenance": "engine",
+      "writes_state": false
+    },
+    {
+      "category": "engine_derived",
+      "confidence": "engine_verified",
+      "has_authority": false,
+      "id": "engine-vault::withdraw",
+      "kind": "engine_surface",
+      "makes_external_calls": true,
+      "name": "vault::withdraw",
+      "path": "vault.rs",
+      "provenance": "engine",
+      "writes_state": false
+    },
+    {
+      "category": "engine_derived",
+      "confidence": "engine_verified",
+      "has_authority": false,
+      "id": "engine-vault::transfer_authority",
+      "kind": "engine_surface",
+      "makes_external_calls": false,
+      "name": "vault::transfer_authority",
+      "path": "vault.rs",
+      "provenance": "engine",
+      "writes_state": false
+    },
+    {
+      "auth_signals": [
+        "authority reference",
+        "PDA bump"
+      ],
+      "cpi_signals": [],
+      "external_call_signals": [],
+      "has_auth_signal": true,
+      "has_cpi": false,
+      "has_external_call": false,
+      "has_state_mutation": true,
+      "heuristic": true,
+      "is_payable": false,
+      "kind": "instruction",
+      "line_end": 17,
+      "line_start": 11,
+      "mutation_signals": [
+        "accounts_mutation"
+      ],
+      "name": "initialize",
+      "path": "vault.rs",
+      "provenance": "heuristic",
+      "visibility": "public"
+    },
+    {
+      "auth_signals": [],
+      "cpi_signals": [],
+      "external_call_signals": [],
+      "has_auth_signal": false,
+      "has_cpi": false,
+      "has_external_call": false,
+      "has_state_mutation": true,
+      "heuristic": true,
+      "is_payable": false,
+      "kind": "instruction",
+      "line_end": 23,
+      "line_start": 19,
+      "mutation_signals": [
+        "accounts_mutation"
+      ],
+      "name": "deposit",
+      "path": "vault.rs",
+      "provenance": "heuristic",
+      "visibility": "public"
+    },
+    {
+      "auth_signals": [
+        "require macro",
+        "PDA seeds",
+        "PDA bump",
+        "authority reference"
+      ],
+      "cpi_signals": [
+        "token_transfer",
+        "CpiContext"
+      ],
+      "external_call_signals": [],
+      "has_auth_signal": true,
+      "has_cpi": true,
+      "has_external_call": false,
+      "has_state_mutation": true,
+      "heuristic": true,
+      "is_payable": false,
+      "kind": "instruction",
+      "line_end": 47,
+      "line_start": 25,
+      "mutation_signals": [
+        "accounts_mutation"
+      ],
+      "name": "withdraw",
+      "path": "vault.rs",
+      "provenance": "heuristic",
+      "visibility": "public"
+    },
+    {
+      "auth_signals": [
+        "authority reference"
+      ],
+      "cpi_signals": [],
+      "external_call_signals": [],
+      "has_auth_signal": true,
+      "has_cpi": false,
+      "has_external_call": false,
+      "has_state_mutation": true,
+      "heuristic": true,
+      "is_payable": false,
+      "kind": "instruction",
+      "line_end": 53,
+      "line_start": 49,
+      "mutation_signals": [
+        "accounts_mutation"
+      ],
+      "name": "transfer_authority",
+      "path": "vault.rs",
+      "provenance": "heuristic",
+      "visibility": "public"
+    },
+    {
+      "category": "entrypoint",
+      "confidence": "medium",
+      "heuristic": true,
+      "id": "s-0",
+      "kind": "program_entry",
+      "name": "vault",
+      "path": "vault.rs",
+      "provenance": "repo_intelligence"
+    },
+    {
+      "category": "state_mutation",
+      "confidence": "medium",
+      "heuristic": true,
+      "id": "s-1",
+      "kind": "account_struct",
+      "name": "AccountStruct",
+      "path": "vault.rs",
+      "provenance": "repo_intelligence"
+    },
+    {
+      "category": "external_call",
+      "confidence": "medium",
+      "heuristic": true,
+      "id": "s-2",
+      "kind": "cpi_call",
+      "name": "CPI",
+      "path": "vault.rs",
+      "provenance": "repo_intelligence"
+    },
+    {
+      "category": "authorization_or_access_control",
+      "confidence": "medium",
+      "heuristic": true,
+      "id": "s-3",
+      "kind": "authority_pattern",
+      "name": "AuthorityCheck",
+      "path": "vault.rs",
+      "provenance": "repo_intelligence"
+    }
+  ],
+  "target_repository": "examples/solana-basic"
+}

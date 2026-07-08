@@ -1,0 +1,21 @@
+[package]
+name = "digger-benchmark"
+version.workspace = true
+edition.workspace = true
+
+[features]
+corpus = []
+
+[dependencies]
+digger-parser = { path = "../digger-parser" }
+digger-graph = { path = "../digger-graph" }
+digger-hypothesis = { path = "../digger-hypothesis" }
+digger-reconstruct = { path = "../digger-reconstruct" }
+digger-oplayer = { path = "../digger-oplayer" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = { workspace = true }
+
+[dev-dependencies]
+digger-ir = { path = "../digger-ir" }
+digger-pipeline = { path = "../digger-pipeline" }

@@ -1,0 +1,18 @@
+[package]
+name = "digger-verification"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+digger-ir = { path = "../digger-ir" }
+digger-graph = { path = "../digger-graph" }
+digger-execution = { path = "../digger-execution" }
+digger-state-transitions = { path = "../digger-state-transitions" }
+digger-resource-lifecycle = { path = "../digger-resource-lifecycle" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+
+[dev-dependencies]
+digger-parser = { path = "../digger-parser" }
+digger-expansion = { path = "../digger-expansion" }

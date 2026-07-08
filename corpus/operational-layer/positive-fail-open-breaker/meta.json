@@ -1,0 +1,6 @@
+{
+  "exploit_id": "op-positive-fob-001",
+  "vulnerability_class": "fail_open_bootstrap",
+  "expected_findings": ["FailOpenBootstrap"],
+  "known_limitations": "Safety gate defaults to permissive on cold start"
+}

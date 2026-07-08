@@ -1,0 +1,14 @@
+Fuzzing Report
+==============
+Property: test_price_deviation failed!
+  Contract: PriceFeed
+
+Counterexample:
+  Method call: setPrice(0xtoken, 999999)
+  Method call: getPrice(0xtoken)
+
+Replay command: medusa replay --config medusa.yaml --corpus <hash>
+
+Test limit: 5000
+Workers: 2
+Seed: 99999

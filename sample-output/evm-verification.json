@@ -1,0 +1,30 @@
+{
+  "schema_version": "digger.claim_verification.v1",
+  "digger_version": "0.4.0-beta.1",
+  "report_kind": "claim_verification",
+  "verification_id": "cv-1ae6eb3ca747ca",
+  "status": "insufficient_evidence",
+  "status_reason": "1 surfaces matched but 3 required evidence items remain missing for claimed components",
+  "extracted_claims": [
+    {
+      "claim_id": "c-1",
+      "claim_text": "The deposit function performs a state mutation",
+      "affected_component": "surface:deposit",
+      "status": "extracted"
+    }
+  ],
+  "evidence_satisfied": [
+    "Surface 'deposit' found (provenance=engine, engine_derived=false)"
+  ],
+  "evidence_missing": [
+    "Surface 'deposit': Authority/modifier enforcement evidence needs review for function `deposit` at Safe.sol:L32-L35",
+    "Surface 'deposit': Evidence for engine hypothesis 'AuthorityBypassCandidate' requires verification against IR/graph",
+    "Surface 'deposit': Evidence for engine hypothesis 'StateCorruptionCandidate' requires verification against IR/graph"
+  ],
+  "validation_failures": [],
+  "required_next_steps": [
+    "Address missing evidence items cited above",
+    "Provide additional source references or proof tasks"
+  ],
+  "is_finding": false
+}

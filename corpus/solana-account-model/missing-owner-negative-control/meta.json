@@ -1,0 +1,10 @@
+{
+  "exploit_id": "missing-owner-negative-control",
+  "vulnerability_class": "missing_owner_check",
+  "protocol": "Missing Owner Negative Control",
+  "chain": "Solana",
+  "year": 2024,
+  "loss_usd": 0,
+  "expected_findings": [],
+  "known_limitations": "NEGATIVE: typed data account with has_one constraint. Legitimate pattern, no findings."
+}

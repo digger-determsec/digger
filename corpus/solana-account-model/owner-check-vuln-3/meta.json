@@ -1,0 +1,10 @@
+{
+  "exploit_id": "owner-check-vuln-3",
+  "vulnerability_class": "unchecked_account_owner",
+  "protocol": "Lending Pool Collateral Read",
+  "chain": "Solana",
+  "year": 2024,
+  "loss_usd": 120000,
+  "expected_findings": ["UncheckedAccountOwner"],
+  "known_limitations": "Synthetic reproducer: collateral account deserialized without owner validation."
+}

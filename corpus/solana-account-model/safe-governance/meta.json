@@ -1,0 +1,12 @@
+{
+  "exploit_id": "safe-governance-2023",
+  "vulnerability_class": "missing_access_control",
+  "protocol": "SafeGovernance",
+  "chain": "Solana",
+  "year": 2023,
+  "loss_usd": 0,
+  "expected_findings": [],
+  "expected_path_types": [],
+  "expected_hypotheses": [],
+  "known_limitations": "NEGATIVE: correctly guarded governance with PDA seeds, has_one, signer. Detector should NOT flag."
+}

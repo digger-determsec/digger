@@ -1,0 +1,15 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/ReadReentrancyVault.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.19;\n\nimport \"./IERC20.sol\";\n\ncontract ReadReentrancyVault {\n    mapping(address => uint256) public reserves;\n    uint256 public price;\n\n    function swap(address token, uint256 amount) external {\n        IERC20(token).transferFrom(msg.sender, address(this), amount);\n        uint256 currentPrice = price;\n        uint256 output = (amount * currentPrice) / 1e18;\n        reserves[token] += amount;\n    }\n\n    function setPrice(uint256 newPrice) external {\n        price = newPrice;\n    }\n}"
+    },
+    "contracts/IERC20.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.19;\n\ninterface IERC20 {\n    function transferFrom(address, address, uint256) external returns (bool);\n}"
+    }
+  },
+  "settings": {
+    "optimizer": { "enabled": true, "runs": 200 },
+    "outputSelection": { "*": { "*": ["abi"] } }
+  }
+}

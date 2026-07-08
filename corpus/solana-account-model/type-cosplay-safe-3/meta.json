@@ -1,0 +1,10 @@
+{
+  "exploit_id": "type-cosplay-safe-3",
+  "vulnerability_class": "type_cosplay",
+  "protocol": "SPL Token Account (safe)",
+  "chain": "Solana",
+  "year": 2024,
+  "loss_usd": 0,
+  "expected_findings": [],
+  "known_limitations": "NEGATIVE: Account<'info, T> validates discriminator via anchor."
+}

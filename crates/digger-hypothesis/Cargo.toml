@@ -1,0 +1,17 @@
+[package]
+name = "digger-hypothesis"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+digger-ir = { path = "../digger-ir" }
+digger-graph = { path = "../digger-graph" }
+digger-economics = { path = "../digger-economics" }
+digger-adversarial = { path = "../digger-adversarial" }
+digger-knowledge-models = { path = "../digger-knowledge-models" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[dev-dependencies]
+digger-parser = { path = "../digger-parser" }
+digger-graph = { path = "../digger-graph" }

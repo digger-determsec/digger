@@ -1,0 +1,10 @@
+{
+  "exploit_id": "type-cosplay-safe-4",
+  "vulnerability_class": "type_cosplay",
+  "protocol": "Mint Account (safe)",
+  "chain": "Solana",
+  "year": 2024,
+  "loss_usd": 0,
+  "expected_findings": [],
+  "known_limitations": "NEGATIVE: typed Account wrapper validates mint structure."
+}

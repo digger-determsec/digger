@@ -1,0 +1,12 @@
+[package]
+name = "digger-oplayer"
+version.workspace = true
+edition.workspace = true
+description = "Operational-layer detector: unverified external attestation in off-chain/TS source"
+
+[dependencies]
+thiserror = { workspace = true }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[dev-dependencies]

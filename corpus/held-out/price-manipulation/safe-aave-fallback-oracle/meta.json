@@ -1,0 +1,20 @@
+{
+    "exploit_id":  "safe-aave-fallback-oracle-2023",
+    "vulnerability_class":  "NEGATIVE",
+    "protocol":  "SafeAaveFallbackOracle",
+    "chain":  "Ethereum",
+    "year":  2023,
+    "loss_usd":  0,
+    "expected_findings":  [
+
+                          ],
+    "expected_path_types":  [
+
+                            ],
+    "expected_hypotheses":  [
+
+                            ],
+    "known_limitations":  [
+                              "NEGATIVE: latestRoundData with staleness + round completeness check. Price read IS detected. Detector should NOT flag."
+                          ]
+}

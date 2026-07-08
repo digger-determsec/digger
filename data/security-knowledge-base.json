@@ -1,0 +1,292 @@
+{
+  "meta": {
+    "generated": "2026-06-10",
+    "source": "DeFi protocol documentation (live fetches)",
+    "purpose": "Digger security reasoning knowledge base",
+    "coverage": {
+      "aave_v3": "partial (overview only, sub-pages redirected)",
+      "uniswap_v3": "partial (overview + single swaps, concentrated liquidity 404)",
+      "maker": "partial (Vat + Dai module, DAI module 404 on original URL)",
+      "lido": "comprehensive (core contract + stETH)",
+      "eigenlayer": "unavailable (docs.eigencloud.xyz returns 403)",
+      "morpho": "partial (index only, detailed pages behind 403/landing pages)"
+    }
+  },
+
+  "protocols": {
+
+    "aave_v3": {
+      "name": "Aave V3",
+      "fetched_from": [
+        "https://aave.com/docs"
+      ],
+      "trust_boundaries": {
+        "description": "Decentralized non-custodial system; Aave Labs does not control or operate any deployed instance",
+        "open_source": true,
+        "smart_contracts": "Self-executing, deterministic",
+        "versions": ["V1 (legacy)", "V2 (legacy)", "V3 (active)", "V4 (active)"]
+      },
+      "invariants": {
+        "over_collateralization": "Borrowers must provide collateral that exceeds the borrowed amount",
+        "note": "Specific LTV ratios, liquidation thresholds, and formulas not present in overview page"
+      },
+      "economic_assumptions": {
+        "dual_sided_market": "Suppliers provide liquidity and earn interest; borrowers pay interest on over-collateralized positions",
+        "bad_debt_coverage": "Umbrella mechanism provides native coverage for bad debt",
+        "flash_loans": "Available as a feature -- historically a vector for oracle manipulation and reentrancy"
+      },
+      "access_control": {
+        "access_control_manager": "Dedicated Access Control Manager smart contract (V3/V4)",
+        "acl_manager": "ACL Manager for Aptos deployments",
+        "details": "Specific role/permission matrix not present in overview"
+      },
+      "oracle_dependencies": {
+        "oracle_contract": "Dedicated Oracles module as a smart contract dependency",
+        "details": "Oracle update frequencies, circuit breakers, and fallback mechanisms not detailed in overview"
+      },
+      "security_infrastructure": {
+        "audit_reports": "aave.com/security",
+        "bug_bounty": "Sherlock (audits.sherlock.xyz)",
+        "risk_page": "Dedicated risk documentation exists",
+        "v4_new_surface": "Liquidity Model with Hubs and Spokes expands cross-chain attack surface"
+      },
+      "known_gaps": [
+        "Specific invariant formulas",
+        "Liquidation threshold parameters",
+        "LTV parameters per asset",
+        "Oracle update frequencies",
+        "Circuit breaker mechanisms"
+      ]
+    },
+
+    "uniswap_v3": {
+      "name": "Uniswap V3",
+      "fetched_from": [
+        "https://developers.uniswap.org/contracts/v3/overview",
+        "https://developers.uniswap.org/contracts/v3/guides/swaps/single-swaps"
+      ],
+      "trust_boundaries": {
+        "core_vs_periphery": "Core contracts handle pool logic, swaps, liquidity accounting; Periphery contracts provide user-facing helpers",
+        "factories": "Factory contract deploys pools -- trust boundary between factory and individual pools"
+      },
+      "invariants": {
+        "concentrated_liquidity": "Liquidity providers can concentrate capital within custom price ranges (positions)",
+        "fund_conservation": "For exact output swaps, amountInMaximum - amountIn must be refunded to caller",
+        "router_approval_reset": "After refunding excess tokens, router approval set to zero",
+        "no_residual_balances": "Contract design assumes zero token balances after each transaction",
+        "constant_product": "x * y = k within active liquidity range (per whitepaper)"
+      },
+      "economic_assumptions": {
+        "fee_tiers": "Multiple fee tiers available (0.01%, 0.05%, 0.3%, 1%)",
+        "fixed_pool_fee_example": "Single swap example uses fixed 3000 (0.3%) fee tier",
+        "protocol_fee": "Protocol fee mechanism exists as a privileged administrative function"
+      },
+      "access_control": {
+        "core_pools": "No access control modifiers on swap functions -- any address can call",
+        "immutable_router": "swapRouter set as immutable in constructor -- cannot be changed post-deployment",
+        "hardcoded_parameters": "Token addresses and poolFee are constants, reducing injection attack surface",
+        "factory_owner": "Factory owner can enable protocol fee and set fee amount"
+      },
+      "oracle_dependencies": {
+        "built_in_twap": "Protocol-level TWAP (Time-Weighted Average Price) oracle built into each pool",
+        "no_external_oracle_in_example": "Example swap contract has NO on-chain oracle integration",
+        "critical_warning": "Production deployments MUST use an oracle for amountOutMinimum -- without it, trades can be frontrun for considerable loss"
+      },
+      "security_considerations": {
+        "sandwich_attacks": "Setting amountOutMinimum to 0 makes swaps fully vulnerable to sandwich attacks",
+        "deadline_protection": "Example uses block.timestamp as deadline, providing essentially zero deadline protection",
+        "sqrtPriceLimitX96": "Set to 0 (inactive) in example -- no price boundary protection",
+        "unsupported_tokens": "Not all ERC-20 tokens are compatible (fee-on-transfer, rebasing tokens cause issues)",
+        "mev_vulnerability": "Smart contract swaps require external price source to prevent frontrunning",
+        "no_reentrancy_guards": "Simplified example has no explicit reentrancy guards (low risk due to design)",
+        "two_step_approval": "Users must approve contract, then contract approves router -- separate approval to router required"
+      },
+      "audits": {
+        "core": "https://github.com/Uniswap/v3-core/tree/main/audits",
+        "periphery": "https://github.com/Uniswap/v3-periphery/tree/main/audits",
+        "bug_bounty": "Cantina platform"
+      }
+    },
+
+    "maker": {
+      "name": "MakerDAO (Maker)",
+      "fetched_from": [
+        "https://docs.makerdao.com/smart-contract-modules/core-module/vat-detailed-documentation",
+        "https://docs.makerdao.com/smart-contract-modules/dai-module.md"
+      ],
+      "trust_boundaries": {
+        "vat_is_constitution": "The Vat has no external dependencies and operates as an immutable rule set -- described as 'the constitution of dss'",
+        "authorized_modules": "Any module authed against the Vat has full root access and can steal all collateral",
+        "join_contracts": "DaiJoin bridges internal Vat accounting to external ERC20 DAI token",
+        "adapter_boundary": "Vat relies on external Adapter contracts to map collateral balances to real external balances"
+      },
+      "invariants": {
+        "debt_sum": "debt equals the sum of all issued dai",
+        "vice_sum": "vice equals the sum of all sin (system debt)",
+        "debt_formula": "debt = vice + sum(Ilk.Art * Ilk.rate) across all ilks",
+        "collateral_backing": "DAI cannot exist without collateral -- every unit of DAI is backed by locked collateral",
+        "normalized_debt": "Vault debt tracked as normalized art scaled by debt multiplier rate"
+      },
+      "economic_assumptions": {
+        "dai_peg": "DAI designed to represent any token the core system considers equal in value to its internal debt unit (1:1 peg)",
+        "over_collateralization": "Vaults must maintain collateral exceeding debt value",
+        "rate_multiplier": "Ilk.rate is a signed integer that can increase or decrease, affecting surplus accounting",
+        "fold_mechanism": "fold modifies debt multiplier and can create or destroy DAI proportional to Ilk.Art * rate"
+      },
+      "access_control": {
+        "hope_nope": "Controls whether one address can modify another's gem or dai balances (wish check)",
+        "dai_transfer_rule": "dai can only move with the consent of its owner (enforced via move)",
+        "gem_transfer_rule": "gem can always be transferred to any address by its owner (no consent needed)",
+        "grab_authority": "grab used for liquidations -- transfers collateral out and creates sin",
+        "vow_exclusive": "Only the Vow holds sin; only the Vow can call heal to cancel sin against dai",
+        "slip_suck_privilege": "Authorized modules can call slip (collateral modification) and suck (debt creation)"
+      },
+      "oracle_dependencies": {
+        "trusted_oracles": "Vat relies on trusted oracles to provide price data",
+        "ilk_spot": "Price data flows into Ilk.spot (collateral price with safety margin)",
+        "spot_controls_draw": "Ilk.spot controls how much DAI can be drawn per unit of collateral",
+        "failure_modes": "Oracle feed failures can enable minting unbacked DAI or unfair liquidation of safe Vaults"
+      },
+      "security_considerations": {
+        "root_access_risk": "Any authed module has full root access -- adding new modules carries systemic risk",
+        "erc20_race_condition": "DAI susceptible to known ERC20 race condition on approvals",
+        "phishing_risk": "Malicious join contracts could redirect tokens instead of sending to Vat",
+        "upgrade_risk": "Vat upgrades may require new join contracts; gem token freezes can prevent collateral redemption",
+        "governance_risk": "If cryptoeconomic protections fail, governance can authorize malicious modules",
+        "catastrophic_failure": "Vat bug could cause loss/locking of all DAI and collateral, break auctions, prevent shutdown",
+        "adapter_risk": "Faulty adapter could cause total collateral loss by misrepresenting external balances"
+      }
+    },
+
+    "lido": {
+      "name": "Lido (stETH)",
+      "fetched_from": [
+        "https://docs.lido.fi/contracts/steth",
+        "https://docs.lido.fi/contracts/lido"
+      ],
+      "trust_boundaries": {
+        "oracle_trust": "Protocol fundamentally trusts AccountingOracle for accurate Beacon Chain data (off-chain, cannot be verified on-chain)",
+        "dsm_trust": "Deposit frontrunning protection depends entirely on DepositSecurityModule integrity",
+        "staking_router_trust": "Core contract trusts StakingRouter to properly manage staking module distribution",
+        "vaulthub_trust": "V3 external shares managed by VaultHub -- new trust surface",
+        "accounting_chain": "AccountingOracle -> Accounting -> Lido caller hierarchy is strict"
+      },
+      "invariants": {
+        "balance_formula": "balanceOf(account) = shares[account] * totalPooledEther / totalShares",
+        "total_supply_equality": "totalSupply() always equals getTotalPooledEther()",
+        "total_pooled_composition": "totalPooledEther = buffered balance + transient balance + beacon balance",
+        "validator_count": "depositedValidators is always >= beaconValidators",
+        "external_ratio_cap": "getMaxExternalRatioBP() caps external shares as ratio of total shares",
+        "external_solvency": "External shares tracked separately to keep core pool solvent",
+        "contract_version": "Always returns 3"
+      },
+      "economic_assumptions": {
+        "rebase_mechanism": "Balances update algorithmically on oracle reports based on staking rewards or slashing penalties",
+        "no_transfer_events_on_rebase": "No Transfer events during rebases (would require unbounded loop over all holders)",
+        "staking_rate_limit": "Token bucket algorithm: max limit with per-block growth rate",
+        "external_shares_overcollateralization": "stVaults implies overcollateralization requirement for external shares"
+      },
+      "access_control": {
+        "PAUSE_ROLE": "Controls stop() -- halts all pool operations",
+        "RESUME_ROLE": "Controls resume() -- restarts operations",
+        "STAKING_PAUSE_ROLE": "Controls pauseStaking() -- blocks new deposits only",
+        "STAKING_CONTROL_ROLE": "Controls resumeStaking(), setStakingLimit(), removeStakingLimit(), setMaxExternalRatioBP()",
+        "UNSAFE_CHANGE_DEPOSITED_VALIDATORS_ROLE": "Can manually adjust deposited validator counter (dangerous)",
+        "DepositSecurityModule": "Only entity that can call deposit()",
+        "LidoExecutionLayerRewardsVault": "Only entity that can call receiveELRewards()",
+        "WithdrawalVault": "Only entity that can call receiveWithdrawals()"
+      },
+      "oracle_dependencies": {
+        "AccountingOracle": "Submits beacon chain validator counts, balances, vault balances, burner shares, withdrawal finalization",
+        "OracleReportSanityChecker": "Validates report parameters and mitigates front-running risks on rebases",
+        "post_report_sanity": "Share rate sanity check occurs in step 9 of oracle report processing",
+        "manipulation_risk": "Predictable rebases can be sandwiched -- sanity checker limits magnitude to reduce profitability"
+      },
+      "security_considerations": {
+        "rebase_frontrunning": "Known MEV vector; OracleReportSanityChecker limits single rebase magnitude to reduce sandwich profitability",
+        "erc20_non_compliance": "Transfer events only emitted on explicit transfers, not during rebases -- breaks downstream contract assumptions",
+        "deposit_frontrunning": "DepositSecurityModule exists specifically to guard against deposit frontrunning vulnerability",
+        "buffer_risk": "User funds sit in buffer between submission and deposit -- uncommitted capital subject to liquidity risk",
+        "transfer_to_vault_disabled": "transferToVault() always reverts -- Aragon default recovery mechanism disabled",
+        "unsafe_change_warning": "unsafeChangeDepositedValidators() might break internal protocol state if applied incorrectly",
+        "pausability": "Global stop halts all operations; staking pause only prevents new submissions while allowing withdrawals",
+        "permit_signature_support": "ERC-2612 and ERC-1271 support expands attack surface for signature vulnerabilities (replay, malleability)",
+        "deposit_constraints": "setStakingLimit reverts if maxStakeLimit is 0, >= 2^96, or if maxStakeLimit/stakeLimitIncreasePerBlock >= 2^32",
+        "transfer_restrictions": "Recipients cannot be zero address or stETH contract itself; all operations revert when paused"
+      }
+    },
+
+    "eigenlayer": {
+      "name": "EigenLayer",
+      "fetched_from": [],
+      "status": "UNAVAILABLE -- docs.eigencloud.xyz returns HTTP 403 Forbidden on all endpoints",
+      "attempted_urls": [
+        "https://docs.eigenlayer.xyz/restaking/concepts/overview",
+        "https://docs.eigenlayer.xyz/restaking/concepts/slashing",
+        "https://docs.eigencloud.xyz/restaking/concepts/overview",
+        "https://docs.eigencloud.xyz/restaking/concepts/slashing"
+      ],
+      "known_from_public_research": {
+        "core_concept": "Restaking allows ETH stakers to opt-in to validate additional services (Actively Validated Services / AVS)",
+        "slashing": "AVS operators can be slashed for misbehavior; slashing conditions defined per-AVS",
+        "delegation": "Stakers delegate to operators who run AVS infrastructure",
+        "trust_assumption": "Stakers trust both the EigenLayer core contracts AND the AVS operators they delegate to",
+        "risk_compounding": "Restaking compounds risk -- a single operator failure can affect multiple AVS simultaneously"
+      }
+    },
+
+    "morpho": {
+      "name": "Morpho",
+      "fetched_from": [
+        "https://docs.morpho.org/llms.txt",
+        "https://docs.morpho.org/morpho-overview"
+      ],
+      "trust_boundaries": {
+        "vault_roles": {
+          "curators": "Manage vault strategy, market selection, liquidity allocation",
+          "allocators": "Handle liquidity distribution decisions",
+          "public_allocator": "Just-in-time liquidity reallocation across markets",
+          "sentinels": "Risk-mitigation actions",
+          "admins": "Elevated configuration privileges"
+        },
+        "curator_security": "Dedicated security considerations page for vault curators -- critical trust boundary",
+        "isolated_markets": "Each market is self-contained; risk in one market does not directly infect another"
+      },
+      "invariants": {
+        "health_factor": "Health factor calculations govern liquidation eligibility",
+        "ltv_ratios": "Loan-to-Value ratios as core invariants governing collateralization",
+        "solvency_enforcement": "Protocol relies on collateralization enforcement to maintain solvency"
+      },
+      "economic_assumptions": {
+        "adaptive_curve_irm": "AdaptiveCurveIRM adjusts interest rates algorithmically -- fundamental economic invariant",
+        "isolated_market_design": "Risk isolation between markets is a core architectural choice"
+      },
+      "access_control": {
+        "roles_and_capabilities": "Curator, allocator, and admin roles with distinct permissions",
+        "security_best_practices": "Dedocumented security best practices for vault curators"
+      },
+      "oracle_dependencies": {
+        "oracle_page": "Dedicated Oracle page documents how oracles provide price data for Morpho markets",
+        "manipulation_risk": "Price feed manipulation or failure directly impacts liquidation thresholds and collateralization enforcement"
+      },
+      "security_considerations": {
+        "flash_loans": "Native flash loan feature introduces potential attack surface with oracle manipulation or reentrancy",
+        "audits_and_formal_verification": "Protocol maintains audits page with both security audits and formal verification reports",
+        "contract_addresses_published": "All deployed contract addresses published for independent verification",
+        "rewards_external_dependency": "Rewards distribution via Merkl introduces external dependency for incentive delivery",
+        "curator_documentation": "Dedicated security considerations for vault curators documented"
+      },
+      "note": "Detailed contract-level security analysis requires fetching deeper documentation pages that returned 403 or were landing-only pages"
+    }
+  },
+
+  "cross_protocol_patterns": {
+    "oracle_dependency": "All protocols except Uniswap V3 core (which has built-in TWAP) depend on external oracle feeds for price data. Oracle manipulation is a universal attack vector.",
+    "over_collateralization": "Aave, Maker, and Morpho all enforce over-collateralization as a fundamental invariant. Lido uses a different model (staked ETH backing).",
+    "access_control_models": "Role-based access control is universal: Aave uses Access Control Manager, Lido uses granular roles, Maker uses hope/nope auth, Morpho uses curator/allocator/admin.",
+    "pausability": "Aave, Lido, and Maker all support emergency pause mechanisms. Uniswap V3 core pools are not pausable.",
+    "upgrade_risk": "Maker (immutable Vat but join contracts can change), Lido (V3 with new VaultHub surface), Aave (V3 to V4 migration with new Hub/Spoke model).",
+    "mev_frontrunning": "Lido explicitly mitigates rebase frontrunning. Uniswap documentation warns about sandwich attacks. Aave flash loans are an MEV tool.",
+    "formal_verification": "Morpho applies formal verification alongside traditional audits. Maker's Vat is described as immutable 'constitution'."
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "expected_findings": [],
+  "vuln_class": "negative",
+  "description": "Anchor function with require!(collateral >= amount) as business logic, not an ownership check"
+}

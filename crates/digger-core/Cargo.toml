@@ -1,0 +1,16 @@
+[package]
+name = "digger-core"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+digger-ir = { path = "../digger-ir" }
+digger-hypothesis = { path = "../digger-hypothesis" }
+digger-surface = { path = "../digger-surface" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = { workspace = true }
+
+[dev-dependencies]
+digger-parser = { path = "../digger-parser" }
+digger-graph = { path = "../digger-graph" }

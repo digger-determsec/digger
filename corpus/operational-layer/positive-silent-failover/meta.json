@@ -1,0 +1,6 @@
+{
+  "exploit_id": "op-positive-sf-001",
+  "vulnerability_class": "silent_failover",
+  "expected_findings": ["SilentFailover"],
+  "known_limitations": "Fallback uses unadjusted threshold for weaker source"
+}

@@ -1,0 +1,41 @@
+{
+    "case_id": "evm-stax-benign-1",
+    "expected_label": "Benign",
+    "is_real_capture": true,
+    "capture_note": {
+        "chain": "evm",
+        "block_or_slot": 15696806,
+        "tx_hash": "0x50233c2d2ab1b0cff3f4fd2336f5027cbea8dd6cac34b277e465326edb49e243",
+        "rpc_endpoint": "https://1rpc.io/eth",
+        "captured_at": "2026-06-21T00:00:00Z",
+        "incident": "templedao-benign",
+        "note": "Benign Exchange on Curve xFraxTplLP-f Pool (0xdadfd00a2bbeb1abc4936b1644a3033e1b653228). Sibling TempleDAO ecosystem contract — StaxLPStaking itself had only 2 txs (both attacker), so benign captures use the active Curve pool where users traded FraxTemple LP.",
+        "benign_kind": "unrelated_traffic"
+    },
+    "chain": "evm",
+    "tx": {
+        "tx_hash": "0x50233c2d2ab1b0cff3f4fd2336f5027cbea8dd6cac34b277e465326edb49e243",
+        "block_slot": 15696806,
+        "chain": "evm",
+        "target_contract": "0xdadfd00a2bbeb1abc4936b1644a3033e1b653228",
+        "selector": "3df02124",
+        "call_data_preview": "0x3df0212400000000000000000000"
+    },
+    "chain_state": {
+        "account_owners": {},
+        "authorities": {
+            "0x50233c2d2ab1b0cff3f4fd2336f5027cbea8dd6cac34b277e465326edb49e243": "0xf6c75d85ef66d57339f859247c38f8f47133bd39"
+        },
+        "balance_deltas": {
+            "0x50233c2d2ab1b0cff3f4fd2336f5027cbea8dd6cac34b277e465326edb49e243": 0
+        }
+    },
+    "finding": {
+        "finding_id": "f-templedao-benign-1",
+        "rule_id": "access_control",
+        "severity": "high",
+        "confidence_label": "graduated",
+        "file": "CurvePool.sol",
+        "symbol": "exchange"
+    }
+}

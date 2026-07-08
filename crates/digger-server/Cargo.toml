@@ -1,0 +1,40 @@
+[package]
+name = "digger-server"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+axum = "0.7"
+tokio = { version = "1", features = ["full"] }
+tower-http = { version = "0.5", features = ["limit", "trace"] }
+tower = { version = "0.4", features = ["util"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rusqlite = { version = "0.31", features = ["bundled"] }
+argon2 = "0.5"
+rand = "0.8"
+uuid = { version = "1", features = ["v4"] }
+base64 = "0.22"
+digger-reconstruct = { path = "../digger-reconstruct" }
+digger-parser = { path = "../digger-parser" }
+digger-pipeline = { path = "../digger-pipeline" }
+digger-monitor = { path = "../digger-monitor" }
+digger-evidence = { path = "../digger-evidence" }
+digger-agent = { path = "../digger-agent" }
+digger-runtime = { path = "../digger-runtime" }
+digger-oplayer = { path = "../digger-oplayer" }
+async-trait = "0.1"
+thiserror = { workspace = true }
+
+[[bin]]
+name = "digger-server"
+path = "src/main.rs"
+
+[[bin]]
+name = "digger-monitor-daemon"
+path = "src/bin/monitor_daemon.rs"
+
+[dev-dependencies]
+reqwest = { version = "0.11", features = ["json"] }
+tower = { version = "0.4", features = ["util"] }
+http-body-util = "0.1"

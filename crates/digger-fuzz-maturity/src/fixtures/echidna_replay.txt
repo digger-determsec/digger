@@ -1,0 +1,11 @@
+echidna test failed!
+Property: test_price_deviation failed!
+
+Counterexample:
+  arg: {"deviation": 999999}
+  Transaction: setPrice(token, price)
+
+Contract: PriceFeed
+Sender: 0x1234567890abcdef1234567890abcdef12345678
+
+Replay command: echidna-test . --config echidna.yaml --testlimit 5000

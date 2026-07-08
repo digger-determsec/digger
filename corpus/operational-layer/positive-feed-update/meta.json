@@ -1,0 +1,6 @@
+{
+  "exploit_id": "op-positive-feed-update-001",
+  "vulnerability_class": "unverified_attestation",
+  "expected_findings": ["UnverifiedAttestation"],
+  "known_limitations": "Same-handler unverified attestation pattern"
+}

@@ -1,0 +1,17 @@
+{
+  "exploit_id": "sturdy-finance-2023",
+  "vulnerability_class": "read_only_reentrancy",
+  "protocol": "Sturdy Finance",
+  "chain": "Ethereum",
+  "year": 2023,
+  "loss_usd": 800000,
+  "expected_findings": ["ReadOnlyReentrancy"],
+  "expected_path_types": ["external_call_before_state_read", "stale_balancer_bsteth_price"],
+  "expected_hypotheses": ["ReadonlyReentrancyCandidate"],
+  "known_limitations": [
+    "Minimal reproducer of Sturdy Finance read-only reentrancy via Balancer B-stETH",
+    "Citation: https://rekt.news/sturdy-rekt/ — Sturdy Finance loses 442 ETH (~$800K) to read-only reentrancy (Jun 12 2023)",
+    "Vulnerable pattern: Balancer pool price read during flash-loan context — stale during callback",
+    "Critical action gated by state: borrow() against inflated B-stETH collateral price"
+  ]
+}

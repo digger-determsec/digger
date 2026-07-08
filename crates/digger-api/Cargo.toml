@@ -1,0 +1,41 @@
+[package]
+name = "digger-api"
+version.workspace = true
+edition.workspace = true
+
+[[bin]]
+name = "digger-api"
+path = "src/main.rs"
+
+[dependencies]
+axum = "0.7"
+chrono = "0.4"
+tokio = { version = "1", features = ["full"] }
+tower = { version = "0.4", features = ["util"] }
+tower-http = { version = "0.5", features = ["cors", "trace", "fs"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+uuid = { version = "1", features = ["v4"] }
+sha2 = "0.10"
+hmac = "0.12"
+hex = "0.4"
+once_cell = "1"
+thiserror = { workspace = true }
+
+digger-ir = { path = "../digger-ir" }
+digger-parser = { path = "../digger-parser" }
+digger-graph = { path = "../digger-graph" }
+digger-hypothesis = { path = "../digger-hypothesis" }
+digger-synthesis = { path = "../digger-synthesis" }
+digger-evaluation = { path = "../digger-evaluation" }
+digger-ingestion = { path = "../digger-ingestion" }
+digger-knowledge = { path = "../digger-knowledge" }
+digger-knowledge-models = { path = "../digger-knowledge-models" }
+digger-surface = { path = "../digger-surface" }
+digger-core = { path = "../digger-core" }
+digger-benchmark = { path = "../digger-benchmark" }
+digger-platform = { path = "../digger-platform" }
+digger-explanation = { path = "../digger-explanation" }
+
+[dev-dependencies]
+reqwest = { version = "0.11", features = ["json"] }

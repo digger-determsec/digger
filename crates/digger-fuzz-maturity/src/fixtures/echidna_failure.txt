@@ -1,0 +1,12 @@
+echidna test failed!
+Property: test_token_transfer_integrity failed!
+
+Counterexample:
+  arg: {"value": 1000000000000000000}
+  Transaction: transfer(to, amount)
+
+Contract: TokenVault
+Sender: 0xabcdef1234567890abcdef1234567890abcdef12
+
+Test limit reached: 10000
+Seed: 42

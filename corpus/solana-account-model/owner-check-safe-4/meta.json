@@ -1,0 +1,10 @@
+{
+  "exploit_id": "owner-check-safe-4",
+  "vulnerability_class": "unchecked_account_owner",
+  "protocol": "Token Account with Manual Owner Check (safe)",
+  "chain": "Solana",
+  "year": 2024,
+  "loss_usd": 0,
+  "expected_findings": [],
+  "known_limitations": "NEGATIVE: manual owner check present before deserialization."
+}

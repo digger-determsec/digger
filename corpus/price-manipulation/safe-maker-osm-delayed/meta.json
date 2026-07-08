@@ -1,0 +1,12 @@
+{
+  "exploit_id": "safe-maker-osm-delayed-2023",
+  "vulnerability_class": "NEGATIVE",
+  "protocol": "SafeMakerDelayedOracle",
+  "chain": "Ethereum",
+  "year": 2023,
+  "loss_usd": 0,
+  "expected_findings": [],
+  "expected_path_types": [],
+  "expected_hypotheses": [],
+  "known_limitations": "NEGATIVE: priceCumulative TWAP with observation count + time window enforcement. Price read IS detected. Detector should NOT flag."
+}

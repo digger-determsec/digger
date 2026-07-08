@@ -1,0 +1,20 @@
+{
+    "exploit_id":  "safe-bounded-curve-2023",
+    "vulnerability_class":  "NEGATIVE",
+    "protocol":  "SafeBoundedCurve",
+    "chain":  "Ethereum",
+    "year":  2023,
+    "loss_usd":  0,
+    "expected_findings":  [
+
+                          ],
+    "expected_path_types":  [
+
+                            ],
+    "expected_hypotheses":  [
+
+                            ],
+    "known_limitations":  [
+                              "NEGATIVE: getReserves with min/max price bounds + spot-TWAP deviation cross-check. Price read IS detected (getReserves) but bounds + cross-check provide genuine resistance. Detector should NOT flag."
+                          ]
+}

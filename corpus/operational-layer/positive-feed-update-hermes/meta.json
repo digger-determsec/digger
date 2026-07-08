@@ -1,0 +1,1 @@
+{"exploit_id": "op-positive-attestation-002", "vulnerability_class": "unverified_attestation", "expected_findings": ["UnverifiedAttestation"], "known_limitations": "Hermes feed used without verification"}

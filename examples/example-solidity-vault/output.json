@@ -1,0 +1,767 @@
+{
+  "version": "2.3",
+  "program_id": "program",
+  "attack_surface": {
+    "entry_points": [
+      {
+        "function": "constructor",
+        "visibility": "public",
+        "has_authority": false,
+        "writes_state": true,
+        "makes_external_calls": false
+      },
+      {
+        "function": "onlyOwner",
+        "visibility": "public",
+        "has_authority": true,
+        "writes_state": false,
+        "makes_external_calls": false
+      },
+      {
+        "function": "whenNotPaused",
+        "visibility": "public",
+        "has_authority": true,
+        "writes_state": false,
+        "makes_external_calls": false
+      },
+      {
+        "function": "deposit",
+        "visibility": "public",
+        "has_authority": false,
+        "writes_state": false,
+        "makes_external_calls": false
+      },
+      {
+        "function": "withdraw",
+        "visibility": "public",
+        "has_authority": true,
+        "writes_state": false,
+        "makes_external_calls": true
+      },
+      {
+        "function": "setOwner",
+        "visibility": "public",
+        "has_authority": false,
+        "writes_state": true,
+        "makes_external_calls": false
+      },
+      {
+        "function": "emergencyDrain",
+        "visibility": "public",
+        "has_authority": false,
+        "writes_state": false,
+        "makes_external_calls": true
+      },
+      {
+        "function": "unpause",
+        "visibility": "public",
+        "has_authority": false,
+        "writes_state": true,
+        "makes_external_calls": false
+      },
+      {
+        "function": "getBalance",
+        "visibility": "public",
+        "has_authority": false,
+        "writes_state": false,
+        "makes_external_calls": false
+      }
+    ],
+    "state_mutations": [
+      {
+        "function": "constructor",
+        "state_vars": [
+          "owner"
+        ],
+        "has_authority": false,
+        "is_public": true
+      },
+      {
+        "function": "setOwner",
+        "state_vars": [
+          "owner"
+        ],
+        "has_authority": false,
+        "is_public": true
+      },
+      {
+        "function": "constructor",
+        "state_vars": [
+          "paused"
+        ],
+        "has_authority": false,
+        "is_public": true
+      },
+      {
+        "function": "pause",
+        "state_vars": [
+          "paused"
+        ],
+        "has_authority": false,
+        "is_public": false
+      },
+      {
+        "function": "unpause",
+        "state_vars": [
+          "paused"
+        ],
+        "has_authority": false,
+        "is_public": true
+      }
+    ],
+    "external_interactions": [
+      {
+        "function": "withdraw",
+        "targets": [
+          "external"
+        ],
+        "is_cpi": false,
+        "is_signed": false,
+        "has_authority": true
+      },
+      {
+        "function": "emergencyDrain",
+        "targets": [
+          "transfer"
+        ],
+        "is_cpi": false,
+        "is_signed": false,
+        "has_authority": false
+      }
+    ],
+    "authority_regions": [
+      {
+        "function": "constructor",
+        "source": "msg_sender",
+        "enforced": false,
+        "sensitive_actions": [
+          "owner",
+          "paused"
+        ]
+      },
+      {
+        "function": "onlyOwner",
+        "source": "msg_sender",
+        "enforced": true,
+        "sensitive_actions": []
+      },
+      {
+        "function": "whenNotPaused",
+        "source": "unknown",
+        "enforced": true,
+        "sensitive_actions": []
+      },
+      {
+        "function": "deposit",
+        "source": "msg_sender",
+        "enforced": false,
+        "sensitive_actions": []
+      },
+      {
+        "function": "withdraw",
+        "source": "msg_sender",
+        "enforced": true,
+        "sensitive_actions": []
+      },
+      {
+        "function": "setOwner",
+        "source": "unknown",
+        "enforced": false,
+        "sensitive_actions": [
+          "owner"
+        ]
+      },
+      {
+        "function": "emergencyDrain",
+        "source": "msg_sender",
+        "enforced": false,
+        "sensitive_actions": []
+      },
+      {
+        "function": "pause",
+        "source": "unknown",
+        "enforced": false,
+        "sensitive_actions": [
+          "paused"
+        ]
+      },
+      {
+        "function": "unpause",
+        "source": "unknown",
+        "enforced": false,
+        "sensitive_actions": [
+          "paused"
+        ]
+      },
+      {
+        "function": "getBalance",
+        "source": "unknown",
+        "enforced": false,
+        "sensitive_actions": []
+      }
+    ],
+    "summary": {
+      "total_entry_points": 9,
+      "unguarded_entry_points": 6,
+      "total_mutation_zones": 2,
+      "unguarded_mutation_zones": 5,
+      "total_external_zones": 2,
+      "unguarded_external_zones": 1,
+      "enforcement_rate": 0.3
+    }
+  },
+  "paths": {
+    "paths": [
+      {
+        "id": "PATH-UNAUTHORIZED_MODIFICATION-1",
+        "path_type": "unauthorized_modification",
+        "severity": "CRITICAL",
+        "entry": "pause",
+        "steps": [
+          {
+            "step": 1,
+            "function": "pause",
+            "action": "entry",
+            "detail": "public entry"
+          },
+          {
+            "step": 2,
+            "function": "pause",
+            "action": "state_write",
+            "detail": "paused"
+          },
+          {
+            "step": 3,
+            "function": "pause",
+            "action": "missing_authority",
+            "detail": "no authority check on public mutation"
+          }
+        ],
+        "description": "[UNAUTHORIZED_MODIFICATION] pause: 1. pause → entry → 2. pause → state_write → 3. pause → missing_authority"
+      },
+      {
+        "id": "PATH-UNAUTHORIZED_MODIFICATION-2",
+        "path_type": "unauthorized_modification",
+        "severity": "CRITICAL",
+        "entry": "setOwner",
+        "steps": [
+          {
+            "step": 1,
+            "function": "setOwner",
+            "action": "entry",
+            "detail": "public entry"
+          },
+          {
+            "step": 2,
+            "function": "setOwner",
+            "action": "state_write",
+            "detail": "owner"
+          },
+          {
+            "step": 3,
+            "function": "setOwner",
+            "action": "missing_authority",
+            "detail": "no authority check on public mutation"
+          }
+        ],
+        "description": "[UNAUTHORIZED_MODIFICATION] setOwner: 1. setOwner → entry → 2. setOwner → state_write → 3. setOwner → missing_authority"
+      },
+      {
+        "id": "PATH-UNAUTHORIZED_MODIFICATION-3",
+        "path_type": "unauthorized_modification",
+        "severity": "CRITICAL",
+        "entry": "constructor",
+        "steps": [
+          {
+            "step": 1,
+            "function": "constructor",
+            "action": "entry",
+            "detail": "public entry"
+          },
+          {
+            "step": 2,
+            "function": "constructor",
+            "action": "state_write",
+            "detail": "owner"
+          },
+          {
+            "step": 3,
+            "function": "constructor",
+            "action": "state_write",
+            "detail": "paused"
+          },
+          {
+            "step": 4,
+            "function": "constructor",
+            "action": "missing_authority",
+            "detail": "no authority check on public mutation"
+          }
+        ],
+        "description": "[UNAUTHORIZED_MODIFICATION] constructor: 1. constructor → entry → 2. constructor → state_write → 3. constructor → state_write → 4. constructor → missing_authority"
+      },
+      {
+        "id": "PATH-UNAUTHORIZED_MODIFICATION-4",
+        "path_type": "unauthorized_modification",
+        "severity": "CRITICAL",
+        "entry": "unpause",
+        "steps": [
+          {
+            "step": 1,
+            "function": "unpause",
+            "action": "entry",
+            "detail": "public entry"
+          },
+          {
+            "step": 2,
+            "function": "unpause",
+            "action": "state_write",
+            "detail": "paused"
+          },
+          {
+            "step": 3,
+            "function": "unpause",
+            "action": "missing_authority",
+            "detail": "no authority check on public mutation"
+          }
+        ],
+        "description": "[UNAUTHORIZED_MODIFICATION] unpause: 1. unpause → entry → 2. unpause → state_write → 3. unpause → missing_authority"
+      }
+    ],
+    "by_type": {
+      "reentrancy": [],
+      "unauthorized": [
+        {
+          "id": "PATH-UNAUTHORIZED_MODIFICATION-1",
+          "path_type": "unauthorized_modification",
+          "severity": "CRITICAL",
+          "entry": "pause",
+          "steps": [
+            {
+              "step": 1,
+              "function": "pause",
+              "action": "entry",
+              "detail": "public entry"
+            },
+            {
+              "step": 2,
+              "function": "pause",
+              "action": "state_write",
+              "detail": "paused"
+            },
+            {
+              "step": 3,
+              "function": "pause",
+              "action": "missing_authority",
+              "detail": "no authority check on public mutation"
+            }
+          ],
+          "description": "[UNAUTHORIZED_MODIFICATION] pause: 1. pause → entry → 2. pause → state_write → 3. pause → missing_authority"
+        },
+        {
+          "id": "PATH-UNAUTHORIZED_MODIFICATION-2",
+          "path_type": "unauthorized_modification",
+          "severity": "CRITICAL",
+          "entry": "setOwner",
+          "steps": [
+            {
+              "step": 1,
+              "function": "setOwner",
+              "action": "entry",
+              "detail": "public entry"
+            },
+            {
+              "step": 2,
+              "function": "setOwner",
+              "action": "state_write",
+              "detail": "owner"
+            },
+            {
+              "step": 3,
+              "function": "setOwner",
+              "action": "missing_authority",
+              "detail": "no authority check on public mutation"
+            }
+          ],
+          "description": "[UNAUTHORIZED_MODIFICATION] setOwner: 1. setOwner → entry → 2. setOwner → state_write → 3. setOwner → missing_authority"
+        },
+        {
+          "id": "PATH-UNAUTHORIZED_MODIFICATION-3",
+          "path_type": "unauthorized_modification",
+          "severity": "CRITICAL",
+          "entry": "constructor",
+          "steps": [
+            {
+              "step": 1,
+              "function": "constructor",
+              "action": "entry",
+              "detail": "public entry"
+            },
+            {
+              "step": 2,
+              "function": "constructor",
+              "action": "state_write",
+              "detail": "owner"
+            },
+            {
+              "step": 3,
+              "function": "constructor",
+              "action": "state_write",
+              "detail": "paused"
+            },
+            {
+              "step": 4,
+              "function": "constructor",
+              "action": "missing_authority",
+              "detail": "no authority check on public mutation"
+            }
+          ],
+          "description": "[UNAUTHORIZED_MODIFICATION] constructor: 1. constructor → entry → 2. constructor → state_write → 3. constructor → state_write → 4. constructor → missing_authority"
+        },
+        {
+          "id": "PATH-UNAUTHORIZED_MODIFICATION-4",
+          "path_type": "unauthorized_modification",
+          "severity": "CRITICAL",
+          "entry": "unpause",
+          "steps": [
+            {
+              "step": 1,
+              "function": "unpause",
+              "action": "entry",
+              "detail": "public entry"
+            },
+            {
+              "step": 2,
+              "function": "unpause",
+              "action": "state_write",
+              "detail": "paused"
+            },
+            {
+              "step": 3,
+              "function": "unpause",
+              "action": "missing_authority",
+              "detail": "no authority check on public mutation"
+            }
+          ],
+          "description": "[UNAUTHORIZED_MODIFICATION] unpause: 1. unpause → entry → 2. unpause → state_write → 3. unpause → missing_authority"
+        }
+      ],
+      "cpi_trust": [],
+      "other": []
+    },
+    "summary": {
+      "total": 4,
+      "reentrancy_count": 0,
+      "unauthorized_count": 4,
+      "cpi_trust_count": 0,
+      "other_count": 0
+    }
+  },
+  "risk_groups": {
+    "high_fan_in": [
+      {
+        "function": "pause",
+        "count": 3,
+        "related": [
+          "constructor",
+          "whenNotPaused",
+          "unpause"
+        ]
+      }
+    ],
+    "high_fan_out": [],
+    "high_state_density": [
+      {
+        "function": "constructor",
+        "state_count": 2,
+        "state_vars": [
+          "paused",
+          "owner"
+        ]
+      }
+    ],
+    "external_density": [],
+    "summary": {
+      "high_fan_in_count": 1,
+      "high_fan_out_count": 0,
+      "high_state_density_count": 1,
+      "high_external_density_count": 0
+    }
+  },
+  "cross_protocol": {
+    "program_id": "program",
+    "language": "Unknown",
+    "nodes": [
+      {
+        "id": "constructor",
+        "label": "constructor",
+        "node_type": "entry",
+        "has_authority": false,
+        "writes_state": true
+      },
+      {
+        "id": "onlyOwner",
+        "label": "onlyOwner",
+        "node_type": "entry",
+        "has_authority": true,
+        "writes_state": false
+      },
+      {
+        "id": "whenNotPaused",
+        "label": "whenNotPaused",
+        "node_type": "entry",
+        "has_authority": true,
+        "writes_state": false
+      },
+      {
+        "id": "deposit",
+        "label": "deposit",
+        "node_type": "entry",
+        "has_authority": false,
+        "writes_state": false
+      },
+      {
+        "id": "withdraw",
+        "label": "withdraw",
+        "node_type": "entry",
+        "has_authority": true,
+        "writes_state": false
+      },
+      {
+        "id": "setOwner",
+        "label": "setOwner",
+        "node_type": "entry",
+        "has_authority": false,
+        "writes_state": true
+      },
+      {
+        "id": "emergencyDrain",
+        "label": "emergencyDrain",
+        "node_type": "entry",
+        "has_authority": false,
+        "writes_state": false
+      },
+      {
+        "id": "pause",
+        "label": "pause",
+        "node_type": "leaf",
+        "has_authority": false,
+        "writes_state": true
+      },
+      {
+        "id": "unpause",
+        "label": "unpause",
+        "node_type": "entry",
+        "has_authority": false,
+        "writes_state": true
+      },
+      {
+        "id": "getBalance",
+        "label": "getBalance",
+        "node_type": "entry",
+        "has_authority": false,
+        "writes_state": false
+      }
+    ],
+    "edges": [
+      {
+        "from": "withdraw",
+        "to": "external",
+        "edge_type": "call"
+      },
+      {
+        "from": "emergencyDrain",
+        "to": "transfer",
+        "edge_type": "call"
+      },
+      {
+        "from": "constructor",
+        "to": "pause",
+        "edge_type": "call"
+      },
+      {
+        "from": "whenNotPaused",
+        "to": "pause",
+        "edge_type": "call"
+      },
+      {
+        "from": "unpause",
+        "to": "pause",
+        "edge_type": "call"
+      }
+    ],
+    "cross_program": [
+      {
+        "caller": "withdraw",
+        "target": "external",
+        "interaction_type": "external_call",
+        "risk_flags": [
+          "external_call"
+        ]
+      },
+      {
+        "caller": "emergencyDrain",
+        "target": "transfer",
+        "interaction_type": "external_call",
+        "risk_flags": []
+      }
+    ],
+    "highlighted_paths": [
+      {
+        "id": "UNAUTHORIZED-setOwner",
+        "path_type": "unauthorized",
+        "severity": "CRITICAL",
+        "sequence": [
+          "setOwner",
+          "setOwner",
+          "setOwner"
+        ]
+      },
+      {
+        "id": "UNAUTHORIZED-unpause",
+        "path_type": "unauthorized",
+        "severity": "CRITICAL",
+        "sequence": [
+          "unpause",
+          "unpause",
+          "unpause"
+        ]
+      },
+      {
+        "id": "UNAUTHORIZED-constructor",
+        "path_type": "unauthorized",
+        "severity": "CRITICAL",
+        "sequence": [
+          "constructor",
+          "constructor",
+          "constructor",
+          "constructor"
+        ]
+      },
+      {
+        "id": "UNAUTHORIZED-pause",
+        "path_type": "unauthorized",
+        "severity": "CRITICAL",
+        "sequence": [
+          "pause",
+          "pause",
+          "pause"
+        ]
+      }
+    ],
+    "summary": {
+      "total_functions": 10,
+      "total_edges": 26,
+      "entry_points": 9,
+      "external_interactions": 2,
+      "vulnerability_paths": 4
+    }
+  },
+  "evidence": [
+    {
+      "finding_id": "FIND-UNAUTHORIZED_MODIFICATION-1",
+      "path_id": "PATH-UNAUTHORIZED_MODIFICATION-1",
+      "severity": "CRITICAL",
+      "steps": [
+        {
+          "function": "unpause",
+          "action": "FunctionEntered",
+          "detail": "public entry"
+        },
+        {
+          "function": "unpause",
+          "action": "StateMutationObserved",
+          "detail": "paused"
+        },
+        {
+          "function": "unpause",
+          "action": "AuthorityGapObserved",
+          "detail": "no authority check on public mutation"
+        }
+      ],
+      "summary": "Function 'unpause' mutates state without authority enforcement. 3 steps traced: entry → state mutation → authority gap. Public access without authorization."
+    },
+    {
+      "finding_id": "FIND-UNAUTHORIZED_MODIFICATION-2",
+      "path_id": "PATH-UNAUTHORIZED_MODIFICATION-2",
+      "severity": "CRITICAL",
+      "steps": [
+        {
+          "function": "constructor",
+          "action": "FunctionEntered",
+          "detail": "public entry"
+        },
+        {
+          "function": "constructor",
+          "action": "StateMutationObserved",
+          "detail": "owner"
+        },
+        {
+          "function": "constructor",
+          "action": "StateMutationObserved",
+          "detail": "paused"
+        },
+        {
+          "function": "constructor",
+          "action": "AuthorityGapObserved",
+          "detail": "no authority check on public mutation"
+        }
+      ],
+      "summary": "Function 'constructor' mutates state without authority enforcement. 4 steps traced: entry → state mutation → authority gap. Public access without authorization."
+    },
+    {
+      "finding_id": "FIND-UNAUTHORIZED_MODIFICATION-3",
+      "path_id": "PATH-UNAUTHORIZED_MODIFICATION-3",
+      "severity": "CRITICAL",
+      "steps": [
+        {
+          "function": "pause",
+          "action": "FunctionEntered",
+          "detail": "public entry"
+        },
+        {
+          "function": "pause",
+          "action": "StateMutationObserved",
+          "detail": "paused"
+        },
+        {
+          "function": "pause",
+          "action": "AuthorityGapObserved",
+          "detail": "no authority check on public mutation"
+        }
+      ],
+      "summary": "Function 'pause' mutates state without authority enforcement. 3 steps traced: entry → state mutation → authority gap. Public access without authorization."
+    },
+    {
+      "finding_id": "FIND-UNAUTHORIZED_MODIFICATION-4",
+      "path_id": "PATH-UNAUTHORIZED_MODIFICATION-4",
+      "severity": "CRITICAL",
+      "steps": [
+        {
+          "function": "setOwner",
+          "action": "FunctionEntered",
+          "detail": "public entry"
+        },
+        {
+          "function": "setOwner",
+          "action": "StateMutationObserved",
+          "detail": "owner"
+        },
+        {
+          "function": "setOwner",
+          "action": "AuthorityGapObserved",
+          "detail": "no authority check on public mutation"
+        }
+      ],
+      "summary": "Function 'setOwner' mutates state without authority enforcement. 3 steps traced: entry → state mutation → authority gap. Public access without authorization."
+    }
+  ],
+  "metadata": {
+    "analysis_depth": "structural",
+    "languages": [
+      "Unknown"
+    ],
+    "total_functions": 10,
+    "total_edges": 26,
+    "total_findings": 4
+  }
+}

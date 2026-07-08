@@ -1,0 +1,12 @@
+{
+  "exploit_id": "solarbridge-cpi-2022",
+  "vulnerability_class": "missing_access_control",
+  "protocol": "SolarBridge",
+  "chain": "Solana",
+  "year": 2022,
+  "loss_usd": 8200000,
+  "expected_findings": ["MissingAuthorityCheck"],
+  "expected_path_types": ["cpi_privilege_escalation"],
+  "expected_hypotheses": ["AuthorityBypassCandidate"],
+  "known_limitations": ["Minimal reproducer of CPI privilege escalation"]
+}

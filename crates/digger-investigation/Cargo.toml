@@ -1,0 +1,11 @@
+[package]
+name = "digger-investigation"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+digger-reconstruct = { path = "../digger-reconstruct" }
+digger-protocol-model = { path = "../digger-protocol-model" }
+digger-gen5-common = { path = "../digger-gen5-common" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
