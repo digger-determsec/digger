@@ -30,10 +30,12 @@ The second command produces a Markdown report with: what each finding is, why it
 
 ## What you can do
 
-- **Scan local contracts** — `audit-triage --path ./src --chain evm` (or `solana`)
-- **Scan a live on-chain address** — `scan-live --address 0x... --chain ethereum` (asks permission first; `--no-network` stays fully offline; `--allow-egress <host>` pre-authorizes a host)
+- **Scan local contracts** — `audit-triage --path ./src --chain evm` (or `--chain solana`)
+- **Scan a live on-chain address** — `scan-live --address 0x... --chain ethereum` (Digger asks permission first; use `--allow-egress <host>` to pre-authorize, or `--no-network` to stay fully offline)
 - **Verify a transaction** — `explain-intent --calldata 0x...` tells you what a transaction does before you sign
 - **Run as an MCP tool** — Digger exposes scanning and intent-verification for AI agents ([docs/CONNECT-YOUR-AGENT.md](docs/CONNECT-YOUR-AGENT.md))
+
+> **Chain values differ by command:** `audit-triage --chain` accepts `evm`, `solana`, `ethereum`, `arbitrum`, `optimism`, `polygon`, `base`. `scan-live --chain` accepts `ethereum`, `arbitrum`, `optimism`, `polygon`, `base`, `sepolia` (no `solana`; use `audit-triage` for Solana). Run `--help` on each command to see current accepted values.
 
 ## Learn more
 
