@@ -8,7 +8,7 @@
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE)
 [![Beta](https://img.shields.io/badge/status-beta-orange)]()
 
-`EVM + Solana` · `2270 tests passing` · Rust
+`EVM + Solana` · Rust
 
 ---
 
@@ -19,7 +19,7 @@
 git clone https://github.com/digger-determsec/digger.git
 cd digger && cargo build --release
 
-# Scan a bundled sample contract
+# Scan a bundled sample contract (no network needed)
 ./target/release/digger audit-triage --path examples/evm-basic --chain evm
 
 # Render a beginner-friendly report from the bundled sample
@@ -31,7 +31,7 @@ The second command produces a Markdown report with: what each finding is, why it
 ## What you can do
 
 - **Scan local contracts** — `audit-triage --path ./src --chain evm` (or `solana`)
-- **Scan a live on-chain address** — `scan-live --address 0x... --chain ethereum` (asks permission first; `--no-network` stays fully offline)
+- **Scan a live on-chain address** — `scan-live --address 0x... --chain ethereum` (asks permission first; `--no-network` stays fully offline; `--allow-egress <host>` pre-authorizes a host)
 - **Verify a transaction** — `explain-intent --calldata 0x...` tells you what a transaction does before you sign
 - **Run as an MCP tool** — Digger exposes scanning and intent-verification for AI agents ([docs/CONNECT-YOUR-AGENT.md](docs/CONNECT-YOUR-AGENT.md))
 
