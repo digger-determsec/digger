@@ -19,7 +19,8 @@ fn value_transfer_flag(body: &str) -> bool {
         ..Default::default()
     };
     let ir = build_system_ir_with_language(program, Language::Solidity);
-    ir.functions.first()
+    ir.functions
+        .first()
         .map(|f| f.effects.value_transfer)
         .unwrap_or(false)
 }
@@ -30,12 +31,16 @@ fn value_transfer_flag(body: &str) -> bool {
 
 #[test]
 fn fp_is_anchor_parameter_name() {
-    assert!(!value_transfer_flag("function isAnchor(address value) external view returns (bool) { return false; }"));
+    assert!(!value_transfer_flag(
+        "function isAnchor(address value) external view returns (bool) { return false; }"
+    ));
 }
 
 #[test]
 fn fp_is_convertible_token_parameter_name() {
-    assert!(!value_transfer_flag("function isConvertibleToken(address value) external view returns (bool) { return false; }"));
+    assert!(!value_transfer_flag(
+        "function isConvertibleToken(address value) external view returns (bool) { return false; }"
+    ));
 }
 
 #[test]
@@ -55,7 +60,9 @@ fn fp_is_liquidity_pool_parameter_name() {
 
 #[test]
 fn fp_is_smart_token_parameter_name() {
-    assert!(!value_transfer_flag("function isSmartToken(address value) public view returns (bool) { return false; }"));
+    assert!(!value_transfer_flag(
+        "function isSmartToken(address value) public view returns (bool) { return false; }"
+    ));
 }
 
 // ═══════════════════════════════════════════════════════════════════
@@ -64,35 +71,49 @@ fn fp_is_smart_token_parameter_name() {
 
 #[test]
 fn tp_msg_value() {
-    assert!(value_transfer_flag("function deposit() public payable { require(msg.value > 0); balance += msg.value; }"));
+    assert!(value_transfer_flag(
+        "function deposit() public payable { require(msg.value > 0); balance += msg.value; }"
+    ));
 }
 
 #[test]
 fn tp_call_value_new_syntax() {
-    assert!(value_transfer_flag("function withdraw() external { (bool ok,) = addr.call{value: amount}(\"\"); }"));
+    assert!(value_transfer_flag(
+        "function withdraw() external { (bool ok,) = addr.call{value: amount}(\"\"); }"
+    ));
 }
 
 #[test]
 fn tp_call_value_legacy_syntax() {
-    assert!(value_transfer_flag("function withdraw() external { bool ok = addr.call.value(amount)(\"\"); }"));
+    assert!(value_transfer_flag(
+        "function withdraw() external { bool ok = addr.call.value(amount)(\"\"); }"
+    ));
 }
 
 #[test]
 fn tp_transfer_function() {
-    assert!(value_transfer_flag("function withdraw() external { payable(msg.sender).transfer(address(this).balance); }"));
+    assert!(value_transfer_flag(
+        "function withdraw() external { payable(msg.sender).transfer(address(this).balance); }"
+    ));
 }
 
 #[test]
 fn tp_payable_call() {
-    assert!(value_transfer_flag("function forward() external { address(this).call.value(msg.value)(\"\"); }"));
+    assert!(value_transfer_flag(
+        "function forward() external { address(this).call.value(msg.value)(\"\"); }"
+    ));
 }
 
 #[test]
 fn tp_token_transfer() {
-    assert!(value_transfer_flag("function transferTokens() external { token.transfer(recipient, amount); }"));
+    assert!(value_transfer_flag(
+        "function transferTokens() external { token.transfer(recipient, amount); }"
+    ));
 }
 
 #[test]
 fn tp_raw_call_with_value() {
-    assert!(value_transfer_flag("function execute() external { (bool ok,) = target.call{value: msg.value}(data); }"));
+    assert!(value_transfer_flag(
+        "function execute() external { (bool ok,) = target.call{value: msg.value}(data); }"
+    ));
 }
