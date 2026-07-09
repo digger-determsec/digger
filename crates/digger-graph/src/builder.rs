@@ -57,14 +57,6 @@ pub fn build_with_language(program: RawProgram, language: digger_ir::Language) -
                     || f.body.contains("invoke"),
                 authority_required: f.body.contains("require") || f.body.contains("signer"),
                 // Match actual value-transfer expressions:
-<<<<<<< HEAD
-                // msg.value, .call{value:, .call.value(, .transfer(
-                // Do NOT match bare "value" in parameter names (e.g. "address value")
-                value_transfer: f.body.contains("msg.value")
-                    || f.body.contains(".call{value:")
-                    || f.body.contains(".call.value(")
-                    || f.body.contains(".transfer("),
-=======
                 // msg.value, .call{value:, .call.value(, .transfer(, bare transfer(
                 // Do NOT match bare "value" in parameter names (e.g. "address value")
                 // Do NOT match "transferOwnership" (no '(' after 'transfer')
@@ -73,9 +65,8 @@ pub fn build_with_language(program: RawProgram, language: digger_ir::Language) -
                     || f.body.contains(".call.value(")
                     || f.body.contains(".transfer(")
                     || f.body.contains("transfer("),
->>>>>>> engine/value-transfer-fix
                 // Arithmetic detection: for Solidity, the parser's AST walk is
-                // authoritative — trust f.has_arithmetic alone. Text patterns
+                // authoritative â€” trust f.has_arithmetic alone. Text patterns
                 // re-add false positives for Solidity. For Rust/Anchor/test
                 // fixtures where f.has_arithmetic is always false, text OR is
                 // the only source of this signal.
@@ -97,7 +88,7 @@ pub fn build_with_language(program: RawProgram, language: digger_ir::Language) -
                 // Detect temporal guards: block.number/timestamp comparisons,
                 // require/assert with time conditions, known guard modifiers
                 // (nonReentrant, whenNotPaused), or named delay/timelock/snapshot
-                // state variables. TEXT signal — detects presence of guard syntax,
+                // state variables. TEXT signal â€” detects presence of guard syntax,
                 // not semantic sufficiency. Absence is the vulnerability indicator.
                 has_temporal_guard: f.body.contains("block.number")
                     || f.body.contains("block.timestamp")
@@ -166,11 +157,11 @@ pub fn build_with_language(program: RawProgram, language: digger_ir::Language) -
 
     // Phase 9: Propagate has_arithmetic through INTERNAL call chains only.
     // Contract-scoped: a call edge only propagates if caller and callee share
-    // the same contract (or either has no contract — free functions). This
+    // the same contract (or either has no contract â€” free functions). This
     // prevents cross-contract false edges in concatenated sources from
     // infecting functions like deposit/transferFrom with unrelated arithmetic.
     {
-        // Build function name → contract lookup
+        // Build function name â†’ contract lookup
         let fn_contract: std::collections::BTreeMap<String, String> = functions
             .iter()
             .map(|f| (f.name.clone(), f.contract.clone()))
@@ -256,14 +247,14 @@ pub fn build_with_language(program: RawProgram, language: digger_ir::Language) -
         .copied()
         .collect();
 
-        // Build function name → body text lookup from RawProgram
+        // Build function name â†’ body text lookup from RawProgram
         let body_map: std::collections::BTreeMap<String, String> = program
             .functions
             .iter()
             .map(|f| (f.name.clone(), f.body.clone()))
             .collect();
 
-        // Build function name → AST-derived state-reads-in-arithmetic lookup from metadata.extra.
+        // Build function name â†’ AST-derived state-reads-in-arithmetic lookup from metadata.extra.
         // Replaces the text-based body_lower.contains(var_name) name-match.
         let ast_sria_map: std::collections::BTreeMap<String, std::collections::BTreeSet<String>> =
             program
@@ -408,7 +399,7 @@ fn extract_anchor_constraints(program: &RawProgram) -> Vec<Edge> {
             let constraint_lower = constraint_str.to_lowercase();
 
             for func_name in &using_functions {
-                // ── has_one constraint → Authority edge (enforced) ──
+                // â”€â”€ has_one constraint â†’ Authority edge (enforced) â”€â”€
                 if constraint_lower.contains("has_one") {
                     // Extract the referenced field: has_one = X
                     let referenced_field = extract_has_one_target(constraint_str);
@@ -419,7 +410,7 @@ fn extract_anchor_constraints(program: &RawProgram) -> Vec<Edge> {
                     }));
                 }
 
-                // ── Signer type → Authority edge (enforced) ──
+                // â”€â”€ Signer type â†’ Authority edge (enforced) â”€â”€
                 if constraint_lower.contains("signer") && !constraint_lower.contains("has_one") {
                     edges.push(Edge::Authority(AuthorityEdge {
                         function: func_name.clone(),
@@ -428,7 +419,7 @@ fn extract_anchor_constraints(program: &RawProgram) -> Vec<Edge> {
                     }));
                 }
 
-                // ── constraint = ... with authority patterns → Authority edge ──
+                // â”€â”€ constraint = ... with authority patterns â†’ Authority edge â”€â”€
                 if constraint_lower.contains("constraint")
                     && (constraint_lower.contains("authority")
                         || constraint_lower.contains("owner")
@@ -441,7 +432,7 @@ fn extract_anchor_constraints(program: &RawProgram) -> Vec<Edge> {
                     }));
                 }
 
-                // ── owner constraint → Authority edge (enforced) ──
+                // â”€â”€ owner constraint â†’ Authority edge (enforced) â”€â”€
                 if constraint_lower.contains("owner") && !constraint_lower.contains("has_one") {
                     edges.push(Edge::Authority(AuthorityEdge {
                         function: func_name.clone(),
@@ -450,7 +441,7 @@ fn extract_anchor_constraints(program: &RawProgram) -> Vec<Edge> {
                     }));
                 }
 
-                // ── seeds constraint → record as authority (PDA derivation) ──
+                // â”€â”€ seeds constraint â†’ record as authority (PDA derivation) â”€â”€
                 if constraint_lower.contains("seeds") {
                     edges.push(Edge::Authority(AuthorityEdge {
                         function: func_name.clone(),
@@ -459,7 +450,7 @@ fn extract_anchor_constraints(program: &RawProgram) -> Vec<Edge> {
                     }));
                 }
 
-                // ── bump constraint → record as authority (PDA bump validation) ──
+                // â”€â”€ bump constraint â†’ record as authority (PDA bump validation) â”€â”€
                 if constraint_lower.contains("bump") {
                     edges.push(Edge::Authority(AuthorityEdge {
                         function: func_name.clone(),
@@ -468,7 +459,7 @@ fn extract_anchor_constraints(program: &RawProgram) -> Vec<Edge> {
                     }));
                 }
 
-                // ── executable constraint → record as authority (program type check) ──
+                // â”€â”€ executable constraint â†’ record as authority (program type check) â”€â”€
                 if constraint_lower.contains("executable") {
                     edges.push(Edge::Authority(AuthorityEdge {
                         function: func_name.clone(),
@@ -477,7 +468,7 @@ fn extract_anchor_constraints(program: &RawProgram) -> Vec<Edge> {
                     }));
                 }
 
-                // ── address constraint → record as authority (address validation) ──
+                // â”€â”€ address constraint â†’ record as authority (address validation) â”€â”€
                 if constraint_lower.contains("address") {
                     edges.push(Edge::Authority(AuthorityEdge {
                         function: func_name.clone(),
@@ -489,7 +480,7 @@ fn extract_anchor_constraints(program: &RawProgram) -> Vec<Edge> {
         }
     }
 
-    // ── Emit "missing" edges for accounts WITHOUT authority constraints ──
+    // â”€â”€ Emit "missing" edges for accounts WITHOUT authority constraints â”€â”€
     //
     // Two classes, both purely from anchor_accounts_* metadata (no body text):
     //   has_one: TYPED Account<T> that is MUTABLE and lacks has_one/owner/seeds/constraint.
@@ -581,11 +572,11 @@ fn extract_anchor_constraints(program: &RawProgram) -> Vec<Edge> {
 
             let missing_owner = is_raw && !is_signer && !has_authority_constraint && !is_init;
 
-            // ── S2: missing-signer ──
+            // â”€â”€ S2: missing-signer â”€â”€
             // If ANY sibling has has_one = <this account>, this account is an
             // authority target. Fire ONLY when the target is RAW (no type
             // discriminator). TYPED Account<T> targets provide ownership +
-            // discriminator by construction — the signer requirement is a
+            // discriminator by construction â€” the signer requirement is a
             // substrate-wall question the metadata can't resolve.
             let is_authority_target = accounts.iter().any(|other| {
                 other
