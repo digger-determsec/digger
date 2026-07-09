@@ -1,212 +1,71 @@
 # Digger
 
-**Evidence-gated, AI-assisted security infrastructure for smart contracts — and for the autonomous agents that interact with them.**
+**Evidence-gated security analysis for smart contracts and the agents that touch them.**
 
-> Digger surfaces *hypotheses*, not "guaranteed vulnerabilities." It never claims more than it can prove: every finding is tied to concrete evidence — an exact line, call path, or storage slot — and cites real, verifiable precedents. When it doesn't know, it says so.
+> Digger surfaces *hypotheses*, not "guaranteed vulnerabilities." Every finding is tied to concrete evidence — an exact line, call path, or storage slot — and cites real, verifiable precedents. When it doesn't know, it says so.
 
-`beta` · `EVM + Solana` · `2270 tests passing` · Rust
+[![CI](https://github.com/digger-determsec/digger/actions/workflows/ci.yml/badge.svg)](https://github.com/digger-determsec/digger/actions/workflows/ci.yml)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE)
+[![Beta](https://img.shields.io/badge/status-beta-orange)]()
 
-Digger scans smart contracts across multiple surfaces, tells you what a transaction will actually do before you sign it, and exposes all of this as tools any AI agent can call over MCP — giving autonomous agents an honest security gate that isn't itself a hallucinating LLM.
+`EVM + Solana` · Rust
 
-## Why Digger is different
+---
 
-The market is filling with AI auditors that produce confident, impressive reports full of findings that don't exist — fabricated severities, invented CVEs, hallucinated precedents. In security that's worse than useless: a false positive burns expensive expert time; a false negative drains a protocol. Digger is built to be architecturally incapable of that:
-
-- **Hypotheses, not verdicts.** Findings are ranked hypotheses with explicit confidence — never "confirmed vulnerabilities."
-- **Evidence-gated.** No claim ships without a concrete evidence chain (line / call path / storage slot). No evidence, no claim.
-- **Deterministic core.** Same input → same output, every run. The core reasoning is not an LLM; there is no randomness in what it reports.
-- **Real precedents only.** Similar known incidents are cited with verifiable links (Parity, Poly Network, Wormhole, …) — never invented.
-- **Honest about limits.** Known gaps are documented in plain sight (see Limitations).
-
-## What Digger does
-
-**1. Multi-surface scanning.** Local source (Solidity / Anchor-Rust), a GitHub repo, or a live on-chain address (EVM & Solana; verified source or bytecode fallback).
-
-**2. Evidence-gated hypotheses + deterministic reports.** Runs detectors, ranks hypotheses by severity/confidence, and renders a clean, beginner-readable report: location, evidence, similar known incidents, remediation, and a proof-of-concept scaffold.
-
-**3. Transaction intent verification — "know before you sign."** Decode raw calldata, a transaction, an EIP-712 payload, or a Solana transaction into plain English, checked against what you expected.
-
-**4. The agentic layer (MCP).** Digger runs as an MCP server, exposing scanning and intent-verification as tools any AI agent can call. As autonomous agents begin signing transactions and deploying contracts, Digger is the honest, deterministic security gate they call *before* acting — it won't make something up the way an LLM would.
-
-**5. Security-first by design.** All network egress is gated behind explicit consent; Digger runs fully offline with `--no-network`. Its local trust store holds only scheme+host pairs — never secrets or full URLs.
-
-## How it works
-
-```
-contract / address / repo / calldata
-    → detectors → evidence → ranked hypotheses
-    → triage (JSON) → render-report → human-readable report (Markdown)
-```
-
-Every stage is inspectable, deterministic, and evidence-gated.
-
-## Getting started
-
-### Prerequisites
-
-Rust (stable) + Cargo — install from https://rustup.rs — and Git.
-
-### Build
+## Quickstart
 
 ```bash
+# Build (one-time)
 git clone https://github.com/digger-determsec/digger.git
-cd digger
-cargo build --release   # binary lands at ./target/release/digger
-```
+cd digger && cargo build --release
 
-### 1. Scan a local contract
-
-```bash
+# Scan a bundled sample contract (no network needed)
 ./target/release/digger audit-triage --path examples/evm-basic --chain evm
-```
 
-Output (truncated):
-```
-Digger Audit Triage — v0.4.0-beta.2
-Path: examples/evm-basic
-Chain: evm
-
-Files scanned: 1
-Privileged operations: 11
-State mutations: 9
-Candidate hypotheses: 9
-Missing evidence: 22
-```
-
-### 2. Render a beginner-friendly report
-
-```bash
-# First produce the triage JSON
-./target/release/digger audit-triage --path examples/evm-basic --chain evm --json --output triage.json
-
-# Then render it as Markdown
-./target/release/digger render-report --from triage.json
-```
-
-**Instant demo** — render the bundled sample without scanning first:
-
-```bash
+# Render a beginner-friendly report from the bundled sample
 ./target/release/digger render-report --from examples/sample-report/sample_packet.json
 ```
 
-Output (truncated):
-```markdown
-# Security Analysis Report
+The second command produces a Markdown report with: what each finding is, why it matters, the exact code location, severity, similar known incidents, and a proof-of-concept scaffold. See the [sample output](examples/sample-report/) for the full result.
 
-Generated by Digger v0.4.0-beta.2 — deterministic analysis, no LLM.
+## What you can do
 
----
+- **Scan local contracts** — `audit-triage --path ./src --chain evm` (or `--chain solana`)
+- **Scan a live on-chain address** — `scan-live --address 0x... --chain ethereum` (Digger asks permission first; use `--allow-egress <host>` to pre-authorize, or `--no-network` to stay fully offline)
+- **Verify a transaction** — `explain-intent --calldata 0x...` tells you what a transaction does before you sign
+- **Run as an MCP tool** — Digger exposes scanning and intent-verification for AI agents ([docs/CONNECT-YOUR-AGENT.md](docs/CONNECT-YOUR-AGENT.md))
 
-## 1. Authority Bypass in `Vault` — A function that can modify critical state
-### Summary
-A function that can modify critical state without proper access control.
-### Why it matters
-An attacker can call this function directly, bypassing ownership or admin checks,
-and drain funds, pause the protocol, or corrupt state.
-### Location & Code
-**File:** `contracts/Vault.sol` (lines 42–44)
-```solidity
-function withdraw() external {
-    payable(msg.sender).transfer(address(this).balance);
-}
-```
-...
-```
+> **Chain values differ by command:** `audit-triage --chain` accepts `evm`, `solana`, `ethereum`, `arbitrum`, `optimism`, `polygon`, `base`. `scan-live --chain` accepts `ethereum`, `arbitrum`, `optimism`, `polygon`, `base`, `sepolia` (no `solana`; use `audit-triage` for Solana). Run `--help` on each command to see current accepted values.
 
-### 3. Scan a live on-chain contract
+## Learn more
 
-```bash
-./target/release/digger scan-live --address 0xDE0B295669a9FD93d5F28D9Ec85E40f4cb697BAe --chain ethereum
-```
+| Topic | Where |
+|-------|-------|
+| Architecture & pillars | [docs/architecture/ARCHITECTURE.md](docs/architecture/ARCHITECTURE.md) |
+| How Digger differs from AI auditors | [docs/WHY-DIGGER.md](docs/WHY-DIGGER.md) |
+| Intent verifier deep-dive | [docs/INTENT-VERIFIER.md](docs/INTENT-VERIFIER.md) |
+| Deterministic report generator | [docs/REPORT-GENERATOR.md](docs/REPORT-GENERATOR.md) |
+| Egress consent gate | [docs/EGRESS-GATE.md](docs/EGRESS-GATE.md) |
+| CLI reference | [docs/CLI_REFERENCE.md](docs/CLI_REFERENCE.md) |
+| LLM boundary (beta) | [docs/product/LLM-ASSISTED-BETA-BOUNDARY.md](docs/product/LLM-ASSISTED-BETA-BOUNDARY.md) |
+| Beta limitations | [docs/LIMITATIONS.md](docs/LIMITATIONS.md) |
+| Contributing | [CONTRIBUTING.md](CONTRIBUTING.md) |
+| Security | [SECURITY.md](SECURITY.md) |
 
-For Solana:
-```bash
-./target/release/digger scan-live --address <program-id> --chain solana
-```
+## Beta limitations
 
-Digger asks for consent before any network call. Use `--no-network` to stay fully offline.
-
-### 4. Scan a Foundry repo
-
-```bash
-./target/release/digger scan-live --repo /path/to/foundry-project
-```
-
-Digger detects `foundry.toml`, resolves imports, and scans all contracts in `src/`.
-
-### 5. Verify a transaction's intent
-
-```bash
-# Raw calldata
-./target/release/digger explain-intent --calldata 0x2e1a7d4d
-
-# JSON transaction file
-./target/release/digger explain-intent --tx path/to/tx.json
-
-# EIP-712 typed data
-./target/release/digger explain-intent --eip712 path/to/eip712.json
-```
-
-Output (truncated):
-```
-Digger Intent Verifier — v0.4.0-beta.2
-Chain: evm
-Risk: Safe
-
-[0x2e1a7d4d] unknown
-  Effect: Unknown selector 0x2e1a7d4d. No argument data.
-```
-
-### 6. Run Digger as a tool for your AI agent (MCP)
-
-See [docs/CONNECT-YOUR-AGENT.md](docs/CONNECT-YOUR-AGENT.md).
-
-### Useful flags
-
-| Flag | Effect |
-|------|--------|
-| `--json` | Machine-readable JSON output |
-| `--no-network` | Hard offline mode — zero network calls, fail-closed |
-| `--allow-egress <host>` | Permit egress to a specific host (repeatable) |
-| `--assume-yes` | Auto-approve consent prompts (CI / non-interactive) |
-
----
-
-## Open source, and what's beyond it
-
-Digger's engine — detectors, the evidence/hypothesis pipeline, the deterministic report generator, the intent verifier, the CLI, the SDKs, and the MCP server — is open source and ships in this beta. A hosted API, a deeper LLM-assisted explanation layer (bring-your-own-key), and enterprise/CI integrations build on top of this open core. The LLM layer in this beta is a schema/policy baseline, deliberately quarantined behind validation — see [docs/product/LLM-ASSISTED-BETA-BOUNDARY.md](docs/product/LLM-ASSISTED-BETA-BOUNDARY.md).
-
-## Honest limitations (beta)
-
-Digger is a triage / first-pass tool, not a replacement for a professional manual audit.
-
-- Single-contract scope — no cross-function / cross-contract dataflow yet
-- Flash-loan governance detector unverified on real-world targets
+Digger is a triage tool, not a replacement for a professional audit.
+- Single-contract scope (no cross-contract dataflow yet)
+- Flash-loan governance detector unverified on real targets
 - EVM modifier detection may miss complex multi-line patterns
-- Solana detection is constraint-absence based (3 axes)
-- The LLM-assisted layer is a schema/policy baseline in this release
+- LLM layer is a schema/policy baseline only
 
-Known technical boundaries:
-
-- The Rust SDK (`sdk/rust`) is a separate trust boundary — an HTTP client for a Digger API server, not a local scanner; it does not pass through the CLI egress gate.
-- On Windows, the trust store (`~/.digger/trust.json`) inherits default file ACLs (the 0600 chmod is Unix-only). It stores only scheme+host pairs — no secrets.
-
-## Security & trust
-
-See [SECURITY.md](SECURITY.md). Digger is egress-gated, offline-capable, and stores no secrets.
-
-## Architecture
-
-A Rust workspace of focused crates (CLI, detectors, hypothesis engine, report generator, intent verifier, egress gate, MCP server, SDKs). See `docs/` for the architecture notes and CLI reference.
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md).
+See [docs/LIMITATIONS.md](docs/LIMITATIONS.md) for the full list.
 
 ## License
 
-See [LICENSE](LICENSE).
+Apache 2.0 — see [LICENSE](LICENSE).
 
 ## Disclaimer
 
-Digger is beta software that surfaces hypotheses for human review. It is NOT a substitute for a professional security audit and gives no guarantee that a contract is safe. Always obtain an independent audit before deploying or interacting with contracts that hold value.
+Digger is beta software that surfaces hypotheses for human review. It is NOT a substitute for a professional security audit and gives no guarantee that a contract is safe.

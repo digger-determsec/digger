@@ -49,8 +49,8 @@ fn rule_entries() -> Vec<RuleContent> {
             precedents: vec![
                 PrecedentEntry {
                     name: "Poly Network (2021)".into(),
-                    reference: "https://slowmist.medium.com/the-root-cause-of-poly-network-being-hacked-ec2ee1b0c68f".into(),
-                    note: "Missing access control on cross-chain message handler allowed attacker to override keeper signatures, stealing $611M.".into(),
+                    reference: "https://medium.com/poly-network/the-root-cause-of-poly-network-being-hacked-e30cf27468f0".into(),
+                    note: "Attacker abused the privileged EthCrossChainManager to replace keeper public keys via putCurEpochConPubKeyBytes, enabling arbitrary cross-chain withdrawals (~$610M).".into(),
                 },
                 PrecedentEntry {
                     name: "Wormhole Bridge (2022)".into(),
