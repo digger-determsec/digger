@@ -57,12 +57,14 @@ pub fn build_with_language(program: RawProgram, language: digger_ir::Language) -
                     || f.body.contains("invoke"),
                 authority_required: f.body.contains("require") || f.body.contains("signer"),
                 // Match actual value-transfer expressions:
-                // msg.value, .call{value:, .call.value(, .transfer(
+                // msg.value, .call{value:, .call.value(, .transfer(, bare transfer(
                 // Do NOT match bare "value" in parameter names (e.g. "address value")
+                // Do NOT match "transferOwnership" (no '(' after 'transfer')
                 value_transfer: f.body.contains("msg.value")
                     || f.body.contains(".call{value:")
                     || f.body.contains(".call.value(")
-                    || f.body.contains(".transfer("),
+                    || f.body.contains(".transfer(")
+                    || f.body.contains("transfer("),
                 // Arithmetic detection: for Solidity, the parser's AST walk is
                 // authoritative — trust f.has_arithmetic alone. Text patterns
                 // re-add false positives for Solidity. For Rust/Anchor/test
